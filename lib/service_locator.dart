@@ -7,6 +7,8 @@ import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasourc
 import 'package:todo_test/common/feature/drawer/data/repository/drawer_repository_impl.dart';
 import 'package:todo_test/common/feature/drawer/domain/repository/drawer_repository.dart';
 import 'package:todo_test/common/feature/drawer/domain/usecase/get_user_data_usecase.dart';
+import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/get_theme_usecase.dart';
+import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/set_theme_usecase.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/features/login_signup/data/repositories/user_repository_impl.dart';
 import 'package:todo_test/features/login_signup/domain/repositories/user_repository.dart';
@@ -16,8 +18,6 @@ import 'package:todo_test/features/login_signup/domain/usecases/signup_usecase.d
 import 'package:todo_test/features/login_signup/domain/usecases/splash_usecase.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/splash/bloc/splash_bloc.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/get_theme_usecase.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/set_theme_usecase.dart';
 import 'package:todo_test/features/todo/data/datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/data/repository/task_repository_impl.dart';
 import 'package:todo_test/features/todo/domain/repository/task_repository.dart';

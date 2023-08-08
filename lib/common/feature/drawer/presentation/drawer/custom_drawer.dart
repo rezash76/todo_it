@@ -4,6 +4,7 @@ import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.da
 import 'package:todo_test/common/feature/drawer/presentation/drawer/widget/custom_theme_mode.dart';
 import 'package:todo_test/common/feature/drawer/presentation/drawer/widget/my_drawer_header.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:todo_test/main.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -13,6 +14,9 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
+  bool isEN = true;
+  Set<int> selection = <int>{0, 1};
+
   @override
   void initState() {
     super.initState();
@@ -107,6 +111,54 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ],
               );
             },
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 30,
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(
+                  left: 14,
+                  bottom: 8,
+                ),
+                child: Text(
+                  'Language',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text(
+                    'Farsi',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Switch(
+                    value: isEN,
+                    onChanged: (val) {
+                      setState(() {
+                        isEN = val;
+                      });
+                      if (val) {
+                        MyApp.setLocale(context, const Locale('en', ''));
+                      } else {
+                        MyApp.setLocale(context, const Locale('fa', ''));
+                      }
+                    },
+                  ),
+                  const Text(
+                    'English',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),

@@ -12,6 +12,7 @@ import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/service_locator.dart' as locator;
 import 'package:todo_test/service_locator.dart';
 import 'features/login_signup/presentation/bloc/splash/bloc/splash_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,18 +27,10 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => sl<SplashBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<LoginBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<TaskBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<DrawerBloc>(),
-        ),
+        BlocProvider(create: (context) => sl<SplashBloc>()),
+        BlocProvider(create: (context) => sl<LoginBloc>()),
+        BlocProvider(create: (context) => sl<TaskBloc>()),
+        BlocProvider(create: (context) => sl<DrawerBloc>()),
       ],
       child: const MyApp(),
     ),
@@ -49,9 +42,22 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -63,17 +69,20 @@ class _MyAppState extends State<MyApp> {
     return BlocBuilder<DrawerBloc, DrawerState>(
       builder: (context, state) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'ToDo',
           theme: MyTheme.light,
           darkTheme: MyTheme.dark,
           themeMode:
               (state is GetThemeSuccess) ? state.themeMode : ThemeMode.system,
-          home: const SplashScreen(),
           initialRoute: '/',
           routes: {
             SplashScreen.routName: (context) => const SplashScreen(),
           },
-          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: _locale,
+          home: const SplashScreen(),
         );
       },
     );
