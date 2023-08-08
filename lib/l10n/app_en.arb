@@ -1,5 +1,22 @@
 {
     "splashIntro": "TO DO it...",
     "firstName": "first name",
-    "lastName": "last name"
+    "lastName": "last name",
+    "appearance": "Appearance",
+    "language": "Language",
+    "english": "English",
+    "farsi": "Farsi",
+    "logout": "Logout",
+    "light": "light",
+    "dark": "dark",
+    "system": "system",
+    "todoList": "Todo List",
+    "addNewTask": "Add new Task",
+    "updateTheTask": "Update the Task",
+    "add": "Add",
+    "update": "Update",
+    "title": "title",
+    "description": "description",
+    "thereIsNoTask": "There is no task",
+    "tapPlusToAddNewOne": "Tap + to add new one"
 }

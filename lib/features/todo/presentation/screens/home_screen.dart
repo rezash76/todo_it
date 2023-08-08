@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/drawer/custom_drawer.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/splash_screen.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Todo List'),
+          title: Text(LanguageManager.shared.translation(context).todoList),
           centerTitle: true,
           // backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
         ),
@@ -66,7 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, state) {
                   if (state is TaskError) {
                     return EmptyTask(
-                      message: state.message,
+                      message: LanguageManager.shared
+                          .translation(context)
+                          .thereIsNoTask,
                     );
                   }
                   if (state is TaskSuccess) {

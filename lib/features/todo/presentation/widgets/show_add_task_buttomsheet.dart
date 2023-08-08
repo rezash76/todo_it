@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/core/presentation/widget/custom_text_form_field.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
@@ -16,7 +17,9 @@ showAddTaskBottomSheet(
     builder: (BuildContext cxt) {
       return AlertDialog(
         title: Text(
-          titleController.text == '' ? 'Add new Task' : 'Update the Task',
+          titleController.text == ''
+              ? LanguageManager.shared.translation(context).addNewTask
+              : LanguageManager.shared.translation(context).updateTheTask,
           style: const TextStyle(
             fontSize: 18,
           ),
@@ -28,14 +31,15 @@ showAddTaskBottomSheet(
               children: [
                 CustomTextFormField(
                   controller: titleController,
-                  labelText: 'Title',
+                  labelText: LanguageManager.shared.translation(context).title,
                 ),
                 const SizedBox(
                   height: 18,
                 ),
                 CustomTextFormField(
                   controller: descController,
-                  labelText: 'Description',
+                  labelText:
+                      LanguageManager.shared.translation(context).description,
                 ),
               ],
             ),
@@ -44,7 +48,9 @@ showAddTaskBottomSheet(
         actions: [
           TextButton(
             child: Text(
-              titleController.text == '' ? 'Add' : 'Update',
+              titleController.text == ''
+                  ? LanguageManager.shared.translation(context).add
+                  : LanguageManager.shared.translation(context).update,
             ),
             onPressed: () {
               if (titleController.text.isNotEmpty &&

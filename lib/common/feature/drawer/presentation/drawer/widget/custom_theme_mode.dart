@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_test/common/language_manager.dart';
 
 class CustomThemeMode extends StatelessWidget {
   final ThemeMode themeMode;
@@ -9,10 +10,10 @@ class CustomThemeMode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buildThemeMode();
+    return buildThemeMode(context);
   }
 
-  Widget buildThemeMode() {
+  Widget buildThemeMode(BuildContext context) {
     return switch (themeMode) {
       ThemeMode.light => Column(
           children: [
@@ -28,7 +29,7 @@ class CustomThemeMode extends StatelessWidget {
               ),
             ),
             Text(
-              'Light',
+              LanguageManager.shared.translation(context).light,
               style: TextStyle(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
@@ -49,7 +50,7 @@ class CustomThemeMode extends StatelessWidget {
               ),
             ),
             Text(
-              'dark',
+              LanguageManager.shared.translation(context).light,
               style: TextStyle(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
@@ -76,7 +77,7 @@ class CustomThemeMode extends StatelessWidget {
               ),
             ),
             Text(
-              'system',
+              LanguageManager.shared.translation(context).light,
               style: TextStyle(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),

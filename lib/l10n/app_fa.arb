@@ -1,5 +1,22 @@
 {
     "splashIntro": "انجامش بده ...",
     "firstName": "نام",
-    "lastName": "نام خانوادگی"
+    "lastName": "نام خانوادگی",
+    "appearance": "تم",
+    "language": "زبان",
+    "english": "انگلیسی",
+    "farsi": "فارسی",
+    "logout": "خروج",
+    "light": "روشن",
+    "dark": "تیره",
+    "system": "سیستم",
+    "todoList": "لیست کارها",
+    "addNewTask": "ایجاد کار جدید",
+    "updateTheTask": "کار را تغییر دهید",
+    "add": "ایحاد",
+    "update": "بروز رسانی",
+    "title": "عنوان",
+    "description": "توضیحات",
+    "thereIsNoTask": "هنوز کاری ایجاد نکرده اید",
+    "tapPlusToAddNewOne": "برای ایجاد کار جدید + را بزنید"
 }

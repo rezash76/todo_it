@@ -60,14 +60,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      left: 14,
-                      bottom: 8,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
                     ),
                     child: Text(
-                      'Appearance',
-                      style: TextStyle(
+                      LanguageManager.shared.translation(context).appearance,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
@@ -134,22 +134,24 @@ class _CustomDrawerState extends State<CustomDrawer> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(
-                  left: 14,
-                  bottom: 8,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
                 ),
                 child: Text(
-                  'Language',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  LanguageManager.shared.translation(context).language,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text(
-                    'Farsi',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  Text(
+                    LanguageManager.shared.translation(context).farsi,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Switch(
                     value: isEN,
@@ -170,9 +172,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       }
                     },
                   ),
-                  const Text(
-                    'English',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  Text(
+                    LanguageManager.shared.translation(context).english,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -189,9 +192,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Icons.logout_outlined,
               color: Colors.redAccent,
             ),
-            title: const Text(
-              'Logout',
-              style: TextStyle(color: Colors.red),
+            title: Text(
+              LanguageManager.shared.translation(context).logout,
+              style: const TextStyle(color: Colors.red),
             ),
             onTap: () {
               BlocProvider.of<LoginBloc>(context).add(LogoutEvent());

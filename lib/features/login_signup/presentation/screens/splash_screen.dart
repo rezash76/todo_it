@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/splash/bloc/splash_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/login_screen.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/signup_screen.dart';
@@ -66,9 +67,9 @@ class _SplashScreenState extends State<SplashScreen> {
                           color: Colors.white,
                         );
                       }
-                      return const Text(
-                        'TO DO it...',
-                        style: TextStyle(
+                      return Text(
+                        LanguageManager.shared.translation(context).splashIntro,
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

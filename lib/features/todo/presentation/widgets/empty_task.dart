@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_test/common/language_manager.dart';
 
 class EmptyTask extends StatelessWidget {
   final String message;
@@ -23,9 +24,9 @@ class EmptyTask extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        const Text(
-          'Tap + to add new one',
-          style: TextStyle(
+        Text(
+          LanguageManager.shared.translation(context).tapPlusToAddNewOne,
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w300,
           ),
