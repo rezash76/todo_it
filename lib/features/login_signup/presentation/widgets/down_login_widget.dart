@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/domain/entities/value_object/login_request.dart';
 import 'package:todo_test/common/core/presentation/widget/custom_text_form_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,16 +60,22 @@ class _DownLoginState extends State<DownLogin> {
                 children: [
                   CustomTextFormField(
                     controller: usernameController,
-                    labelText: 'Username',
-                    hintText: 'Enter your username...',
+                    labelText:
+                        LanguageManager.shared.translation(context).username,
+                    hintText: LanguageManager.shared
+                        .translation(context)
+                        .usernameHint,
                   ),
                   const SizedBox(
                     height: 28,
                   ),
                   CustomTextFormField(
                     controller: passwordController,
-                    labelText: 'Password',
-                    hintText: 'Enter your password...',
+                    labelText:
+                        LanguageManager.shared.translation(context).password,
+                    hintText: LanguageManager.shared
+                        .translation(context)
+                        .passwordHint,
                   ),
                 ],
               ),
@@ -94,9 +101,10 @@ class _DownLoginState extends State<DownLogin> {
                           BlocProvider.of<LoginBloc>(context)
                               .add(SignInEvent(param: param));
                         },
-                        child: const Text(
-                          'Sign in',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        child: Text(
+                          LanguageManager.shared.translation(context).signin,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 20),
                         ),
                       ),
                     ),
@@ -105,8 +113,11 @@ class _DownLoginState extends State<DownLogin> {
                     height: 12,
                   ),
                   TextButton(
-                      onPressed: () {},
-                      child: const Text('Do not have an accout?')),
+                    onPressed: () {},
+                    child: Text(LanguageManager.shared
+                        .translation(context)
+                        .doNotHaveAnAccoutn),
+                  ),
                 ],
               ),
             ],

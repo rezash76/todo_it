@@ -12,14 +12,6 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text(
-          'Login',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
       body: SafeArea(
         top: false,
         child: BlocProvider<SignupBloc>(
