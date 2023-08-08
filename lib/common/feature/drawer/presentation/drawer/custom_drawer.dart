@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/drawer/widget/custom_theme_mode.dart';
 import 'package:todo_test/common/feature/drawer/presentation/drawer/widget/my_drawer_header.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:todo_test/main.dart';
 
@@ -20,6 +21,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   void initState() {
     super.initState();
+    LanguageManager.shared.getLocale().then((locale) {
+      if (locale.languageCode == LanguageManager.shared.ENGLISH) {
+        setState(() {
+          isEN = true;
+        });
+      } else {
+        setState(() {
+          isEN = false;
+        });
+      }
+    });
     BlocProvider.of<DrawerBloc>(context).add(GetUserDataEvent());
     BlocProvider.of<DrawerBloc>(context).add(GetTheme());
   }
@@ -141,14 +153,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                   Switch(
                     value: isEN,
-                    onChanged: (val) {
+                    onChanged: (val) async {
                       setState(() {
                         isEN = val;
                       });
                       if (val) {
-                        MyApp.setLocale(context, const Locale('en', ''));
+                        Locale locale = await LanguageManager.shared
+                            .setLocale(LanguageManager.shared.ENGLISH);
+                        // ignore: use_build_context_synchronously
+                        MyApp.setLocale(context, locale);
                       } else {
-                        MyApp.setLocale(context, const Locale('fa', ''));
+                        Locale locale = await LanguageManager.shared
+                            .setLocale(LanguageManager.shared.FARSI);
+                        // ignore: use_build_context_synchronously
+                        MyApp.setLocale(context, locale);
                       }
                     },
                   ),

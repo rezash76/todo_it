@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
+import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/utils/constants.dart';
 import 'package:todo_test/common/core/data/hive_model/hive_task.dart';
 import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
@@ -61,6 +62,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    LanguageManager.shared.getLocale().then((locale) => setLocale(locale));
     BlocProvider.of<DrawerBloc>(context).add(GetTheme());
   }
 
