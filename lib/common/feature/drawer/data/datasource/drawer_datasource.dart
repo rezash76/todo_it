@@ -36,8 +36,7 @@ base class DrawerDatasourceImpl implements DrawerDatasource {
         // ThemeMode.system.
         return 2;
       }
-    } on HiveError catch (e) {
-      print(e);
+    } on Exception {
       throw Exception();
     }
   }
@@ -47,8 +46,7 @@ base class DrawerDatasourceImpl implements DrawerDatasource {
     try {
       await prefs.setInt(Constants.theme, themeMode);
       return getTheme();
-    } on HiveError catch (e) {
-      print(e);
+    } on Exception {
       throw Exception();
     }
   }

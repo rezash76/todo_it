@@ -33,18 +33,51 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
   }
 
   _getThemeHandler(GetTheme event, Emitter emit) {
-    var isDarkTheme = getThemeUsecase();
-    isDarkTheme.fold(
+    var result = getThemeUsecase();
+    result.fold(
       (failure) => emit(GetThemeError(failure.message)),
-      (themeMode) => emit(GetThemeSuccess(themeMode)),
+      (theme) {
+        final themeMode = _convertIntToThemeMode(theme);
+        emit(GetThemeSuccess(themeMode));
+      },
     );
   }
 
   _setThemeHandler(SetTheme event, Emitter emit) async {
-    var isDarkTheme = await setThemeUsecase(event.themeMode);
-    isDarkTheme.fold(
+    final theme = _convertThemeModeToInt(event.themeMode);
+    var result = await setThemeUsecase(theme);
+    result.fold(
       (failure) => emit(GetThemeError(failure.message)),
-      (themeMode) => emit(GetThemeSuccess(themeMode)),
+      (theme) {
+        final themeMode = _convertIntToThemeMode(theme);
+        emit(GetThemeSuccess(themeMode));
+      },
     );
+  }
+
+  ThemeMode _convertIntToThemeMode(int value) {
+    switch (value) {
+      case 0:
+        return ThemeMode.light;
+      case 1:
+        return ThemeMode.dark;
+      case 2:
+        return ThemeMode.system;
+      default:
+        return ThemeMode.system;
+    }
+  }
+
+  int _convertThemeModeToInt(ThemeMode themeMode) {
+    switch (themeMode) {
+      case ThemeMode.light:
+        return 0;
+      case ThemeMode.dark:
+        return 1;
+      case ThemeMode.system:
+        return 2;
+      default:
+        return 2;
+    }
   }
 }

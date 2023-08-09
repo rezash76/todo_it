@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/src/material/app.dart';
 import 'package:todo_test/common/core/domain/entities/user_entity.dart';
 import 'package:todo_test/common/error/failure.dart';
 import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasource.dart';
@@ -21,48 +20,22 @@ base class DrawerRepositoryImpl implements DrawerRepository {
   }
 
   @override
-  Either<Failure, ThemeMode> getTheme() {
+  Either<Failure, int> getTheme() {
     try {
       int themeMode = datasource.getTheme();
-      return Right(_convertIntToThemeMode(themeMode));
+      return Right(themeMode);
     } on Exception {
       return Left(Failure(message: 'Somthing went wrong.'));
     }
   }
 
   @override
-  Future<Either<Failure, ThemeMode>> setTheme(ThemeMode themeMode) async {
+  Future<Either<Failure, int>> setTheme(int themeMode) async {
     try {
-      int theme = await datasource.setTheme(_convertThemeModeToInt(themeMode));
-      return Right(_convertIntToThemeMode(theme));
+      int theme = await datasource.setTheme(themeMode);
+      return Right(theme);
     } on Exception {
       return Left(Failure(message: 'Somthing went wrong.'));
-    }
-  }
-
-  ThemeMode _convertIntToThemeMode(int value) {
-    switch (value) {
-      case 0:
-        return ThemeMode.light;
-      case 1:
-        return ThemeMode.dark;
-      case 2:
-        return ThemeMode.system;
-      default:
-        return ThemeMode.system;
-    }
-  }
-
-  int _convertThemeModeToInt(ThemeMode themeMode) {
-    switch (themeMode) {
-      case ThemeMode.light:
-        return 0;
-      case ThemeMode.dark:
-        return 1;
-      case ThemeMode.system:
-        return 2;
-      default:
-        return 2;
     }
   }
 }
