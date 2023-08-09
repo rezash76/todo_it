@@ -1,5 +1,5 @@
 abstract interface class DBProvider<T> {
-  get(String key);
+  T? get(String key);
   Map<dynamic, dynamic> getAll();
   Future<void> add(Object obj);
   Future<void> put(String key, Object obj);

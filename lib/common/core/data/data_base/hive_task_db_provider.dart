@@ -32,8 +32,8 @@ base class HiveTaskDBProvider implements DBProvider<HiveTask> {
   }
 
   @override
-  get(String key) {
-    _taskBox.get(key);
+  HiveTask? get(String key) {
+    return _taskBox.get(key);
   }
 
   @override

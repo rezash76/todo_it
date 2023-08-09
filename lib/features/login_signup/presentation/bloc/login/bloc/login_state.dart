@@ -21,5 +21,3 @@ class LogoutError extends LoginState {
   final String message;
   LogoutError(this.message);
 }
-
-class LoginLoading extends LoginState {}

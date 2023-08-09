@@ -27,7 +27,7 @@ base class HiveUserDBProvider implements DBProvider<HiveUser> {
   }
 
   @override
-  get(String key) {
+  HiveUser? get(String key) {
     return _userBox.get(key);
   }
 

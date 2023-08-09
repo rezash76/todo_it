@@ -4,6 +4,7 @@ import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.da
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/common/theme/my_theme.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:todo_test/features/login_signup/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/splash_screen.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/service_locator.dart' as locator;
@@ -19,6 +20,7 @@ Future<void> main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<SplashBloc>()),
+        BlocProvider(create: (context) => sl<SignupBloc>()),
         BlocProvider(create: (context) => sl<LoginBloc>()),
         BlocProvider(create: (context) => sl<TaskBloc>()),
         BlocProvider(create: (context) => sl<DrawerBloc>()),
