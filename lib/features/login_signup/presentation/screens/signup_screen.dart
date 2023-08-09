@@ -16,14 +16,13 @@ class SignupScreen extends StatelessWidget {
         top: false,
         child: BlocProvider<SignupBloc>(
           create: (context) => SignupBloc(sl()),
-          child: const Column(
-            children: [
-              UpLogin(),
-              SizedBox(
-                height: 60,
-              ),
-              Expanded(child: SingleChildScrollView(child: DownSignup())),
-            ],
+          child: const SingleChildScrollView(
+            child: Column(
+              children: [
+                UpLogin(),
+                DownSignup(),
+              ],
+            ),
           ),
         ),
       ),

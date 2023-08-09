@@ -80,45 +80,34 @@ class _DownLoginState extends State<DownLogin> {
                 ],
               ),
               const SizedBox(
-                height: 60,
+                height: 40,
               ),
-              Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.pinkAccent,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          final param = LoginRequest(
-                            usernameController.text,
-                            passwordController.text,
-                          );
-                          BlocProvider.of<LoginBloc>(context)
-                              .add(SignInEvent(param: param));
-                        },
-                        child: Text(
-                          LanguageManager.shared.translation(context).signin,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 20),
-                        ),
-                      ),
+              Container(
+                width: double.infinity,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.pinkAccent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      final param = LoginRequest(
+                        usernameController.text,
+                        passwordController.text,
+                      );
+                      BlocProvider.of<LoginBloc>(context)
+                          .add(SignInEvent(param: param));
+                    },
+                    child: Text(
+                      LanguageManager.shared.translation(context).signin,
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(LanguageManager.shared
-                        .translation(context)
-                        .doNotHaveAnAccoutn),
-                  ),
-                ],
+                ),
+              ),
+              const SizedBox(
+                height: 32,
               ),
             ],
           ),

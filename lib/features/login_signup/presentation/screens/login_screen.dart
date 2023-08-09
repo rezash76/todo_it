@@ -16,14 +16,13 @@ class LoginScreen extends StatelessWidget {
         top: false,
         child: BlocProvider<LoginBloc>(
           create: (context) => LoginBloc(sl(), sl()),
-          child: const Column(
-            children: [
-              UpLogin(),
-              SizedBox(
-                height: 60,
-              ),
-              Expanded(child: SingleChildScrollView(child: DownLogin())),
-            ],
+          child: const SingleChildScrollView(
+            child: Column(
+              children: [
+                UpLogin(),
+                DownLogin(),
+              ],
+            ),
           ),
         ),
       ),

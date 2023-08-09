@@ -112,41 +112,36 @@ class _DownSignupState extends State<DownSignup> {
                 ],
               ),
               const SizedBox(
-                height: 32,
+                height: 40,
               ),
-              Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.pinkAccent,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          final request = SignupRequest(
-                            firstname: firstnameController.text,
-                            lastname: lastnameController.text,
-                            password: passwordController.text,
-                            username: usernameController.text,
-                          );
-                          BlocProvider.of<SignupBloc>(context)
-                              .add(Signup(request: request));
-                        },
-                        child: Text(
-                          LanguageManager.shared.translation(context).signup,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 20),
-                        ),
-                      ),
+              Container(
+                width: double.infinity,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.pinkAccent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      final request = SignupRequest(
+                        firstname: firstnameController.text,
+                        lastname: lastnameController.text,
+                        password: passwordController.text,
+                        username: usernameController.text,
+                      );
+                      BlocProvider.of<SignupBloc>(context)
+                          .add(Signup(request: request));
+                    },
+                    child: Text(
+                      LanguageManager.shared.translation(context).signup,
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                ],
+                ),
+              ),
+              const SizedBox(
+                height: 32,
               ),
             ],
           ),

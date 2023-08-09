@@ -7,7 +7,7 @@ class UpLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: 300,
+      height: MediaQuery.sizeOf(context).height * 0.42,
       child: Stack(
         children: [
           Positioned(
