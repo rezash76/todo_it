@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:todo_test/common/core/domain/entities/user_entity.dart';
 import 'package:todo_test/common/error/failure.dart';
 import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasource.dart';
 import 'package:todo_test/common/feature/drawer/domain/repository/drawer_repository.dart';

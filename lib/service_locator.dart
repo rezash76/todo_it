@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_test/common/constants.dart';
@@ -48,8 +47,7 @@ Future<void> init() async {
       () => UserLocalDatasourceImple(sl(instanceName: 'user')));
   sl.registerLazySingleton<TaskLocalDatasource>(
       () => TaskLocalDatasourceImpl(sl(instanceName: 'task')));
-  sl.registerLazySingleton<DrawerDatasource>(
-      () => DrawerDatasourceImpl(sl(instanceName: 'user'), sl()));
+  sl.registerLazySingleton<DrawerDatasource>(() => DrawerDatasourceImpl(sl()));
 
   // Data Base
   sl.registerLazySingleton<DBProvider>(() => HiveUserDBProvider(),

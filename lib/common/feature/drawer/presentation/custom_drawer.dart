@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/widget/custom_theme_mode.dart';
-import 'package:todo_test/common/feature/drawer/presentation/widget/my_drawer_header.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:todo_test/main.dart';
@@ -44,16 +43,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
           6,
         ),
         children: [
-          // const SizedBox(
-          //   height: 120,
-          //   child: MyDrawerHeadet(),
-          // ),
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 10),
-          //   child: Divider(
-          //     height: 30,
-          //   ),
-          // ),
           const SizedBox(
             height: 24,
           ),
