@@ -40,6 +40,7 @@ class _DownSignupState extends State<DownSignup> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return BlocListener<SignupBloc, SignupState>(
       listener: (context, state) {
         if (state is SignupError) {
@@ -140,12 +141,21 @@ class _DownSignupState extends State<DownSignup> {
                             .add(Signup(request: request));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Fill all fields.')));
+                          SnackBar(
+                            content: Text(
+                              'Fill all fields.',
+                              style: themeData.textTheme.titleMedium!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: Text(
                       LanguageManager.shared.translation(context).signup,
-                      style: const TextStyle(color: Colors.white, fontSize: 20),
+                      style: themeData.textTheme.titleLarge!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

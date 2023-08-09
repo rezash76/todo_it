@@ -23,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
@@ -69,11 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       }
                       return Text(
                         LanguageManager.shared.translation(context).splashIntro,
-                        style: const TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: themeData.textTheme.headlineLarge,
                       );
                     },
                   ),

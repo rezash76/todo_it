@@ -12,6 +12,7 @@ showAddTaskBottomSheet(
   bool isUpdate,
   int? keyIndex,
 ) {
+  ThemeData themeData = Theme.of(context);
   showDialog(
     context: context,
     builder: (BuildContext cxt) {
@@ -20,13 +21,11 @@ showAddTaskBottomSheet(
           titleController.text == ''
               ? LanguageManager.shared.translation(context).addNewTask
               : LanguageManager.shared.translation(context).updateTheTask,
-          style: const TextStyle(
-            fontSize: 18,
-          ),
+          style: themeData.textTheme.titleLarge,
         ),
         content: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 18),
+            padding: const EdgeInsets.only(top: 12),
             child: ListBody(
               children: [
                 CustomTextFormField(
@@ -34,7 +33,7 @@ showAddTaskBottomSheet(
                   labelText: LanguageManager.shared.translation(context).title,
                 ),
                 const SizedBox(
-                  height: 18,
+                  height: 16,
                 ),
                 CustomTextFormField(
                   controller: descController,
@@ -51,6 +50,7 @@ showAddTaskBottomSheet(
               titleController.text == ''
                   ? LanguageManager.shared.translation(context).add
                   : LanguageManager.shared.translation(context).update,
+              style: themeData.textTheme.titleMedium,
             ),
             onPressed: () {
               if (titleController.text.isNotEmpty &&

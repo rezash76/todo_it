@@ -29,6 +29,7 @@ class _TaskCardState extends State<TaskCard> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Container(
       margin: const EdgeInsets.all(16),
       width: double.infinity,
@@ -46,11 +47,8 @@ class _TaskCardState extends State<TaskCard> {
                 children: [
                   Text(
                     widget.task.title,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: themeData.textTheme.titleLarge!
+                        .copyWith(color: Colors.black87),
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(
@@ -64,10 +62,8 @@ class _TaskCardState extends State<TaskCard> {
                   ),
                   Text(
                     widget.task.desc.toString().trim(),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                    style: themeData.textTheme.titleMedium!
+                        .copyWith(color: Colors.black87),
                   ),
                 ],
               ),

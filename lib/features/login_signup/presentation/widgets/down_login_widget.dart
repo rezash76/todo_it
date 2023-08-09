@@ -33,6 +33,7 @@ class _DownLoginState extends State<DownLogin> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginError) {
@@ -104,12 +105,21 @@ class _DownLoginState extends State<DownLogin> {
                             .add(SignInEvent(param: param));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Fill all fields.')));
+                          SnackBar(
+                            content: Text(
+                              'Fill all fields.',
+                              style: themeData.textTheme.titleMedium!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: Text(
                       LanguageManager.shared.translation(context).signin,
-                      style: const TextStyle(color: Colors.white, fontSize: 20),
+                      style: themeData.textTheme.titleLarge!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

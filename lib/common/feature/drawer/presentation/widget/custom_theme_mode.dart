@@ -14,6 +14,7 @@ class CustomThemeMode extends StatelessWidget {
   }
 
   Widget buildThemeMode(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return switch (themeMode) {
       ThemeMode.light => Column(
           children: [
@@ -30,7 +31,8 @@ class CustomThemeMode extends StatelessWidget {
             ),
             Text(
               LanguageManager.shared.translation(context).light,
-              style: TextStyle(
+              style: themeData.textTheme.titleSmall!.copyWith(
+                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),
@@ -51,7 +53,8 @@ class CustomThemeMode extends StatelessWidget {
             ),
             Text(
               LanguageManager.shared.translation(context).dark,
-              style: TextStyle(
+              style: themeData.textTheme.titleSmall!.copyWith(
+                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),
@@ -78,7 +81,8 @@ class CustomThemeMode extends StatelessWidget {
             ),
             Text(
               LanguageManager.shared.translation(context).system,
-              style: TextStyle(
+              style: themeData.textTheme.titleSmall!.copyWith(
+                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),

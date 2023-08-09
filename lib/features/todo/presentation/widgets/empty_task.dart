@@ -10,6 +10,7 @@ class EmptyTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Column(
       children: [
         Image.asset(
@@ -17,19 +18,14 @@ class EmptyTask extends StatelessWidget {
         ),
         Text(
           message,
-          style: const TextStyle(
-            fontSize: 22,
-          ),
+          style: themeData.textTheme.titleLarge,
         ),
         const SizedBox(
           height: 8,
         ),
         Text(
           LanguageManager.shared.translation(context).tapPlusToAddNewOne,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-          ),
+          style: themeData.textTheme.titleMedium,
         ),
       ],
     );

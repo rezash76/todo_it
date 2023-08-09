@@ -37,6 +37,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.all(
@@ -47,11 +48,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
           //   height: 120,
           //   child: MyDrawerHeadet(),
           // ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 10),
+          //   child: Divider(
+          //     height: 30,
+          //   ),
+          // ),
+          const SizedBox(
+            height: 24,
           ),
           BlocBuilder<DrawerBloc, DrawerState>(
             builder: (context, state) {
@@ -66,9 +70,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                     child: Text(
                       LanguageManager.shared.translation(context).appearance,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                      style: themeData.textTheme.titleMedium!.copyWith(
+                        fontSize: 20,
+                        color: const Color.fromARGB(229, 255, 255, 255),
                       ),
                     ),
                   ),
@@ -140,8 +144,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 child: Text(
                   LanguageManager.shared.translation(context).language,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                  style: themeData.textTheme.titleMedium!.copyWith(
+                    fontSize: 20,
+                    color: const Color.fromARGB(229, 255, 255, 255),
+                  ),
                 ),
               ),
               Row(
@@ -149,8 +155,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 children: [
                   Text(
                     LanguageManager.shared.translation(context).farsi,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                    style: themeData.textTheme.titleMedium!.copyWith(
+                      color: const Color.fromARGB(229, 255, 255, 255),
+                    ),
                   ),
                   Switch(
                     value: isEN,
@@ -173,8 +180,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                   Text(
                     LanguageManager.shared.translation(context).english,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                    style: themeData.textTheme.titleMedium!.copyWith(
+                      color: const Color.fromARGB(229, 255, 255, 255),
+                    ),
                   ),
                 ],
               ),
@@ -193,7 +201,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             title: Text(
               LanguageManager.shared.translation(context).logout,
-              style: const TextStyle(color: Colors.red),
+              style: themeData.textTheme.titleMedium!.copyWith(
+                color: Colors.red,
+              ),
             ),
             onTap: () {
               BlocProvider.of<LoginBloc>(context).add(LogoutEvent());

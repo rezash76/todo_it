@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/common/theme/my_theme.dart';
+import 'package:todo_test/common/theme/theme_config.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/splash_screen.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
+  Locale _locale = Locale(LanguageManager.shared.ENGLISH);
 
   setLocale(Locale locale) {
     setState(() {
@@ -65,8 +65,8 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'ToDo',
-          theme: MyTheme.light,
-          darkTheme: MyTheme.dark,
+          theme: ThemeConfig.light().getTheme(_locale.languageCode),
+          darkTheme: ThemeConfig.dark().getTheme(_locale.languageCode),
           themeMode:
               (state is GetThemeSuccess) ? state.themeMode : ThemeMode.system,
           initialRoute: '/',
