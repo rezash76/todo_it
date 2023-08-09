@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/todo/presentation/screens/home_screen.dart';
+import 'package:todo_test/features/todo/presentation/screens/todo_screen.dart';
 
 import '../../domain/entities/value_object/signup_param.dart';
 import '../bloc/signup/bloc/signup_bloc.dart';
@@ -50,7 +50,7 @@ class _DownSignupState extends State<DownSignup> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => const TodoScreen(),
             ),
           );
         }

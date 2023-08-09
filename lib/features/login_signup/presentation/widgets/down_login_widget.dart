@@ -3,7 +3,7 @@ import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/domain/entities/value_object/login_request.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_test/features/todo/presentation/screens/home_screen.dart';
+import 'package:todo_test/features/todo/presentation/screens/todo_screen.dart';
 import '../bloc/login/bloc/login_bloc.dart';
 
 class DownLogin extends StatefulWidget {
@@ -43,7 +43,7 @@ class _DownLoginState extends State<DownLogin> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => const TodoScreen(),
             ),
           );
         }

@@ -4,7 +4,7 @@ import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/splash/bloc/splash_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/login_screen.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/signup_screen.dart';
-import 'package:todo_test/features/todo/presentation/screens/home_screen.dart';
+import 'package:todo_test/features/todo/presentation/screens/todo_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static String routName = '/splash_screen';
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
+                    builder: (context) => const TodoScreen(),
                   ),
                 );
               } else {

@@ -10,14 +10,14 @@ import 'package:todo_test/features/todo/presentation/widgets/empty_task.dart';
 import 'package:todo_test/features/todo/presentation/widgets/show_add_task_buttomsheet.dart';
 import 'package:todo_test/features/todo/presentation/widgets/tasks_list.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TodoScreen extends StatefulWidget {
+  const TodoScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TodoScreen> createState() => _TodoScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TodoScreenState extends State<TodoScreen> {
   late TextEditingController titleController;
   late TextEditingController descController;
 
