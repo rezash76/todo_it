@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/utils/constants.dart';
-import 'package:todo_test/common/core/data/hive_model/hive_task.dart';
-import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
-import 'package:todo_test/config/my_theme.dart';
+import 'package:todo_test/common/theme/my_theme.dart';
 import 'package:todo_test/features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:todo_test/features/login_signup/presentation/screens/splash_screen.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
@@ -17,14 +13,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Hive
-  await Hive.initFlutter();
-  Hive.registerAdapter(HiveUserAdapter());
-  Hive.registerAdapter(HiveTaskAdapter());
-  await Hive.openBox(Constants.hiveUser);
-  await Hive.openBox(Constants.hiveTask);
-
   await locator.init();
+
   runApp(
     MultiBlocProvider(
       providers: [

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
-// import 'package:zoop_flutter/core/themes/color_palettes/color_palette.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -13,7 +11,6 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines,
     this.keyboardType,
     this.validationText,
-    // this.svgPicture,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -23,7 +20,6 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int? minLines;
   final int? maxLines;
-  // final SvgPicture? svgPicture;
   final String? validationText;
 
   @override
@@ -41,7 +37,6 @@ class CustomTextFormField extends StatelessWidget {
           top: 20,
           bottom: 20,
         ),
-        // suffixIcon: svgPicture,
         labelStyle: Theme.of(context).textTheme.titleMedium,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: labelText,

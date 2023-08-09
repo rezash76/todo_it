@@ -50,7 +50,7 @@ class CustomThemeMode extends StatelessWidget {
               ),
             ),
             Text(
-              LanguageManager.shared.translation(context).light,
+              LanguageManager.shared.translation(context).dark,
               style: TextStyle(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
@@ -77,7 +77,7 @@ class CustomThemeMode extends StatelessWidget {
               ),
             ),
             Text(
-              LanguageManager.shared.translation(context).light,
+              LanguageManager.shared.translation(context).system,
               style: TextStyle(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),

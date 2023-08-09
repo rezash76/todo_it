@@ -1,8 +1,13 @@
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo_test/common/constants.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
 import 'package:todo_test/common/core/data/data_base/hive_task_db_provider.dart';
 import 'package:todo_test/common/core/data/data_base/hive_user_db_provider.dart';
+import 'package:todo_test/common/core/data/hive_model/hive_task.dart';
+import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
 import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasource.dart';
 import 'package:todo_test/common/feature/drawer/data/repository/drawer_repository_impl.dart';
 import 'package:todo_test/common/feature/drawer/domain/repository/drawer_repository.dart';
@@ -32,12 +37,18 @@ import 'features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // Hive
+  await Hive.initFlutter();
+  Hive.registerAdapter(HiveUserAdapter());
+  Hive.registerAdapter(HiveTaskAdapter());
+  await Hive.openBox(Constants.hiveUser);
+  await Hive.openBox(Constants.hiveTask);
+
   // Datasource
   sl.registerLazySingleton<UserLocalDatasource>(
       () => UserLocalDatasourceImple(sl(instanceName: 'user')));
   sl.registerLazySingleton<TaskLocalDatasource>(
       () => TaskLocalDatasourceImpl(sl(instanceName: 'task')));
-
   sl.registerLazySingleton<DrawerDatasource>(
       () => DrawerDatasourceImpl(sl(instanceName: 'user'), sl()));
 
