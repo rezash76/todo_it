@@ -103,6 +103,8 @@ class _DownSignupState extends State<DownSignup> {
                   ),
                   CustomTextFormField(
                     controller: passwordController,
+                    obscureText: true,
+                    maxLines: 1,
                     labelText:
                         LanguageManager.shared.translation(context).password,
                     hintText: LanguageManager.shared
@@ -124,14 +126,22 @@ class _DownSignupState extends State<DownSignup> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-                      final request = SignupRequest(
-                        firstname: firstnameController.text,
-                        lastname: lastnameController.text,
-                        password: passwordController.text,
-                        username: usernameController.text,
-                      );
-                      BlocProvider.of<SignupBloc>(context)
-                          .add(Signup(request: request));
+                      if (usernameController.text != '' &&
+                          passwordController.text != '' &&
+                          firstnameController.text != '' &&
+                          lastnameController.text != '') {
+                        final request = SignupRequest(
+                          firstname: firstnameController.text,
+                          lastname: lastnameController.text,
+                          password: passwordController.text,
+                          username: usernameController.text,
+                        );
+                        BlocProvider.of<SignupBloc>(context)
+                            .add(Signup(request: request));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Fill all fields.')));
+                      }
                     },
                     child: Text(
                       LanguageManager.shared.translation(context).signup,

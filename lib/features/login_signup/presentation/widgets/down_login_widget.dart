@@ -71,6 +71,8 @@ class _DownLoginState extends State<DownLogin> {
                   ),
                   CustomTextFormField(
                     controller: passwordController,
+                    obscureText: true,
+                    maxLines: 1,
                     labelText:
                         LanguageManager.shared.translation(context).password,
                     hintText: LanguageManager.shared
@@ -92,12 +94,18 @@ class _DownLoginState extends State<DownLogin> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-                      final param = LoginRequest(
-                        usernameController.text,
-                        passwordController.text,
-                      );
-                      BlocProvider.of<LoginBloc>(context)
-                          .add(SignInEvent(param: param));
+                      if (usernameController.text != '' &&
+                          passwordController.text != '') {
+                        final param = LoginRequest(
+                          usernameController.text,
+                          passwordController.text,
+                        );
+                        BlocProvider.of<LoginBloc>(context)
+                            .add(SignInEvent(param: param));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Fill all fields.')));
+                      }
                     },
                     child: Text(
                       LanguageManager.shared.translation(context).signin,

@@ -11,6 +11,9 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines,
     this.keyboardType,
     this.validationText,
+    this.suffixIcon,
+    this.floatingLabelBehavior,
+    this.obscureText,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -20,7 +23,10 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int? minLines;
   final int? maxLines;
+  final Widget? suffixIcon;
   final String? validationText;
+  final FloatingLabelBehavior? floatingLabelBehavior;
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       minLines: minLines,
       maxLines: maxLines,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(
           left: 24,
@@ -37,8 +44,10 @@ class CustomTextFormField extends StatelessWidget {
           top: 20,
           bottom: 20,
         ),
+        suffixIcon: suffixIcon,
         labelStyle: Theme.of(context).textTheme.titleMedium,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelBehavior:
+            floatingLabelBehavior ?? FloatingLabelBehavior.auto,
         labelText: labelText,
         hintText: hintText,
         border: OutlineInputBorder(
@@ -48,6 +57,11 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide:
               const BorderSide(color: Color.fromARGB(255, 202, 82, 236)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide:
+              const BorderSide(color: Color.fromARGB(255, 134, 54, 157)),
         ),
         errorStyle: Theme.of(context)
             .textTheme
