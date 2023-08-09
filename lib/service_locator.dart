@@ -11,7 +11,6 @@ import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
 import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasource.dart';
 import 'package:todo_test/common/feature/drawer/data/repository/drawer_repository_impl.dart';
 import 'package:todo_test/common/feature/drawer/domain/repository/drawer_repository.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/get_user_data_usecase.dart';
 import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/get_theme_usecase.dart';
 import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/set_theme_usecase.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
@@ -77,12 +76,11 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DeleteTaskUsecase(sl()));
   sl.registerLazySingleton(() => GetThemeUsecase(sl()));
   sl.registerLazySingleton(() => SetThemeUsecase(sl()));
-  sl.registerLazySingleton(() => GetUserDataUsecase(sl()));
 
   // Bloc
   sl.registerFactory(() => SplashBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl(), sl()));
   sl.registerFactory(() => SignupBloc(sl()));
   sl.registerFactory(() => TaskBloc(sl(), sl(), sl(), sl()));
-  sl.registerFactory(() => DrawerBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => DrawerBloc(sl(), sl()));
 }

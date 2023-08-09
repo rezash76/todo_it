@@ -5,7 +5,6 @@ import 'package:todo_test/common/core/data/model/user_dto.dart';
 import 'package:todo_test/common/constants.dart';
 
 abstract interface class DrawerDatasource {
-  UserDTO getUserData();
   int getTheme();
   Future<int> setTheme(int themeMode);
 }
@@ -15,16 +14,6 @@ base class DrawerDatasourceImpl implements DrawerDatasource {
   final SharedPreferences prefs;
 
   DrawerDatasourceImpl(this.dbProvider, this.prefs);
-
-  @override
-  UserDTO getUserData() {
-    try {
-      return UserDTO.fromDB(dbProvider.get(Constants.user));
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
-    }
-  }
 
   @override
   int getTheme() {

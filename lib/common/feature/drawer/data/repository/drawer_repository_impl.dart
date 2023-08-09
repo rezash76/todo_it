@@ -10,16 +10,6 @@ base class DrawerRepositoryImpl implements DrawerRepository {
   DrawerRepositoryImpl(this.datasource);
 
   @override
-  Either<Failure, UserEntity> getUserData() {
-    try {
-      final user = datasource.getUserData();
-      return Right(user);
-    } on Exception {
-      return Left(Failure(message: 'Somthing went wrong'));
-    }
-  }
-
-  @override
   Either<Failure, int> getTheme() {
     try {
       int themeMode = datasource.getTheme();

@@ -32,7 +32,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
         });
       }
     });
-    BlocProvider.of<DrawerBloc>(context).add(GetUserDataEvent());
     BlocProvider.of<DrawerBloc>(context).add(GetTheme());
   }
 
@@ -44,10 +43,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
           6,
         ),
         children: [
-          const SizedBox(
-            height: 120,
-            child: MyDrawerHeadet(),
-          ),
+          // const SizedBox(
+          //   height: 120,
+          //   child: MyDrawerHeadet(),
+          // ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Divider(
