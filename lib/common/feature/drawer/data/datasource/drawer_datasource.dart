@@ -1,7 +1,4 @@
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_test/common/core/data/data_base/db_provider.dart';
-import 'package:todo_test/common/core/data/model/user_dto.dart';
 import 'package:todo_test/common/constants.dart';
 
 abstract interface class DrawerDatasource {
@@ -10,10 +7,9 @@ abstract interface class DrawerDatasource {
 }
 
 base class DrawerDatasourceImpl implements DrawerDatasource {
-  final DBProvider dbProvider;
   final SharedPreferences prefs;
 
-  DrawerDatasourceImpl(this.dbProvider, this.prefs);
+  DrawerDatasourceImpl(this.prefs);
 
   @override
   int getTheme() {
