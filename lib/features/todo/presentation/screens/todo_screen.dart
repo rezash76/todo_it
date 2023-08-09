@@ -40,6 +40,7 @@ class _TodoScreenState extends State<TodoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LogoutSuccess) {
@@ -54,7 +55,12 @@ class _TodoScreenState extends State<TodoScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(LanguageManager.shared.translation(context).todoList),
+          title: Text(
+            LanguageManager.shared.translation(context).todoList,
+            style: themeData.textTheme.titleLarge!.copyWith(
+              color: const Color.fromARGB(255, 14, 3, 54),
+            ),
+          ),
           centerTitle: true,
           // backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
         ),
