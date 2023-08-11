@@ -40,13 +40,13 @@ base class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Either<Failure, UserEntity> login(LoginRequest param) {
+  Future<Either<Failure, void>> login(LoginRequest param) async {
     try {
       var user = datasource.getUser();
       if (user.password == param.password) {
         user.isLogin = true;
-        datasource.addUser(user.toDB(user));
-        return Right(user);
+        var login = await datasource.addUser(user.toDB(user));
+        return Right(login);
       } else {
         return Left(Failure(message: 'Wrong password.'));
       }

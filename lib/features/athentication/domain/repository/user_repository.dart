@@ -7,6 +7,6 @@ import 'package:todo_test/features/athentication/domain/entity/value_object/sign
 abstract class UserRepository {
   Either<Failure, UserEntity> isUserExist();
   Future<Either<Failure, void>> signup(SignupRequest request);
-  Either<Failure, UserEntity> login(LoginRequest param);
+  Future<Either<Failure, void>> login(LoginRequest param);
   Either<Failure, void> logout();
 }

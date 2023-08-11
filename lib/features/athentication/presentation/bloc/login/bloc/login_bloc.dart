@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_test/common/core/domain/entities/user_entity.dart';
 import 'package:todo_test/features/athentication/domain/entity/value_object/login_request.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signin_transaction.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signout_transaction.dart';
@@ -17,11 +16,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LogoutEvent>(_logoutEventHandler);
   }
 
-  _loginEventHandler(SignInEvent event, Emitter emit) {
-    final result = loginUsecase(event.param);
+  _loginEventHandler(SignInEvent event, Emitter emit) async {
+    final result = await loginUsecase(event.param);
     result.fold(
       (failure) => emit(LoginError(failure.message)),
-      (user) => emit(LoginSuccess(user: user)),
+      (user) => emit(LoginSuccess()),
     );
   }
 

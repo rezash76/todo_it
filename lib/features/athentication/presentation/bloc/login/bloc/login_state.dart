@@ -5,10 +5,7 @@ abstract class LoginState {}
 
 class LoginInitial extends LoginState {}
 
-class LoginSuccess extends LoginState {
-  final UserEntity user;
-  LoginSuccess({required this.user});
-}
+class LoginSuccess extends LoginState {}
 
 class LoginError extends LoginState {
   final String message;
