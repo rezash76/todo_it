@@ -19,6 +19,7 @@ import 'package:todo_test/features/athentication/domain/transaction/signin_trans
 import 'package:todo_test/features/athentication/domain/transaction/signout_transaction.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signup_transaction.dart';
 import 'package:todo_test/features/athentication/domain/transaction/check_registration_transaction.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
 import 'package:todo_test/features/todo/data/datasource/task_local_datasource.dart';
@@ -30,7 +31,6 @@ import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transac
 import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'features/athentication/data/datasource/local_ds/user_local_datasource.dart';
-import 'features/athentication/presentation/bloc/login/bloc/login_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -77,7 +77,7 @@ Future<void> init() async {
 
   // Bloc
   sl.registerFactory(() => SplashBloc(sl()));
-  sl.registerFactory(() => LoginBloc(sl(), sl()));
+  sl.registerFactory(() => SigninBloc(sl(), sl()));
   sl.registerFactory(() => SignupBloc(sl()));
   sl.registerFactory(() => TaskBloc(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => DrawerBloc(sl(), sl()));

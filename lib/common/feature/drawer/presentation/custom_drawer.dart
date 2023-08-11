@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/widget/custom_theme_mode.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/main.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -195,7 +195,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ),
             onTap: () {
-              BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
+              BlocProvider.of<SigninBloc>(context).add(SignoutEvent());
             },
           ),
         ],

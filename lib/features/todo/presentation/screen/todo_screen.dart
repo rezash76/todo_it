@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
@@ -41,9 +41,9 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return BlocListener<LoginBloc, LoginState>(
+    return BlocListener<SigninBloc, SigninState>(
       listener: (context, state) {
-        if (state is LogoutSuccess) {
+        if (state is SignoutSuccess) {
           Navigator.pop(context);
           Navigator.pushNamedAndRemoveUntil(
             context,
@@ -51,7 +51,7 @@ class _TodoScreenState extends State<TodoScreen> {
             (route) => false,
           );
         }
-        if (state is LogoutError) {}
+        if (state is SignoutError) {}
       },
       child: Scaffold(
         appBar: AppBar(

@@ -3,7 +3,7 @@ import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
 import 'package:todo_test/common/error/failure.dart';
 import 'package:todo_test/features/athentication/data/datasource/local_ds/user_local_datasource.dart';
 import 'package:todo_test/common/core/domain/entities/user_entity.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/login_request.dart';
+import 'package:todo_test/features/athentication/domain/entity/value_object/signin_request.dart';
 import 'package:todo_test/features/athentication/domain/entity/value_object/signup_param.dart';
 import 'package:todo_test/features/athentication/domain/repository/user_repository.dart';
 
@@ -40,13 +40,13 @@ base class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<Either<Failure, void>> login(LoginRequest param) async {
+  Future<Either<Failure, void>> signin(SigninRequest request) async {
     try {
       var user = datasource.getUser();
-      if (user.password == param.password) {
+      if (user.password == request.password) {
         user.isLogin = true;
-        var login = await datasource.addUser(user.toDB(user));
-        return Right(login);
+        var signin = await datasource.addUser(user.toDB(user));
+        return Right(signin);
       } else {
         return Left(Failure(message: 'Wrong password.'));
       }
@@ -56,7 +56,7 @@ base class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Either<Failure, void> logout() {
+  Either<Failure, void> signout() {
     try {
       var user = datasource.getUser();
       user.isLogin = false;

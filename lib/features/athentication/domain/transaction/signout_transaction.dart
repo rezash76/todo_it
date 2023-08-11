@@ -7,5 +7,5 @@ class LogoutUsecase {
 
   LogoutUsecase({required this.repository});
 
-  Either<Failure, void> call() => repository.logout();
+  Either<Failure, void> call() => repository.signout();
 }

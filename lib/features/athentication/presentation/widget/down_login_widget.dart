@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/login_request.dart';
+import 'package:todo_test/features/athentication/domain/entity/value_object/signin_request.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/todo/presentation/screen/todo_screen.dart';
-import '../bloc/login/bloc/login_bloc.dart';
 
 class DownLogin extends StatefulWidget {
   const DownLogin({super.key});
@@ -34,13 +34,13 @@ class _DownLoginState extends State<DownLogin> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return BlocListener<LoginBloc, LoginState>(
+    return BlocListener<SigninBloc, SigninState>(
       listener: (context, state) {
-        if (state is LoginError) {
+        if (state is SigninError) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
         }
-        if (state is LoginSuccess) {
+        if (state is SigninSuccess) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -97,12 +97,12 @@ class _DownLoginState extends State<DownLogin> {
                     onTap: () {
                       if (usernameController.text != '' &&
                           passwordController.text != '') {
-                        final param = LoginRequest(
+                        final param = SigninRequest(
                           usernameController.text,
                           passwordController.text,
                         );
-                        BlocProvider.of<LoginBloc>(context)
-                            .add(SignInEvent(param: param));
+                        BlocProvider.of<SigninBloc>(context)
+                            .add(SignInEvent(request: param));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

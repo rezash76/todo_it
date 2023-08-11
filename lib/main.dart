@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/common/theme/theme_config.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
@@ -21,7 +21,7 @@ Future<void> main() async {
       providers: [
         BlocProvider(create: (context) => sl<SplashBloc>()),
         BlocProvider(create: (context) => sl<SignupBloc>()),
-        BlocProvider(create: (context) => sl<LoginBloc>()),
+        BlocProvider(create: (context) => sl<SigninBloc>()),
         BlocProvider(create: (context) => sl<TaskBloc>()),
         BlocProvider(create: (context) => sl<DrawerBloc>()),
       ],
