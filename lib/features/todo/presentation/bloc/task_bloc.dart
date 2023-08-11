@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_test/common/core/domain/entities/task_entity.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';

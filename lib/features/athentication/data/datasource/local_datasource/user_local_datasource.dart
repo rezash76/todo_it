@@ -1,8 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/constants.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
-import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
-import 'package:todo_test/common/core/data/model/user_dto.dart';
+import 'package:todo_test/features/athentication/data/model/hive/hive_user.dart';
+import 'package:todo_test/features/athentication/data/model/user_dto.dart';
 
 abstract class UserLocalDatasource {
   UserDTO isUserExist();

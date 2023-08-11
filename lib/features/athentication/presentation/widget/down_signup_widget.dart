@@ -4,7 +4,7 @@ import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/presentation/screen/todo_screen.dart';
 
-import '../../domain/entity/value_object/signup_param.dart';
+import '../../domain/value_object/signup_request.dart';
 import '../bloc/signup/bloc/signup_bloc.dart';
 
 class DownSignup extends StatefulWidget {

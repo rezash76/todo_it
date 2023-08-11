@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo_test/common/error/failure.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/signup_param.dart';
+import 'package:todo_test/features/athentication/domain/value_object/signup_request.dart';
 import 'package:todo_test/features/athentication/domain/repository/user_repository.dart';
 
 base class SignupTransaction {

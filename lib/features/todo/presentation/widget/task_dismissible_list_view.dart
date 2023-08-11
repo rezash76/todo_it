@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_test/common/core/domain/entities/task_entity.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/task_card.dart';

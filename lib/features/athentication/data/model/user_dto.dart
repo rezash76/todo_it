@@ -1,5 +1,5 @@
-import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
-import 'package:todo_test/common/core/domain/entities/user_entity.dart';
+import 'package:todo_test/features/athentication/data/model/hive/hive_user.dart';
+import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
 
 base class UserDTO extends UserEntity {
   UserDTO(

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_test/common/core/domain/entities/user_entity.dart';
+import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
 import 'package:todo_test/features/athentication/domain/transaction/check_registration_transaction.dart';
 
 part 'splash_event.dart';

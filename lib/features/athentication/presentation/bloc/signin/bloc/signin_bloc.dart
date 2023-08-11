@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/signin_request.dart';
+import 'package:todo_test/features/athentication/domain/value_object/signin_request.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signin_transaction.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signout_transaction.dart';
 

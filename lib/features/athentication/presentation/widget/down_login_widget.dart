@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/signin_request.dart';
+import 'package:todo_test/features/athentication/domain/value_object/signin_request.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';

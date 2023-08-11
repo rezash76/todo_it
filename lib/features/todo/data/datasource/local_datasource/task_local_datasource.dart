@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
-import 'package:todo_test/common/core/data/hive_model/hive_task.dart';
-import 'package:todo_test/common/core/data/model/task_dto.dart';
+import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
+import 'package:todo_test/features/todo/data/model/task_dto.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
 
 abstract class TaskLocalDatasource {

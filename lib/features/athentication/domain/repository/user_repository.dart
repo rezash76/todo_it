@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo_test/common/error/failure.dart';
-import 'package:todo_test/common/core/domain/entities/user_entity.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/signin_request.dart';
-import 'package:todo_test/features/athentication/domain/entity/value_object/signup_param.dart';
+import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
+import 'package:todo_test/features/athentication/domain/value_object/signin_request.dart';
+import 'package:todo_test/features/athentication/domain/value_object/signup_request.dart';
 
 abstract class UserRepository {
   Either<Failure, UserEntity> isUserExist();

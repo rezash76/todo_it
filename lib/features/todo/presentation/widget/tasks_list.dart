@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_test/common/core/domain/entities/task_entity.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
 import 'package:todo_test/features/todo/presentation/widget/task_dismissible_list_view.dart';
 

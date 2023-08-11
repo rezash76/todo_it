@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:todo_test/common/constants.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
-import 'package:todo_test/common/core/data/hive_model/hive_task.dart';
+import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 
 base class HiveTaskDBProvider implements DBProvider<HiveTask> {
   final Box _taskBox = Hive.box(Constants.hiveTask);
