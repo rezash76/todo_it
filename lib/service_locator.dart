@@ -10,27 +10,27 @@ import 'package:todo_test/common/core/data/hive_model/hive_user.dart';
 import 'package:todo_test/common/feature/drawer/data/datasource/drawer_datasource.dart';
 import 'package:todo_test/common/feature/drawer/data/repository/drawer_repository_impl.dart';
 import 'package:todo_test/common/feature/drawer/domain/repository/drawer_repository.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/get_theme_usecase.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/set_theme_usecase.dart';
+import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/get_theme_transaction.dart';
+import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/set_theme_transaction.dart';
 import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
-import 'package:todo_test/features/login_signup/data/repositories/user_repository_impl.dart';
-import 'package:todo_test/features/login_signup/domain/repositories/user_repository.dart';
-import 'package:todo_test/features/login_signup/domain/usecases/login_usecase.dart';
-import 'package:todo_test/features/login_signup/domain/usecases/logout_usecase.dart';
-import 'package:todo_test/features/login_signup/domain/usecases/signup_usecase.dart';
-import 'package:todo_test/features/login_signup/domain/usecases/splash_usecase.dart';
-import 'package:todo_test/features/login_signup/presentation/bloc/signup/bloc/signup_bloc.dart';
-import 'package:todo_test/features/login_signup/presentation/bloc/splash/bloc/splash_bloc.dart';
+import 'package:todo_test/features/athentication/data/repository/user_repository_impl.dart';
+import 'package:todo_test/features/athentication/domain/repository/user_repository.dart';
+import 'package:todo_test/features/athentication/domain/transaction/signin_transaction.dart';
+import 'package:todo_test/features/athentication/domain/transaction/signout_transaction.dart';
+import 'package:todo_test/features/athentication/domain/transaction/signup_transaction.dart';
+import 'package:todo_test/features/athentication/domain/transaction/check_registration_transaction.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
+import 'package:todo_test/features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
 import 'package:todo_test/features/todo/data/datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/data/repository/task_repository_impl.dart';
 import 'package:todo_test/features/todo/domain/repository/task_repository.dart';
-import 'package:todo_test/features/todo/domain/usecase/add_new_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/delete_task_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/get_all_tasks_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/update_task_usecase.dart';
+import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
-import 'features/login_signup/data/datasource/local_ds/user_local_datasource.dart';
-import 'features/login_signup/presentation/bloc/login/bloc/login_bloc.dart';
+import 'features/athentication/data/datasource/local_ds/user_local_datasource.dart';
+import 'features/athentication/presentation/bloc/login/bloc/login_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -64,16 +64,16 @@ Future<void> init() async {
   sl.registerLazySingleton<DrawerRepository>(() => DrawerRepositoryImpl(sl()));
 
   // Usecase
-  sl.registerLazySingleton(() => SplashUsecase(sl()));
-  sl.registerLazySingleton(() => LoginUsecase(repository: sl()));
+  sl.registerLazySingleton(() => CheckRegistrationTransaction(sl()));
+  sl.registerLazySingleton(() => SigninTransaction(repository: sl()));
   sl.registerLazySingleton(() => LogoutUsecase(repository: sl()));
-  sl.registerLazySingleton(() => SignupUsecase(repository: sl()));
-  sl.registerLazySingleton(() => GetAllTasksUsecase(sl()));
-  sl.registerLazySingleton(() => AddNewTaskUsecase(sl()));
-  sl.registerLazySingleton(() => UpdateTaskUsecase(sl()));
-  sl.registerLazySingleton(() => DeleteTaskUsecase(sl()));
-  sl.registerLazySingleton(() => GetThemeUsecase(sl()));
-  sl.registerLazySingleton(() => SetThemeUsecase(sl()));
+  sl.registerLazySingleton(() => SignupTransaction(repository: sl()));
+  sl.registerLazySingleton(() => GetAllTasksTransaction(sl()));
+  sl.registerLazySingleton(() => AddNewTaskTransaction(sl()));
+  sl.registerLazySingleton(() => UpdateTaskTransaction(sl()));
+  sl.registerLazySingleton(() => DeleteTaskTransaction(sl()));
+  sl.registerLazySingleton(() => GetThemeTransaction(sl()));
+  sl.registerLazySingleton(() => SetThemeTransaction(sl()));
 
   // Bloc
   sl.registerFactory(() => SplashBloc(sl()));

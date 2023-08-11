@@ -1,20 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:todo_test/common/core/domain/entities/task_entity.dart';
-import 'package:todo_test/features/todo/domain/usecase/add_new_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/delete_task_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/get_all_tasks_usecase.dart';
-import 'package:todo_test/features/todo/domain/usecase/update_task_usecase.dart';
+import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
 
 part 'task_event.dart';
 part 'task_state.dart';
 
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
-  final GetAllTasksUsecase getAllTasksUsecase;
-  final AddNewTaskUsecase addNewTaskUsecase;
-  final UpdateTaskUsecase updateTaskUsecase;
-  final DeleteTaskUsecase deleteTaskUsecase;
+  final GetAllTasksTransaction getAllTasksUsecase;
+  final AddNewTaskTransaction addNewTaskUsecase;
+  final UpdateTaskTransaction updateTaskUsecase;
+  final DeleteTaskTransaction deleteTaskUsecase;
 
   TaskBloc(
     this.getAllTasksUsecase,

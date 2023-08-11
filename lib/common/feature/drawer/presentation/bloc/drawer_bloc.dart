@@ -2,15 +2,15 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:todo_test/common/core/domain/entities/user_entity.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/get_theme_usecase.dart';
-import 'package:todo_test/common/feature/drawer/domain/usecase/theme_usecase/set_theme_usecase.dart';
+import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/get_theme_transaction.dart';
+import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/set_theme_transaction.dart';
 
 part 'drawer_event.dart';
 part 'drawer_state.dart';
 
 class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
-  final GetThemeUsecase getThemeUsecase;
-  final SetThemeUsecase setThemeUsecase;
+  final GetThemeTransaction getThemeUsecase;
+  final SetThemeTransaction setThemeUsecase;
 
   DrawerBloc(
     this.getThemeUsecase,
