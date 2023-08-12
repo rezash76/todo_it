@@ -5,8 +5,8 @@ import 'package:todo_test/features/athentication/domain/value_object/signin_requ
 import 'package:todo_test/features/athentication/domain/value_object/signup_request.dart';
 
 abstract class UserRepository {
-  Either<Failure, UserEntity> isUserExist();
+  Future<Either<Failure, UserEntity>> isUserExist();
   Future<Either<Failure, void>> signup(SignupRequest request);
   Future<Either<Failure, void>> signin(SigninRequest request);
-  Either<Failure, void> signout();
+  Future<Either<Failure, void>> signout();
 }

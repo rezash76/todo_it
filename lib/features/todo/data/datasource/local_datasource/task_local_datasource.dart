@@ -2,12 +2,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
-import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
+import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 
 abstract class TaskLocalDatasource {
   List<TaskDTO> getAllTasks();
-  Future<List<TaskDTO>> addNewTask(TaskParam task);
-  Future<List<TaskDTO>> updateTask(TaskParam task, int index);
+  Future<List<TaskDTO>> addNewTask(TaskRequest task);
+  Future<List<TaskDTO>> updateTask(TaskRequest task, int index);
   Future<List<TaskDTO>> deleteTask(int index);
 }
 
@@ -39,7 +39,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> addNewTask(TaskParam task) async {
+  Future<List<TaskDTO>> addNewTask(TaskRequest task) async {
     try {
       HiveTask hiveTask = HiveTask(task.title, task.desc, task.isCompleted);
       await dbProvider.add(hiveTask);
@@ -51,7 +51,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> updateTask(TaskParam task, int index) async {
+  Future<List<TaskDTO>> updateTask(TaskRequest task, int index) async {
     try {
       HiveTask hiveTask = HiveTask(
         task.title,

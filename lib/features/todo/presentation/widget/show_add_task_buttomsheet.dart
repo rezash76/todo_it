@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
+import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 showAddTaskBottomSheet(
@@ -55,7 +55,7 @@ showAddTaskBottomSheet(
             onPressed: () {
               if (titleController.text.isNotEmpty &&
                   descController.text.isNotEmpty) {
-                var task = TaskParam(
+                var task = TaskRequest(
                   titleController.text,
                   descController.text,
                   false,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/domain/value_object/task_param.dart';
+import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 class TaskCard extends StatefulWidget {
@@ -76,7 +76,7 @@ class _TaskCardState extends State<TaskCard> {
                   value: widget.task.isCompleted,
                   onChanged: (value) {
                     if (value != null) {
-                      var newTask = TaskParam(
+                      var newTask = TaskRequest(
                         widget.task.title,
                         widget.task.desc,
                         value,

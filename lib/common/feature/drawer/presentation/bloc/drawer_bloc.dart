@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:todo_test/common/value_object/no_request.dart';
 import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
 import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/get_theme_transaction.dart';
 import 'package:todo_test/common/feature/drawer/domain/transaction/theme_transaction/set_theme_transaction.dart';
@@ -9,19 +10,19 @@ part 'drawer_event.dart';
 part 'drawer_state.dart';
 
 class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
-  final GetThemeTransaction getThemeUsecase;
-  final SetThemeTransaction setThemeUsecase;
+  final GetThemeTransaction getThemeTransaction;
+  final SetThemeTransaction setThemeTransaction;
 
   DrawerBloc(
-    this.getThemeUsecase,
-    this.setThemeUsecase,
+    this.getThemeTransaction,
+    this.setThemeTransaction,
   ) : super(DrawerInitial()) {
     on<GetTheme>(_getThemeHandler);
     on<SetTheme>(_setThemeHandler);
   }
 
-  _getThemeHandler(GetTheme event, Emitter emit) {
-    var result = getThemeUsecase();
+  _getThemeHandler(GetTheme event, Emitter emit) async {
+    var result = await getThemeTransaction(NoRequest());
     result.fold(
       (failure) => emit(GetThemeError(failure.message)),
       (theme) {
@@ -33,7 +34,7 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
 
   _setThemeHandler(SetTheme event, Emitter emit) async {
     final theme = _convertThemeModeToInt(event.themeMode);
-    var result = await setThemeUsecase(theme);
+    var result = await setThemeTransaction(theme);
     result.fold(
       (failure) => emit(GetThemeError(failure.message)),
       (theme) {

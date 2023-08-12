@@ -6,12 +6,12 @@ abstract class TaskEvent {}
 class GetAllTasks extends TaskEvent {}
 
 class AddNewTask extends TaskEvent {
-  final TaskParam task;
+  final TaskRequest task;
   AddNewTask(this.task);
 }
 
 class UpdateTask extends TaskEvent {
-  final TaskParam task;
+  final TaskRequest task;
   final int index;
   UpdateTask(this.task, this.index);
 }

@@ -1,11 +1,14 @@
 import 'package:todo_test/common/error/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:todo_test/common/transaction/transaction.dart';
+import 'package:todo_test/common/value_object/no_request.dart';
 import 'package:todo_test/features/athentication/domain/repository/user_repository.dart';
 
-class LogoutUsecase {
+class SignoutTransaction implements Transaction<void, NoRequest> {
   final UserRepository repository;
 
-  LogoutUsecase({required this.repository});
+  SignoutTransaction({required this.repository});
 
-  Either<Failure, void> call() => repository.signout();
+  @override
+  Future<Either<Failure, void>> call(NoRequest request) => repository.signout();
 }

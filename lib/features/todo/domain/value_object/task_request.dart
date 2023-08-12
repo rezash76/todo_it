@@ -1,9 +1,9 @@
-base class TaskParam {
+base class TaskRequest {
   final String title;
   final String desc;
   final bool isCompleted;
 
-  TaskParam(
+  TaskRequest(
     this.title,
     this.desc,
     this.isCompleted,

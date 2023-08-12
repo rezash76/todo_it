@@ -12,7 +12,7 @@ base class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl({required this.datasource});
 
   @override
-  Either<Failure, UserEntity> isUserExist() {
+  Future<Either<Failure, UserEntity>> isUserExist() async {
     try {
       UserEntity user = datasource.isUserExist();
       return Right(user);
@@ -56,12 +56,12 @@ base class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Either<Failure, void> signout() {
+  Future<Either<Failure, void>> signout() async {
     try {
       var user = datasource.getUser();
       user.isLogin = false;
-      print(user.isLogin);
-      return Right(datasource.addUser(user.toDB(user)));
+      var signout = await datasource.addUser(user.toDB(user));
+      return Right(signout);
     } on Exception {
       return Left(Failure(message: 'Try agane.'));
     }

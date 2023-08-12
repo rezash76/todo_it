@@ -66,7 +66,7 @@ Future<void> init() async {
   // Usecase
   sl.registerLazySingleton(() => CheckRegistrationTransaction(sl()));
   sl.registerLazySingleton(() => SigninTransaction(repository: sl()));
-  sl.registerLazySingleton(() => LogoutUsecase(repository: sl()));
+  sl.registerLazySingleton(() => SignoutTransaction(repository: sl()));
   sl.registerLazySingleton(() => SignupTransaction(repository: sl()));
   sl.registerLazySingleton(() => GetAllTasksTransaction(sl()));
   sl.registerLazySingleton(() => AddNewTaskTransaction(sl()));

@@ -9,7 +9,7 @@ base class DrawerRepositoryImpl implements DrawerRepository {
   DrawerRepositoryImpl(this.datasource);
 
   @override
-  Either<Failure, int> getTheme() {
+  Future<Either<Failure, int>> getTheme() async {
     try {
       int themeMode = datasource.getTheme();
       return Right(themeMode);
@@ -19,9 +19,9 @@ base class DrawerRepositoryImpl implements DrawerRepository {
   }
 
   @override
-  Future<Either<Failure, int>> setTheme(int themeMode) async {
+  Future<Either<Failure, int>> setTheme(int request) async {
     try {
-      int theme = await datasource.setTheme(themeMode);
+      int theme = await datasource.setTheme(request);
       return Right(theme);
     } on Exception {
       return Left(Failure(message: 'Somthing went wrong.'));
