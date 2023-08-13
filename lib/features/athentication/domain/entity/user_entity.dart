@@ -1,4 +1,7 @@
-abstract base class UserEntity {
+import 'package:todo_test/common/entity/entity.dart';
+import 'package:uuid/uuid.dart';
+
+abstract base class UserEntity extends Entity {
   final String name;
   final String family;
   final String username;
@@ -11,5 +14,5 @@ abstract base class UserEntity {
     this.username,
     this.password,
     this.isLogin,
-  );
+  ) : super(const Uuid().v1());
 }
