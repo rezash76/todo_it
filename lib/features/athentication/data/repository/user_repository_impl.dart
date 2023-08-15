@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/common/error/failure.dart';
 import 'package:todo_test/common/value_object/void_operation.dart';
 import 'package:todo_test/features/athentication/data/datasource/local_datasource/user_local_datasource.dart';
@@ -17,8 +18,10 @@ base class UserRepositoryImpl extends UserRepository {
     try {
       UserEntity user = datasource.isUserExist();
       return Right(user);
-    } on Exception {
-      return Left(Failure(message: 'User not exist.'));
+    } on NotFound {
+      return Left(NotFound());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -35,8 +38,10 @@ base class UserRepositoryImpl extends UserRepository {
 
       await datasource.addUser(hiveUser);
       return Right(VoidOperation().voidValue);
-    } on Exception {
-      return Left(Failure(message: 'Somthing went wront.'));
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -49,10 +54,12 @@ base class UserRepositoryImpl extends UserRepository {
         await datasource.addUser(user.toDB(user));
         return Right(VoidOperation().voidValue);
       } else {
-        return Left(Failure(message: 'Wrong password.'));
+        return Left(WrongPassword());
       }
-    } on Exception {
-      return Left(Failure(message: 'You do not have an account.'));
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -63,8 +70,10 @@ base class UserRepositoryImpl extends UserRepository {
       user.isLogin = false;
       await datasource.addUser(user.toDB(user));
       return Right(VoidOperation().voidValue);
-    } on Exception {
-      return Left(Failure(message: 'Try agane.'));
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 }
