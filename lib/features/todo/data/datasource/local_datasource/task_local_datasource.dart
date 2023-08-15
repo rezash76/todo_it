@@ -1,5 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
+import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
@@ -30,11 +31,12 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         var reversedTasks = tasks.reversed.toList();
         return reversedTasks;
       } else {
-        throw Exception();
+        throw NotFound();
       }
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on TypeMissmatch {
+      throw TypeMissmatch();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 
@@ -44,9 +46,10 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
       HiveTask hiveTask = HiveTask(task.title, task.desc, task.isCompleted);
       await dbProvider.add(hiveTask);
       return getAllTasks();
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on TypeMissmatch {
+      throw TypeMissmatch();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 
@@ -60,9 +63,12 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
       );
       await dbProvider.putAt(index, hiveTask);
       return getAllTasks();
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on TypeMissmatch {
+      throw TypeMissmatch();
+    } on Exception {
+      throw NotFound();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 
@@ -71,9 +77,10 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
     try {
       await dbProvider.deleteAt(index);
       return getAllTasks();
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on TypeMissmatch {
+      throw TypeMissmatch();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 }

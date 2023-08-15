@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_test/common/constants.dart';
 import 'package:todo_test/common/core/data/data_base/db_provider.dart';
+import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/athentication/data/model/hive/hive_user.dart';
 import 'package:todo_test/features/athentication/data/model/user_dto.dart';
 
@@ -24,11 +25,10 @@ class UserLocalDatasourceImple implements UserLocalDatasource {
         var user = UserDTO.fromDB(raw.values.first);
         return user;
       } else {
-        throw Exception();
+        throw NotFound();
       }
-    } on HiveError catch (e) {
-      print(e.message);
-      throw Exception();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 
@@ -36,9 +36,10 @@ class UserLocalDatasourceImple implements UserLocalDatasource {
   UserDTO getUser() {
     try {
       return UserDTO.fromDB(dbProvider.get(Constants.user));
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on Exception {
+      throw TypeMissmatch();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 
@@ -46,9 +47,8 @@ class UserLocalDatasourceImple implements UserLocalDatasource {
   Future<void> addUser(HiveUser param) async {
     try {
       return await dbProvider.put(Constants.user, param);
-    } on HiveError catch (e) {
-      print(e);
-      throw Exception();
+    } on HiveError catch (error) {
+      throw HiveException(message: error.message);
     }
   }
 }

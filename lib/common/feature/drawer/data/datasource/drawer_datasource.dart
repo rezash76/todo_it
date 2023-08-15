@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_test/common/constants.dart';
+import 'package:todo_test/common/error/cache.dart';
 
 abstract interface class DrawerDatasource {
   int getTheme();
@@ -22,7 +23,7 @@ base class DrawerDatasourceImpl implements DrawerDatasource {
         return 2;
       }
     } on Exception {
-      throw Exception();
+      throw TypeMissmatch();
     }
   }
 
@@ -32,7 +33,7 @@ base class DrawerDatasourceImpl implements DrawerDatasource {
       await prefs.setInt(Constants.theme, themeMode);
       return getTheme();
     } on Exception {
-      throw Exception();
+      throw NullValue();
     }
   }
 }

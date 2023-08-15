@@ -10,6 +10,11 @@ class NotFound extends CacheException {
       : super(message: message ?? 'اطلاعات مورد نظر پپدا نشد.');
 }
 
+class NullValue extends CacheException {
+  NullValue({String? message})
+      : super(message: message ?? 'دیتا نباید نال باشه.');
+}
+
 class HiveException extends CacheException {
   HiveException({String? message}) : super(message: message);
 }
@@ -21,4 +26,9 @@ class TypeMissmatch extends CacheException {
 
 class FetchData extends CacheException {
   FetchData({String? message}) : super(message: message);
+}
+
+class WrongPassword extends CacheException {
+  WrongPassword({String? message})
+      : super(message: message ?? 'رمز عبور رو اشتباه زدی. دوباره امتحان کن.');
 }

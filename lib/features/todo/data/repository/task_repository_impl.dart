@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/common/error/failure.dart';
 import 'package:todo_test/features/todo/data/datasource/local_datasource/task_local_datasource.dart';
@@ -16,8 +17,12 @@ base class TaskRepositoryImpl extends TaskRepository {
     try {
       var tasks = localDatasource.getAllTasks();
       return Right(tasks);
-    } on Exception {
-      return Left(Failure(message: 'There is no task'));
+    } on NotFound {
+      return Left(NotFound());
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -27,8 +32,10 @@ base class TaskRepositoryImpl extends TaskRepository {
     try {
       var tasks = await localDatasource.addNewTask(taskParam);
       return Right(tasks);
-    } on Exception {
-      return Left(Failure(message: 'Somthing went wrong...'));
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -39,8 +46,12 @@ base class TaskRepositoryImpl extends TaskRepository {
       var tasks =
           await localDatasource.updateTask(request.taskParam, request.index);
       return Right(tasks);
-    } on Exception {
-      return Left(Failure(message: 'Somthing went wrong...'));
+    } on NotFound {
+      return Left(NotFound());
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 
@@ -49,8 +60,10 @@ base class TaskRepositoryImpl extends TaskRepository {
     try {
       var tasks = await localDatasource.deleteTask(index);
       return Right(tasks);
-    } on Exception {
-      return Left(Failure(message: 'Somthing went wrong...'));
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
     }
   }
 }
