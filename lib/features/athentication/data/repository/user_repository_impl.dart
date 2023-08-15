@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo_test/common/error/failure.dart';
+import 'package:todo_test/common/value_object/void_operation.dart';
 import 'package:todo_test/features/athentication/data/datasource/local_datasource/user_local_datasource.dart';
 import 'package:todo_test/features/athentication/data/model/hive/hive_user.dart';
 import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
@@ -32,8 +33,8 @@ base class UserRepositoryImpl extends UserRepository {
         true,
       );
 
-      var signup = await datasource.addUser(hiveUser);
-      return Right(signup);
+      await datasource.addUser(hiveUser);
+      return Right(VoidOperation().voidValue);
     } on Exception {
       return Left(Failure(message: 'Somthing went wront.'));
     }
@@ -45,8 +46,8 @@ base class UserRepositoryImpl extends UserRepository {
       var user = datasource.getUser();
       if (user.password == request.password) {
         user.isLogin = true;
-        var signin = await datasource.addUser(user.toDB(user));
-        return Right(signin);
+        await datasource.addUser(user.toDB(user));
+        return Right(VoidOperation().voidValue);
       } else {
         return Left(Failure(message: 'Wrong password.'));
       }
@@ -60,8 +61,8 @@ base class UserRepositoryImpl extends UserRepository {
     try {
       var user = datasource.getUser();
       user.isLogin = false;
-      var signout = await datasource.addUser(user.toDB(user));
-      return Right(signout);
+      await datasource.addUser(user.toDB(user));
+      return Right(VoidOperation().voidValue);
     } on Exception {
       return Left(Failure(message: 'Try agane.'));
     }
