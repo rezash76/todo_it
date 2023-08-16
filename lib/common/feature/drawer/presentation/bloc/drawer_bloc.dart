@@ -24,7 +24,7 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
   _getThemeHandler(GetTheme event, Emitter emit) async {
     var result = await getThemeTransaction(NoRequest());
     result.fold(
-      (failure) => emit(GetThemeError(failure.message)),
+      (exception) => emit(GetThemeError(exception.message)),
       (theme) {
         final themeMode = _convertIntToThemeMode(theme);
         emit(GetThemeSuccess(themeMode));
@@ -36,7 +36,7 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
     final theme = _convertThemeModeToInt(event.themeMode);
     var result = await setThemeTransaction(theme);
     result.fold(
-      (failure) => emit(GetThemeError(failure.message)),
+      (exception) => emit(GetThemeError(exception.message)),
       (theme) {
         final themeMode = _convertIntToThemeMode(theme);
         emit(GetThemeSuccess(themeMode));

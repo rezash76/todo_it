@@ -33,7 +33,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   _getAllTasksEventHandler(GetAllTasks event, Emitter emit) async {
     final tasks = await getAllTasksTransaction(NoRequest());
     tasks.fold(
-      (failure) => emit(TaskError(failure.message)),
+      (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),
     );
   }
@@ -41,7 +41,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   _addNewTaskEventHandler(AddNewTask event, Emitter emit) async {
     final tasks = await addNewTaskTransaction(event.task);
     tasks.fold(
-      (failure) => emit(TaskError(failure.message)),
+      (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),
     );
   }
@@ -50,7 +50,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final updateTaskParam = UpdateTaskRequest(event.task, event.index);
     final isCompleted = await updateTaskTransaction(updateTaskParam);
     isCompleted.fold(
-      (failure) => emit(TaskError(failure.message)),
+      (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),
     );
   }
@@ -58,7 +58,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   _deleteTaskEventHandler(DeleteTask event, Emitter emit) async {
     final isDeleted = await deleteTaskTransaction(event.index);
     isDeleted.fold(
-      (failure) => emit(TaskError(failure.message)),
+      (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),
     );
   }
