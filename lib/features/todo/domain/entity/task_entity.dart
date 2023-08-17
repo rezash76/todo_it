@@ -1,7 +1,7 @@
 import 'package:todo_test/common/entity/entity.dart';
 import 'package:uuid/uuid.dart';
 
-abstract base class TaskEntity extends Entity {
+base class TaskEntity extends Entity {
   final String title;
   final String desc;
   bool isCompleted;

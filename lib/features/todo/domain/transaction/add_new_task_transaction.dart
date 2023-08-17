@@ -12,6 +12,7 @@ base class AddNewTaskTransaction
   AddNewTaskTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, List<TaskEntity>>> call(TaskRequest request) =>
-      repository.addNewTask(request);
+  Future<Either<CacheException, List<TaskEntity>>> call(
+          TaskRequest request) async =>
+      await repository.addNewTask(request);
 }
