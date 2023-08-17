@@ -10,6 +10,6 @@ base class SignupTransaction implements Transaction<void, SignupRequest> {
   SignupTransaction({required this.repository});
 
   @override
-  Future<Either<Failure, void>> call(SignupRequest request) =>
-      repository.signup(request);
+  Future<Either<Failure, void>> call(SignupRequest request) async =>
+      await repository.signup(request);
 }

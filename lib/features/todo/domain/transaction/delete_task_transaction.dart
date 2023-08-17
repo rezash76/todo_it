@@ -10,6 +10,6 @@ base class DeleteTaskTransaction implements Transaction<List<TaskEntity>, int> {
   DeleteTaskTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, List<TaskEntity>>> call(int request) =>
-      repository.deleteTask(request);
+  Future<Either<CacheException, List<TaskEntity>>> call(int request) async =>
+      await repository.deleteTask(request);
 }

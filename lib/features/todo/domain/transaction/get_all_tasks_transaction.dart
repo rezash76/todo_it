@@ -12,6 +12,7 @@ base class GetAllTasksTransaction
   GetAllTasksTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, List<TaskEntity>>> call(NoRequest request) =>
-      repository.getAllTasks();
+  Future<Either<CacheException, List<TaskEntity>>> call(
+          NoRequest request) async =>
+      await repository.getAllTasks();
 }

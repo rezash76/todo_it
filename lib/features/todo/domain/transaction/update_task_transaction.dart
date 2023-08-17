@@ -12,6 +12,7 @@ base class UpdateTaskTransaction
   UpdateTaskTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, List<TaskEntity>>> call(UpdateTaskRequest request) =>
-      repository.updateTask(request);
+  Future<Either<CacheException, List<TaskEntity>>> call(
+          UpdateTaskRequest request) async =>
+      await repository.updateTask(request);
 }

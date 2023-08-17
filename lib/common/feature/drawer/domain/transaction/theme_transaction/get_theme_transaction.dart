@@ -10,5 +10,6 @@ base class GetThemeTransaction implements Transaction<int, NoRequest> {
   GetThemeTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, int>> call(NoRequest request) => repository.getTheme();
+  Future<Either<CacheException, int>> call(NoRequest request) async =>
+      await repository.getTheme();
 }

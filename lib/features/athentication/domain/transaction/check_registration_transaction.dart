@@ -12,6 +12,6 @@ base class CheckRegistrationTransaction
   CheckRegistrationTransaction(this.repository);
 
   @override
-  Future<Either<Failure, UserEntity>> call(NoRequest request) =>
-      repository.isUserExist();
+  Future<Either<Failure, UserEntity>> call(NoRequest request) async =>
+      await repository.isUserExist();
 }

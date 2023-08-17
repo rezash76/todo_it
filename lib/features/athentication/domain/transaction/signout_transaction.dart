@@ -10,5 +10,6 @@ class SignoutTransaction implements Transaction<void, NoRequest> {
   SignoutTransaction({required this.repository});
 
   @override
-  Future<Either<Failure, void>> call(NoRequest request) => repository.signout();
+  Future<Either<Failure, void>> call(NoRequest request) async =>
+      await repository.signout();
 }

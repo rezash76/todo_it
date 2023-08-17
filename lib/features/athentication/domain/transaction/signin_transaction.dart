@@ -10,6 +10,6 @@ class SigninTransaction implements Transaction<void, SigninRequest> {
   SigninTransaction({required this.repository});
 
   @override
-  Future<Either<Failure, void>> call(SigninRequest request) =>
-      repository.signin(request);
+  Future<Either<Failure, void>> call(SigninRequest request) async =>
+      await repository.signin(request);
 }

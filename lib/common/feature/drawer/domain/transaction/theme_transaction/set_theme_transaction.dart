@@ -9,6 +9,6 @@ base class SetThemeTransaction implements Transaction<int, int> {
   SetThemeTransaction(this.repository);
 
   @override
-  Future<Either<CacheException, int>> call(int request) =>
-      repository.setTheme(request);
+  Future<Either<CacheException, int>> call(int request) async =>
+      await repository.setTheme(request);
 }
