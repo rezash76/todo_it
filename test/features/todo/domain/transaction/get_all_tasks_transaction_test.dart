@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -13,16 +11,24 @@ import 'add_new_task_transaction_test.mocks.dart';
 void main() {
   late GetAllTasksTransaction getAllTasksTransaction;
   late MockTaskRepository mockTaskRepository;
-  List<TaskEntity> tasks = [
-    TaskEntity('asd', 'asaweef', false),
-    TaskEntity('asf', 'asfeaef', true),
-    TaskEntity('fweew', 'asfef', false),
-  ];
+  late List<TaskEntity> tasks;
+  // exception
+  late NotFound notFound;
+  late TypeMissmatch typeMissmatch;
+  late HiveException hiveException;
 
   group('get all tasks', () {
     setUp(() {
       mockTaskRepository = MockTaskRepository();
       getAllTasksTransaction = GetAllTasksTransaction(mockTaskRepository);
+      tasks = [
+        TaskEntity('asd', 'asaweef', false),
+        TaskEntity('asf', 'asfeaef', true),
+        TaskEntity('fweew', 'asfef', false),
+      ];
+      notFound = NotFound();
+      typeMissmatch = TypeMissmatch();
+      hiveException = HiveException();
     });
 
     test('should return List<TaskEntity>', () async {
@@ -35,14 +41,34 @@ void main() {
       verifyNoMoreInteractions(mockTaskRepository);
     });
 
-    // test('should return CacheException', () async {
-    //   when(mockTaskRepository.getAllTasks())
-    //       .thenAnswer((realInvocation) async => Left(CacheException()));
+    test('should return NotFound Exception', () async {
+      when(mockTaskRepository.getAllTasks())
+          .thenAnswer((_) async => Left(notFound));
 
-    //   var result = await getAllTasksTransaction.call(NoRequest());
-    //   verify(mockTaskRepository.getAllTasks());
-    //   expect(result, Left(CacheException()));
-    //   verifyNoMoreInteractions(mockTaskRepository);
-    // });
+      var result = await getAllTasksTransaction.call(NoRequest());
+      verify(mockTaskRepository.getAllTasks());
+      expect(result, Left(notFound));
+      verifyNoMoreInteractions(mockTaskRepository);
+    });
+
+    test('should return TypeMissmatch Exception', () async {
+      when(mockTaskRepository.getAllTasks())
+          .thenAnswer((_) async => Left(typeMissmatch));
+
+      var result = await getAllTasksTransaction.call(NoRequest());
+      verify(mockTaskRepository.getAllTasks());
+      expect(result, Left(typeMissmatch));
+      verifyNoMoreInteractions(mockTaskRepository);
+    });
+
+    test('should return HiveException', () async {
+      when(mockTaskRepository.getAllTasks())
+          .thenAnswer((_) async => Left(hiveException));
+
+      var result = await getAllTasksTransaction.call(NoRequest());
+      verify(mockTaskRepository.getAllTasks());
+      expect(result, Left(hiveException));
+      verifyNoMoreInteractions(mockTaskRepository);
+    });
   });
 }
