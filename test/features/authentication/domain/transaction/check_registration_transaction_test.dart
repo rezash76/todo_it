@@ -13,6 +13,7 @@ void main() {
   late CheckRegistrationTransaction checkRegistrationTransaction;
   late MockUserRepository mockUserRepository;
   late UserEntity user;
+  // exception
   late NotFound notFoundException;
   late HiveException hiveException;
 
