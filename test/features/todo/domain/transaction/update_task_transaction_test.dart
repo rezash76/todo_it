@@ -7,7 +7,7 @@ import 'package:todo_test/features/todo/domain/transaction/update_task_transacti
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/domain/value_object/updat_task_request.dart';
 
-import 'add_new_task_transaction_test.mocks.dart';
+import 'mock_task_repository.mocks.dart';
 
 void main() {
   late MockTaskRepository mockTaskRepository;

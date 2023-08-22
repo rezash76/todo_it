@@ -6,7 +6,7 @@ import 'package:todo_test/common/value_object/no_request.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
 
-import 'add_new_task_transaction_test.mocks.dart';
+import 'mock_task_repository.mocks.dart';
 
 void main() {
   late GetAllTasksTransaction getAllTasksTransaction;

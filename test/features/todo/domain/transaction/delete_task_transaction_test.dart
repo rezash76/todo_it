@@ -5,7 +5,7 @@ import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
 
-import 'add_new_task_transaction_test.mocks.dart';
+import 'mock_task_repository.mocks.dart';
 
 void main() {
   late MockTaskRepository mockTaskRepository;
