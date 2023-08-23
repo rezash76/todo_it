@@ -11,4 +11,7 @@ base class TaskEntity extends Entity {
     this.desc,
     this.isCompleted,
   ) : super(const Uuid().v1());
+
+  @override
+  List<Object?> get props => [title, desc, isCompleted];
 }
