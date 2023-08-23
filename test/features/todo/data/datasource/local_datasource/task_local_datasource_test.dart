@@ -5,7 +5,7 @@ import 'package:todo_test/features/todo/data/datasource/local_datasource/task_lo
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
 
-import 'task_local_datasource.mocks.dart';
+import 'mock_db_provider.mocks.dart';
 
 void main() {
   late MockDBProvider mockDBProvider;

@@ -15,4 +15,13 @@ base class UserEntity extends Entity {
     this.password,
     this.isLogin,
   ) : super(const Uuid().v1());
+
+  @override
+  List<Object?> get props => [
+        name,
+        family,
+        username,
+        password,
+        isLogin,
+      ];
 }
