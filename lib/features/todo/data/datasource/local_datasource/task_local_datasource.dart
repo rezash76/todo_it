@@ -24,10 +24,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
 
       if (allTasksMap.isNotEmpty) {
         List values = allTasksMap.values.toList();
-        List<TaskDTO> tasks = [];
-        for (var e in values) {
-          tasks.add(TaskDTO.fromDB(e));
-        }
+        final tasks = values.map((e) => TaskDTO.fromDB(e)).toList();
         var reversedTasks = tasks.reversed.toList();
         return reversedTasks;
       } else {
