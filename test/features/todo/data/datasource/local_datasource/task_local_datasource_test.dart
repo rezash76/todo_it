@@ -10,25 +10,28 @@ import 'mock_db_provider.mocks.dart';
 void main() {
   late MockDBProvider mockDBProvider;
   late TaskLocalDatasourceImpl taskLocalDatasourceImpl;
-  late Map<dynamic, dynamic> asd;
+  late Map<dynamic, dynamic> hiveMap;
   late List<TaskDTO> tasks;
 
   setUp(() {
     mockDBProvider = MockDBProvider();
     taskLocalDatasourceImpl = TaskLocalDatasourceImpl(mockDBProvider);
-    asd = {
-      0: HiveTask('title', 'desc', true),
+    hiveMap = {
+      0: HiveTask('', 'title', 'desc', true),
     };
     tasks = [
-      TaskDTO('title', 'desc', true),
-      TaskDTO('title', 'desc', true),
-      TaskDTO('title', 'desc', true),
+      TaskDTO(
+        id: 'id',
+        title: 'title',
+        desc: 'desc',
+        isCompleted: false,
+      ),
     ];
   });
 
   group('get all tasks', () {
     // test('-should return TaskDTO.', () {
-    //   when(mockDBProvider.getAll()).thenAnswer((_) => asd);
+    //   when(mockDBProvider.getAll()).thenAnswer((_) => hiveMap);
 
     //   final result = taskLocalDatasourceImpl.getAllTasks();
     //   verify(mockDBProvider.getAll());

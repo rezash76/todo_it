@@ -40,7 +40,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   @override
   Future<List<TaskDTO>> addNewTask(TaskRequest task) async {
     try {
-      HiveTask hiveTask = HiveTask(task.title, task.desc, task.isCompleted);
+      HiveTask hiveTask = HiveTask('', task.title, task.desc, task.isCompleted);
       await dbProvider.add(hiveTask);
       return getAllTasks();
     } on TypeMissmatch {
@@ -54,6 +54,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   Future<List<TaskDTO>> updateTask(TaskRequest task, int index) async {
     try {
       HiveTask hiveTask = HiveTask(
+        '',
         task.title,
         task.desc,
         task.isCompleted,
