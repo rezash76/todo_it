@@ -6,7 +6,7 @@ import 'package:todo_test/common/value_object/no_request.dart';
 import 'package:todo_test/common/value_object/void_operation.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signout_transaction.dart';
 
-import 'check_registration_transaction_test.mocks.dart';
+import 'mock_user_repository.mocks.dart';
 
 void main() {
   late SignoutTransaction signoutTransaction;

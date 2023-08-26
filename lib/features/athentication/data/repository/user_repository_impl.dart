@@ -29,6 +29,7 @@ base class UserRepositoryImpl extends UserRepository {
   Future<Either<Failure, void>> signup(SignupRequest request) async {
     try {
       HiveUser hiveUser = HiveUser(
+        '',
         request.firstname,
         request.lastname,
         request.username,

@@ -19,10 +19,12 @@ void main() {
     mockTaskRepository = MockTaskRepository();
     deleteTaskTransaction = DeleteTaskTransaction(mockTaskRepository);
     tasks = [
-      TaskEntity('as3d', 'asef', false),
-      TaskEntity('aewsd', 'asef', true),
-      TaskEntity('asesfd', 'asef', true),
-      TaskEntity('asgd', 'asef', false),
+      TaskEntity(
+        id: 'id',
+        title: 'title',
+        desc: 'desc',
+        isCompleted: false,
+      ),
     ];
     typeMissmatch = TypeMissmatch();
     hiveException = HiveException();

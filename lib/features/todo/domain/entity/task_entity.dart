@@ -1,17 +1,14 @@
 import 'package:todo_test/common/entity/entity.dart';
-import 'package:uuid/uuid.dart';
 
 base class TaskEntity extends Entity {
   final String title;
   final String desc;
   bool isCompleted;
 
-  TaskEntity(
-    this.title,
-    this.desc,
-    this.isCompleted,
-  ) : super(const Uuid().v1());
-
-  @override
-  List<Object?> get props => [title, desc, isCompleted];
+  TaskEntity({
+    required String id,
+    required this.title,
+    required this.desc,
+    required this.isCompleted,
+  }) : super(id: id);
 }

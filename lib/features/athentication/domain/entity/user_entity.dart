@@ -1,5 +1,4 @@
 import 'package:todo_test/common/entity/entity.dart';
-import 'package:uuid/uuid.dart';
 
 base class UserEntity extends Entity {
   final String name;
@@ -8,20 +7,12 @@ base class UserEntity extends Entity {
   final String password;
   bool isLogin;
 
-  UserEntity(
-    this.name,
-    this.family,
-    this.username,
-    this.password,
-    this.isLogin,
-  ) : super(const Uuid().v1());
-
-  @override
-  List<Object?> get props => [
-        name,
-        family,
-        username,
-        password,
-        isLogin,
-      ];
+  UserEntity({
+    required String id,
+    required this.name,
+    required this.family,
+    required this.username,
+    required this.password,
+    required this.isLogin,
+  }) : super(id: id);
 }

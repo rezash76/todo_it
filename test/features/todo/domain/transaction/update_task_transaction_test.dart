@@ -24,10 +24,7 @@ void main() {
     mockTaskRepository = MockTaskRepository();
     updateTaskTransaction = UpdateTaskTransaction(mockTaskRepository);
     tasks = [
-      TaskEntity('asq3d', 'asef', false),
-      TaskEntity('aedwsd', 'asef', true),
-      TaskEntity('aseesfd', 'asef', true),
-      TaskEntity('asegd', 'asef', false),
+      TaskEntity(id: 'id', title: 'title', desc: 'desc', isCompleted: false),
     ];
     taskReq = TaskRequest('title', 'desc', true);
     request = UpdateTaskRequest(taskReq, 4);

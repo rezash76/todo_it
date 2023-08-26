@@ -20,7 +20,14 @@ void main() {
   setUp(() {
     mockTaskRepository = MockTaskRepository();
     addNewTaskTransaction = AddNewTaskTransaction(mockTaskRepository);
-    tasks = [TaskEntity('asd', 'asef', false)];
+    tasks = [
+      TaskEntity(
+        id: 'id',
+        title: 'title',
+        desc: 'desc',
+        isCompleted: false,
+      ),
+    ];
     request = TaskRequest('Hi', 'desc', false);
     typeMissmatch = TypeMissmatch();
     hiveException = HiveException();

@@ -6,7 +6,7 @@ import 'package:todo_test/common/value_object/void_operation.dart';
 import 'package:todo_test/features/athentication/domain/transaction/signup_transaction.dart';
 import 'package:todo_test/features/athentication/domain/value_object/signup_request.dart';
 
-import 'check_registration_transaction_test.mocks.dart';
+import 'mock_user_repository.mocks.dart';
 
 void main() {
   late SignupTransaction signupTransaction;

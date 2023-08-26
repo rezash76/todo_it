@@ -22,9 +22,12 @@ void main() {
       mockTaskRepository = MockTaskRepository();
       getAllTasksTransaction = GetAllTasksTransaction(mockTaskRepository);
       tasks = [
-        TaskEntity('asd', 'asaweef', false),
-        TaskEntity('asf', 'asfeaef', true),
-        TaskEntity('fweew', 'asfef', false),
+        TaskEntity(
+          id: 'id',
+          title: 'title',
+          desc: 'desc',
+          isCompleted: false,
+        ),
       ];
       notFound = NotFound();
       typeMissmatch = TypeMissmatch();

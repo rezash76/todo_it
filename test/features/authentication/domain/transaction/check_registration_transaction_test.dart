@@ -7,7 +7,7 @@ import 'package:todo_test/common/value_object/no_request.dart';
 import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
 import 'package:todo_test/features/athentication/domain/transaction/check_registration_transaction.dart';
 
-import 'check_registration_transaction_test.mocks.dart';
+import 'mock_user_repository.mocks.dart';
 
 void main() {
   late CheckRegistrationTransaction checkRegistrationTransaction;
@@ -24,11 +24,12 @@ void main() {
     notFoundException = NotFound();
     hiveException = HiveException();
     user = UserEntity(
-      'name',
-      'family',
-      'username',
-      'password',
-      true,
+      id: 'id',
+      name: 'name',
+      family: 'family',
+      username: 'username',
+      password: 'password',
+      isLogin: true,
     );
   });
 

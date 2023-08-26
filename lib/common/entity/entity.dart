@@ -1,9 +1,7 @@
-import 'package:equatable/equatable.dart';
-
-abstract base class Entity extends Equatable {
+abstract base class Entity {
   final String id;
 
-  const Entity(this.id);
+  const Entity({required this.id});
 
   @override
   bool operator ==(Object other) {
@@ -19,7 +17,4 @@ abstract base class Entity extends Equatable {
 
   @override
   int get hashCode => id.hashCode;
-
-  @override
-  List<Object?> get props => [id];
 }

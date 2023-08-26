@@ -19,19 +19,22 @@ class HiveTaskAdapter extends TypeAdapter<HiveTask> {
     return HiveTask(
       fields[0] as String,
       fields[1] as String,
-      fields[2] as bool,
+      fields[2] as String,
+      fields[3] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveTask obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.desc)
+      ..write(obj.title)
       ..writeByte(2)
+      ..write(obj.desc)
+      ..writeByte(3)
       ..write(obj.isCompleted);
   }
 

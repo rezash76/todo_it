@@ -4,14 +4,22 @@ part 'hive_task.g.dart';
 
 @HiveType(typeId: 1)
 base class HiveTask extends HiveObject {
-  HiveTask(this.title, this.desc, this.isCompleted);
+  HiveTask(
+    this.id,
+    this.title,
+    this.desc,
+    this.isCompleted,
+  );
 
   @HiveField(0)
-  String title;
+  String id;
 
   @HiveField(1)
-  String desc;
+  String title;
 
   @HiveField(2)
+  String desc;
+
+  @HiveField(3)
   bool isCompleted;
 }
