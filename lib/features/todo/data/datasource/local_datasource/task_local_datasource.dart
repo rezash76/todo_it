@@ -25,8 +25,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
       if (allTasksMap.isNotEmpty) {
         List values = allTasksMap.values.toList();
         final tasks = values.map((e) => TaskDTO.fromDB(e)).toList();
-        var reversedTasks = tasks.reversed.toList();
-        return reversedTasks;
+        return tasks;
       } else {
         throw NotFound();
       }
@@ -42,7 +41,6 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
     try {
       HiveTask hiveTask =
           HiveTask(task.id, task.title, task.desc, task.isCompleted);
-      // await dbProvider.add(hiveTask);
       await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
     } on TypeMissmatch {
