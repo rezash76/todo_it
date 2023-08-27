@@ -8,8 +8,8 @@ import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 abstract class TaskLocalDatasource {
   List<TaskDTO> getAllTasks();
   Future<List<TaskDTO>> addNewTask(TaskRequest task);
-  Future<List<TaskDTO>> updateTask(TaskRequest task, int index);
-  Future<List<TaskDTO>> deleteTask(int index);
+  Future<List<TaskDTO>> updateTask(TaskRequest task);
+  Future<List<TaskDTO>> deleteTask(String id);
 }
 
 base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
@@ -40,8 +40,10 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   @override
   Future<List<TaskDTO>> addNewTask(TaskRequest task) async {
     try {
-      HiveTask hiveTask = HiveTask('', task.title, task.desc, task.isCompleted);
-      await dbProvider.add(hiveTask);
+      HiveTask hiveTask =
+          HiveTask(task.id, task.title, task.desc, task.isCompleted);
+      // await dbProvider.add(hiveTask);
+      await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
     } on TypeMissmatch {
       throw TypeMissmatch();
@@ -51,15 +53,15 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> updateTask(TaskRequest task, int index) async {
+  Future<List<TaskDTO>> updateTask(TaskRequest task) async {
     try {
       HiveTask hiveTask = HiveTask(
-        '',
+        task.id,
         task.title,
         task.desc,
         task.isCompleted,
       );
-      await dbProvider.putAt(index, hiveTask);
+      await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
     } on TypeMissmatch {
       throw TypeMissmatch();
@@ -71,10 +73,12 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> deleteTask(int index) async {
+  Future<List<TaskDTO>> deleteTask(String id) async {
     try {
-      await dbProvider.deleteAt(index);
+      await dbProvider.delete(id);
       return getAllTasks();
+    } on NotFound {
+      throw NotFound();
     } on TypeMissmatch {
       throw TypeMissmatch();
     } on HiveError catch (error) {

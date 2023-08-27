@@ -6,12 +6,10 @@ import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 class TaskCard extends StatefulWidget {
   final TaskEntity task;
-  final int keyIndex;
 
   const TaskCard({
     super.key,
     required this.task,
-    required this.keyIndex,
   });
 
   @override
@@ -76,15 +74,14 @@ class _TaskCardState extends State<TaskCard> {
                   value: widget.task.isCompleted,
                   onChanged: (value) {
                     if (value != null) {
-                      var newTask = TaskRequest(
+                      var taskRequest = TaskRequest(
+                        widget.task.id,
                         widget.task.title,
                         widget.task.desc,
                         value,
                       );
-                      BlocProvider.of<TaskBloc>(context).add(UpdateTask(
-                        newTask,
-                        widget.keyIndex,
-                      ));
+                      BlocProvider.of<TaskBloc>(context)
+                          .add(UpdateTask(taskRequest));
                     }
                   },
                 );

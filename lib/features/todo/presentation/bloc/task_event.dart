@@ -12,11 +12,10 @@ class AddNewTask extends TaskEvent {
 
 class UpdateTask extends TaskEvent {
   final TaskRequest task;
-  final int index;
-  UpdateTask(this.task, this.index);
+  UpdateTask(this.task);
 }
 
 class DeleteTask extends TaskEvent {
-  final int index;
-  DeleteTask(this.index);
+  final String taskId;
+  DeleteTask(this.taskId);
 }

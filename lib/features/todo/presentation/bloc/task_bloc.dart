@@ -7,7 +7,6 @@ import 'package:todo_test/features/todo/domain/transaction/delete_task_transacti
 import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
-import 'package:todo_test/features/todo/domain/value_object/updat_task_request.dart';
 
 part 'task_event.dart';
 part 'task_state.dart';
@@ -47,8 +46,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   }
 
   _updateTaskEventHandler(UpdateTask event, Emitter emit) async {
-    final updateTaskParam = UpdateTaskRequest(event.task, event.index);
-    final isCompleted = await updateTaskTransaction(updateTaskParam);
+    final isCompleted = await updateTaskTransaction(event.task);
     isCompleted.fold(
       (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),
@@ -56,7 +54,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   }
 
   _deleteTaskEventHandler(DeleteTask event, Emitter emit) async {
-    final isDeleted = await deleteTaskTransaction(event.index);
+    final isDeleted = await deleteTaskTransaction(event.taskId);
     isDeleted.fold(
       (exception) => emit(TaskError(exception.message)),
       (tasks) => emit(TaskSuccess(tasks)),

@@ -28,7 +28,7 @@ void main() {
         isCompleted: false,
       ),
     ];
-    request = TaskRequest('Hi', 'desc', false);
+    request = TaskRequest('id', 'Hi', 'desc', false);
     typeMissmatch = TypeMissmatch();
     hiveException = HiveException();
   });

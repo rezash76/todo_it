@@ -35,8 +35,8 @@ void main() {
       when(mockTaskRepository.deleteTask(any))
           .thenAnswer((_) async => Right(tasks));
 
-      var result = await deleteTaskTransaction.call(2);
-      verify(mockTaskRepository.deleteTask(2));
+      var result = await deleteTaskTransaction.call('id');
+      verify(mockTaskRepository.deleteTask('id'));
       expect(result, Right(tasks));
       verifyNoMoreInteractions(mockTaskRepository);
     });
@@ -45,8 +45,8 @@ void main() {
       when(mockTaskRepository.deleteTask(any))
           .thenAnswer((_) async => Left(typeMissmatch));
 
-      var result = await deleteTaskTransaction.call(2);
-      verify(mockTaskRepository.deleteTask(2));
+      var result = await deleteTaskTransaction.call('id');
+      verify(mockTaskRepository.deleteTask('id'));
       expect(result, Left(typeMissmatch));
       verifyNoMoreInteractions(mockTaskRepository);
     });
@@ -55,8 +55,8 @@ void main() {
       when(mockTaskRepository.deleteTask(any))
           .thenAnswer((_) async => Left(hiveException));
 
-      var result = await deleteTaskTransaction.call(2);
-      verify(mockTaskRepository.deleteTask(2));
+      var result = await deleteTaskTransaction.call('id');
+      verify(mockTaskRepository.deleteTask('id'));
       expect(result, Left(hiveException));
       verifyNoMoreInteractions(mockTaskRepository);
     });

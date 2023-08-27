@@ -8,14 +8,10 @@ import 'package:todo_test/features/todo/presentation/widget/task_card.dart';
 class TaskDismissibleListView extends StatelessWidget {
   const TaskDismissibleListView({
     super.key,
-    required this.tasks,
-    required this.index,
-    required this.keyIndex,
+    required this.task,
   });
 
-  final List<TaskEntity> tasks;
-  final int index;
-  final int keyIndex;
+  final TaskEntity task;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +21,13 @@ class TaskDismissibleListView extends StatelessWidget {
       secondaryBackground: dismissBackgroundContainer(isDelete: true),
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.startToEnd) {
-          var newTask = TaskRequest(
-            tasks[index].title,
-            tasks[index].desc,
+          var taskRequest = TaskRequest(
+            task.id,
+            task.title,
+            task.desc,
             true,
           );
-          BlocProvider.of<TaskBloc>(context).add(UpdateTask(
-            newTask,
-            keyIndex,
-          ));
+          BlocProvider.of<TaskBloc>(context).add(UpdateTask(taskRequest));
           return false;
         } else {
           return true;
@@ -41,11 +35,10 @@ class TaskDismissibleListView extends StatelessWidget {
       },
       onDismissed: (_) {
         // delete the task from Hive
-        BlocProvider.of<TaskBloc>(context).add(DeleteTask(keyIndex));
+        BlocProvider.of<TaskBloc>(context).add(DeleteTask(task.id));
       },
       child: TaskCard(
-        task: tasks[index],
-        keyIndex: keyIndex,
+        task: task,
       ),
     );
   }

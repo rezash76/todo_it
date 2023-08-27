@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:todo_test/common/language_manager.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
+import 'package:uuid/uuid.dart';
 
-showAddTaskBottomSheet(
-  BuildContext context,
-  TextEditingController titleController,
-  TextEditingController descController,
-  bool isUpdate,
-  int? keyIndex,
-) {
+showAddTaskBottomSheet({
+  required BuildContext context,
+  TaskEntity? task,
+  required TextEditingController titleController,
+  required TextEditingController descController,
+  required bool isUpdate,
+}) {
   ThemeData themeData = Theme.of(context);
   showDialog(
     context: context,
@@ -55,23 +57,17 @@ showAddTaskBottomSheet(
             onPressed: () {
               if (titleController.text.isNotEmpty &&
                   descController.text.isNotEmpty) {
-                var task = TaskRequest(
+                var taskRequest = TaskRequest(
+                  isUpdate
+                      ? (task != null ? task.id : const Uuid().v4())
+                      : const Uuid().v4(),
                   titleController.text,
                   descController.text,
                   false,
                 );
-                if (isUpdate && keyIndex != null) {
-                  BlocProvider.of<TaskBloc>(context).add(
-                    UpdateTask(
-                      task,
-                      keyIndex,
-                    ),
-                  );
-                } else {
-                  BlocProvider.of<TaskBloc>(context).add(
-                    AddNewTask(task),
-                  );
-                }
+                BlocProvider.of<TaskBloc>(context).add(
+                  isUpdate ? UpdateTask(taskRequest) : AddNewTask(taskRequest),
+                );
               }
               Navigator.of(context).pop();
             },

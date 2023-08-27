@@ -4,7 +4,6 @@ import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/data/datasource/local_datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/domain/repository/task_repository.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
-import 'package:todo_test/features/todo/domain/value_object/updat_task_request.dart';
 
 base class TaskRepositoryImpl extends TaskRepository {
   final TaskLocalDatasource localDatasource;
@@ -40,10 +39,9 @@ base class TaskRepositoryImpl extends TaskRepository {
 
   @override
   Future<Either<CacheException, List<TaskEntity>>> updateTask(
-      UpdateTaskRequest request) async {
+      TaskRequest request) async {
     try {
-      var tasks =
-          await localDatasource.updateTask(request.taskParam, request.index);
+      var tasks = await localDatasource.updateTask(request);
       return Right(tasks);
     } on NotFound {
       return Left(NotFound());
@@ -55,10 +53,12 @@ base class TaskRepositoryImpl extends TaskRepository {
   }
 
   @override
-  Future<Either<CacheException, List<TaskEntity>>> deleteTask(int index) async {
+  Future<Either<CacheException, List<TaskEntity>>> deleteTask(String id) async {
     try {
-      var tasks = await localDatasource.deleteTask(index);
+      var tasks = await localDatasource.deleteTask(id);
       return Right(tasks);
+    } on NotFound {
+      return Left(NotFound());
     } on TypeMissmatch {
       return Left(TypeMissmatch());
     } on HiveException catch (error) {

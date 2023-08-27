@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/data/datasource/local_datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
@@ -11,31 +12,42 @@ void main() {
   late MockDBProvider mockDBProvider;
   late TaskLocalDatasourceImpl taskLocalDatasourceImpl;
   late Map<dynamic, dynamic> hiveMap;
+  late Map<dynamic, dynamic> emptyMap;
   late List<TaskDTO> tasks;
 
   setUp(() {
     mockDBProvider = MockDBProvider();
     taskLocalDatasourceImpl = TaskLocalDatasourceImpl(mockDBProvider);
     hiveMap = {
-      0: HiveTask('', 'title', 'desc', true),
+      0: HiveTask('id', 'title', 'desc', true),
     };
+    emptyMap = {};
     tasks = [
       TaskDTO(
         id: 'id',
         title: 'title',
         desc: 'desc',
-        isCompleted: false,
+        isCompleted: true,
       ),
     ];
   });
 
   group('get all tasks', () {
-    // test('-should return TaskDTO.', () {
-    //   when(mockDBProvider.getAll()).thenAnswer((_) => hiveMap);
+    test('should return List<TaskDTO>.', () {
+      when(mockDBProvider.getAll()).thenAnswer((_) => hiveMap);
+
+      final result = taskLocalDatasourceImpl.getAllTasks();
+      verify(mockDBProvider.getAll());
+      expect(result, tasks);
+      verifyNoMoreInteractions(mockDBProvider);
+    });
+
+    // test('should return NotFound Exception.', () {
+    //   when(mockDBProvider.getAll()).thenAnswer((_) => emptyMap);
 
     //   final result = taskLocalDatasourceImpl.getAllTasks();
     //   verify(mockDBProvider.getAll());
-    //   expect(result, tasks);
+    //   expect(() => result, throwsA(isA<NotFound>()));
     //   verifyNoMoreInteractions(mockDBProvider);
     // });
   });

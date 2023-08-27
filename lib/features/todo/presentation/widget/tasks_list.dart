@@ -21,23 +21,21 @@ class TaskList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       itemCount: tasks.length,
       itemBuilder: (context, index) {
-        final int keyIndex = (tasks.length - index) - 1;
+        // final int keyIndex = (tasks.length - index) - 1;
         return GestureDetector(
           onTap: () {
             titleController.text = tasks[index].title;
             descController.text = tasks[index].desc;
             showAddTaskBottomSheet(
-              context,
-              titleController,
-              descController,
-              true,
-              keyIndex,
+              context: context,
+              task: tasks[index],
+              titleController: titleController,
+              descController: descController,
+              isUpdate: true,
             );
           },
           child: TaskDismissibleListView(
-            tasks: tasks,
-            index: index,
-            keyIndex: keyIndex,
+            task: tasks[index],
           ),
         );
       },

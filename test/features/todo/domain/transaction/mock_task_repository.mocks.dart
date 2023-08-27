@@ -13,8 +13,6 @@ import 'package:todo_test/features/todo/domain/repository/task_repository.dart'
     as _i3;
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart'
     as _i7;
-import 'package:todo_test/features/todo/domain/value_object/updat_task_request.dart'
-    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -83,7 +81,7 @@ class MockTaskRepository extends _i1.Mock implements _i3.TaskRepository {
       ) as _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>);
   @override
   _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>> updateTask(
-          _i8.UpdateTaskRequest? request) =>
+          _i7.TaskRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateTask,
@@ -101,11 +99,11 @@ class MockTaskRepository extends _i1.Mock implements _i3.TaskRepository {
       ) as _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>);
   @override
   _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>> deleteTask(
-          int? index) =>
+          String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteTask,
-          [index],
+          [id],
         ),
         returnValue: _i4
             .Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>.value(
@@ -113,7 +111,7 @@ class MockTaskRepository extends _i1.Mock implements _i3.TaskRepository {
           this,
           Invocation.method(
             #deleteTask,
-            [index],
+            [id],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>);
