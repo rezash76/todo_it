@@ -79,6 +79,7 @@ class _TaskCardState extends State<TaskCard> {
                         widget.task.title,
                         widget.task.desc,
                         value,
+                        widget.task.createTime,
                       );
                       BlocProvider.of<TaskBloc>(context)
                           .add(UpdateTask(taskRequest));

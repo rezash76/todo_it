@@ -7,6 +7,7 @@ base class TaskDTO extends TaskEntity {
     required super.title,
     required super.desc,
     required super.isCompleted,
+    required super.createTime,
   });
 
   factory TaskDTO.fromDB(HiveTask hiveTask) {
@@ -15,6 +16,7 @@ base class TaskDTO extends TaskEntity {
       title: hiveTask.title,
       desc: hiveTask.desc,
       isCompleted: hiveTask.isCompleted,
+      createTime: hiveTask.createTime,
     );
   }
 }

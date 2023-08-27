@@ -57,6 +57,8 @@ showAddTaskBottomSheet({
             onPressed: () {
               if (titleController.text.isNotEmpty &&
                   descController.text.isNotEmpty) {
+                final timeStamp =
+                    DateTime.now().millisecondsSinceEpoch.toString();
                 var taskRequest = TaskRequest(
                   isUpdate
                       ? (task != null ? task.id : const Uuid().v4())
@@ -64,6 +66,9 @@ showAddTaskBottomSheet({
                   titleController.text,
                   descController.text,
                   false,
+                  isUpdate
+                      ? (task != null ? task.createTime : timeStamp)
+                      : timeStamp,
                 );
                 BlocProvider.of<TaskBloc>(context).add(
                   isUpdate ? UpdateTask(taskRequest) : AddNewTask(taskRequest),

@@ -19,16 +19,16 @@ void main() {
     mockDBProvider = MockDBProvider();
     taskLocalDatasourceImpl = TaskLocalDatasourceImpl(mockDBProvider);
     hiveMap = {
-      0: HiveTask('id', 'title', 'desc', true),
+      0: HiveTask('id', 'title', 'desc', true, '32432412'),
     };
     emptyMap = {};
     tasks = [
       TaskDTO(
-        id: 'id',
-        title: 'title',
-        desc: 'desc',
-        isCompleted: true,
-      ),
+          id: 'id',
+          title: 'title',
+          desc: 'desc',
+          isCompleted: true,
+          createTime: '12313123434'),
     ];
   });
 

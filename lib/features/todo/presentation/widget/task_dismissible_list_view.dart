@@ -26,6 +26,7 @@ class TaskDismissibleListView extends StatelessWidget {
             task.title,
             task.desc,
             true,
+            task.createTime,
           );
           BlocProvider.of<TaskBloc>(context).add(UpdateTask(taskRequest));
           return false;

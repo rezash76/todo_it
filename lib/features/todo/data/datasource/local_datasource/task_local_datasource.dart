@@ -25,6 +25,8 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
       if (allTasksMap.isNotEmpty) {
         List values = allTasksMap.values.toList();
         final tasks = values.map((e) => TaskDTO.fromDB(e)).toList();
+        // reversing
+        tasks.sort((a, b) => b.createTime.compareTo(a.createTime));
         return tasks;
       } else {
         throw NotFound();
@@ -39,8 +41,13 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   @override
   Future<List<TaskDTO>> addNewTask(TaskRequest task) async {
     try {
-      HiveTask hiveTask =
-          HiveTask(task.id, task.title, task.desc, task.isCompleted);
+      HiveTask hiveTask = HiveTask(
+        task.id,
+        task.title,
+        task.desc,
+        task.isCompleted,
+        task.createTime,
+      );
       await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
     } on TypeMissmatch {
@@ -58,6 +65,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         task.title,
         task.desc,
         task.isCompleted,
+        task.createTime,
       );
       await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();

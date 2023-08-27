@@ -9,6 +9,7 @@ base class HiveTask extends HiveObject {
     this.title,
     this.desc,
     this.isCompleted,
+    this.createTime,
   );
 
   @HiveField(0)
@@ -22,4 +23,7 @@ base class HiveTask extends HiveObject {
 
   @HiveField(3)
   bool isCompleted;
+
+  @HiveField(4)
+  String createTime;
 }
