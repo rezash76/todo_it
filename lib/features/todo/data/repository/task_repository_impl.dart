@@ -3,7 +3,6 @@ import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/data/datasource/local_datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/domain/repository/task_repository.dart';
-import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 
 base class TaskRepositoryImpl extends TaskRepository {
   final TaskLocalDatasource localDatasource;
@@ -39,9 +38,9 @@ base class TaskRepositoryImpl extends TaskRepository {
 
   @override
   Future<Either<CacheException, List<TaskEntity>>> updateTask(
-      TaskRequest request) async {
+      TaskEntity taskEntity) async {
     try {
-      var tasks = await localDatasource.updateTask(request);
+      var tasks = await localDatasource.updateTask(taskEntity);
       return Right(tasks);
     } on NotFound {
       return Left(NotFound());

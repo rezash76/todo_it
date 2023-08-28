@@ -9,7 +9,7 @@ import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 abstract class TaskLocalDatasource {
   List<TaskDTO> getAllTasks();
   Future<List<TaskDTO>> addNewTask(TaskEntity task);
-  Future<List<TaskDTO>> updateTask(TaskRequest task);
+  Future<List<TaskDTO>> updateTask(TaskEntity task);
   Future<List<TaskDTO>> deleteTask(String id);
 }
 
@@ -59,7 +59,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> updateTask(TaskRequest task) async {
+  Future<List<TaskDTO>> updateTask(TaskEntity task) async {
     try {
       HiveTask hiveTask = HiveTask(
         task.id,
