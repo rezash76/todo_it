@@ -13,6 +13,7 @@ void main() {
   late MockTaskRepository mockTaskRepository;
   late List<TaskEntity> tasks;
   late TaskRequest request;
+  late TaskEntity task;
   // exception
   late TypeMissmatch typeMissmatch;
   late HiveException hiveException;
@@ -30,6 +31,13 @@ void main() {
       ),
     ];
     request = TaskRequest('id', 'Hi', 'desc', false, '239483');
+    task = TaskEntity(
+      id: 'id',
+      title: 'Hi',
+      desc: 'desc',
+      isCompleted: false,
+      createTime: '239483',
+    );
     typeMissmatch = TypeMissmatch();
     hiveException = HiveException();
   });
@@ -40,7 +48,7 @@ void main() {
           .thenAnswer((_) async => Right(tasks));
 
       var result = await addNewTaskTransaction.call(request);
-      verify(mockTaskRepository.addNewTask(request));
+      verify(mockTaskRepository.addNewTask(task));
       expect(result, Right(tasks));
       verifyNoMoreInteractions(mockTaskRepository);
     });
@@ -50,7 +58,7 @@ void main() {
           .thenAnswer((_) async => Left(typeMissmatch));
 
       var result = await addNewTaskTransaction.call(request);
-      verify(mockTaskRepository.addNewTask(request));
+      verify(mockTaskRepository.addNewTask(task));
       expect(result, Left(typeMissmatch));
       verifyNoMoreInteractions(mockTaskRepository);
     });
@@ -60,7 +68,7 @@ void main() {
           .thenAnswer((_) async => Left(hiveException));
 
       var result = await addNewTaskTransaction.call(request);
-      verify(mockTaskRepository.addNewTask(request));
+      verify(mockTaskRepository.addNewTask(task));
       expect(result, Left(hiveException));
       verifyNoMoreInteractions(mockTaskRepository);
     });

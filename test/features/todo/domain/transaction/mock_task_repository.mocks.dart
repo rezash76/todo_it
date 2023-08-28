@@ -63,11 +63,11 @@ class MockTaskRepository extends _i1.Mock implements _i3.TaskRepository {
               .Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>);
   @override
   _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>> addNewTask(
-          _i7.TaskRequest? taskParam) =>
+          _i6.TaskEntity? taskEntity) =>
       (super.noSuchMethod(
         Invocation.method(
           #addNewTask,
-          [taskParam],
+          [taskEntity],
         ),
         returnValue: _i4
             .Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>.value(
@@ -75,7 +75,7 @@ class MockTaskRepository extends _i1.Mock implements _i3.TaskRepository {
           this,
           Invocation.method(
             #addNewTask,
-            [taskParam],
+            [taskEntity],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.CacheException, List<_i6.TaskEntity>>>);

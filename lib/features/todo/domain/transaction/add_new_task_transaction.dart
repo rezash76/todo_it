@@ -13,6 +13,14 @@ base class AddNewTaskTransaction
 
   @override
   Future<Either<CacheException, List<TaskEntity>>> call(
-          TaskRequest request) async =>
-      await repository.addNewTask(request);
+      TaskRequest request) async {
+    final task = TaskEntity(
+      id: request.id,
+      title: request.title,
+      desc: request.desc,
+      isCompleted: request.isCompleted,
+      createTime: request.createTime,
+    );
+    return await repository.addNewTask(task);
+  }
 }

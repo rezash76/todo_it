@@ -3,11 +3,12 @@ import 'package:todo_test/common/core/data/data_base/db_provider.dart';
 import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 
 abstract class TaskLocalDatasource {
   List<TaskDTO> getAllTasks();
-  Future<List<TaskDTO>> addNewTask(TaskRequest task);
+  Future<List<TaskDTO>> addNewTask(TaskEntity task);
   Future<List<TaskDTO>> updateTask(TaskRequest task);
   Future<List<TaskDTO>> deleteTask(String id);
 }
@@ -39,7 +40,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
   }
 
   @override
-  Future<List<TaskDTO>> addNewTask(TaskRequest task) async {
+  Future<List<TaskDTO>> addNewTask(TaskEntity task) async {
     try {
       HiveTask hiveTask = HiveTask(
         task.id,

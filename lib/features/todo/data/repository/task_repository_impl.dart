@@ -26,9 +26,9 @@ base class TaskRepositoryImpl extends TaskRepository {
 
   @override
   Future<Either<CacheException, List<TaskEntity>>> addNewTask(
-      TaskRequest taskParam) async {
+      TaskEntity taskEntity) async {
     try {
-      var tasks = await localDatasource.addNewTask(taskParam);
+      var tasks = await localDatasource.addNewTask(taskEntity);
       return Right(tasks);
     } on TypeMissmatch {
       return Left(TypeMissmatch());

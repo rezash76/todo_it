@@ -6,7 +6,7 @@ import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 abstract class TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> getAllTasks();
   Future<Either<CacheException, List<TaskEntity>>> addNewTask(
-      TaskRequest taskParam);
+      TaskEntity taskEntity);
   Future<Either<CacheException, List<TaskEntity>>> updateTask(
       TaskRequest request);
   Future<Either<CacheException, List<TaskEntity>>> deleteTask(String id);
