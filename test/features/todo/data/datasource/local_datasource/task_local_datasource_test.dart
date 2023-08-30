@@ -5,6 +5,7 @@ import 'package:todo_test/common/error/cache.dart';
 import 'package:todo_test/features/todo/data/datasource/local_datasource/task_local_datasource.dart';
 import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/model/task_dto.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 
 import 'mock_db_provider.mocks.dart';
 
@@ -19,7 +20,8 @@ void main() {
     mockDBProvider = MockDBProvider();
     taskLocalDatasourceImpl = TaskLocalDatasourceImpl(mockDBProvider);
     hiveMap = {
-      0: HiveTask('id', 'title', 'desc', true, '32432412'),
+      0: HiveTask(
+          'id', 'title', 'desc', TaskCategory.personal, true, '32432412'),
     };
     emptyMap = {};
     tasks = [
@@ -27,6 +29,7 @@ void main() {
           id: 'id',
           title: 'title',
           desc: 'desc',
+          category: TaskCategory.personal,
           isCompleted: true,
           createTime: '12313123434'),
     ];

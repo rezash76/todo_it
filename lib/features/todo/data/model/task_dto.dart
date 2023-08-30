@@ -6,6 +6,7 @@ base class TaskDTO extends TaskEntity {
     required super.id,
     required super.title,
     required super.desc,
+    super.category,
     required super.isCompleted,
     required super.createTime,
   });
@@ -15,6 +16,7 @@ base class TaskDTO extends TaskEntity {
       id: hiveTask.id,
       title: hiveTask.title,
       desc: hiveTask.desc,
+      category: hiveTask.category,
       isCompleted: hiveTask.isCompleted,
       createTime: hiveTask.createTime,
     );

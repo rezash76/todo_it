@@ -20,15 +20,16 @@ class HiveTaskAdapter extends TypeAdapter<HiveTask> {
       fields[0] as String,
       fields[1] as String,
       fields[2] as String,
-      fields[3] as bool,
-      fields[4] as String,
+      fields[3] as TaskCategory,
+      fields[4] as bool,
+      fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveTask obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -36,8 +37,10 @@ class HiveTaskAdapter extends TypeAdapter<HiveTask> {
       ..writeByte(2)
       ..write(obj.desc)
       ..writeByte(3)
-      ..write(obj.isCompleted)
+      ..write(obj.category)
       ..writeByte(4)
+      ..write(obj.isCompleted)
+      ..writeByte(5)
       ..write(obj.createTime);
   }
 

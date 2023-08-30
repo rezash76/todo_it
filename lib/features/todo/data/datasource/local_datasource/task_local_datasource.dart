@@ -45,6 +45,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         task.id,
         task.title,
         task.desc,
+        task.category,
         task.isCompleted,
         task.createTime,
       );
@@ -64,6 +65,7 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         task.id,
         task.title,
         task.desc,
+        task.category,
         task.isCompleted,
         task.createTime,
       );
