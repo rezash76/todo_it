@@ -21,7 +21,7 @@ void main() {
     taskLocalDatasourceImpl = TaskLocalDatasourceImpl(mockDBProvider);
     hiveMap = {
       0: HiveTask(
-          'id', 'title', 'desc', TaskCategory.personal, true, '32432412'),
+          'id', 'title', 'desc', TaskCategory.personal.name, '32432412', true),
     };
     emptyMap = {};
     tasks = [

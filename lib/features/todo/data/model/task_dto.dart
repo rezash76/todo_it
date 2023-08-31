@@ -12,11 +12,21 @@ base class TaskDTO extends TaskEntity {
   });
 
   factory TaskDTO.fromDB(HiveTask hiveTask) {
+    var category = TaskCategory.personal;
+    switch (hiveTask.category) {
+      case 'personal':
+        category = TaskCategory.personal;
+      case 'work':
+        category = TaskCategory.work;
+      case 'learning':
+        category = TaskCategory.learning;
+    }
+
     return TaskDTO(
       id: hiveTask.id,
       title: hiveTask.title,
       desc: hiveTask.desc,
-      category: hiveTask.category,
+      category: category,
       isCompleted: hiveTask.isCompleted,
       createTime: hiveTask.createTime,
     );

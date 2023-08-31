@@ -134,6 +134,63 @@ class _CustomDrawerState extends State<CustomDrawer> {
               height: 30,
             ),
           ),
+          ListTile(
+            leading: const Icon(
+              Icons.home,
+              color: Colors.pinkAccent,
+            ),
+            title: Text(
+              LanguageManager.shared.translation(context).personal,
+              style: themeData.textTheme.titleMedium!.copyWith(
+                color: const Color.fromARGB(255, 42, 88, 4),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 30,
+            ),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.work,
+              color: Colors.greenAccent,
+            ),
+            title: Text(
+              LanguageManager.shared.translation(context).work,
+              style: themeData.textTheme.titleMedium!.copyWith(
+                color: const Color.fromARGB(255, 42, 88, 4),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 30,
+            ),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.book,
+              color: Colors.yellowAccent,
+            ),
+            title: Text(
+              LanguageManager.shared.translation(context).learning,
+              style: themeData.textTheme.titleMedium!.copyWith(
+                color: const Color.fromARGB(255, 42, 88, 4),
+              ),
+            ),
+            onTap: () {},
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 30,
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

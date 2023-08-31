@@ -10,7 +10,6 @@ import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 
 import 'mock_task_repository.mocks.dart';
 
-@GenerateMocks([TaskRepository])
 void main() {
   late MockTaskRepository mockTaskRepository;
   late UpdateTaskTransaction updateTaskTransaction;

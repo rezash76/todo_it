@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 
 part 'hive_task.g.dart';
 
@@ -10,8 +9,8 @@ base class HiveTask extends HiveObject {
     this.title,
     this.desc,
     this.category,
-    this.isCompleted,
     this.createTime,
+    this.isCompleted,
   );
 
   @HiveField(0)
@@ -24,11 +23,11 @@ base class HiveTask extends HiveObject {
   String desc;
 
   @HiveField(3)
-  TaskCategory category;
+  String category;
 
   @HiveField(4)
-  bool isCompleted;
+  String createTime;
 
   @HiveField(5)
-  String createTime;
+  bool isCompleted;
 }

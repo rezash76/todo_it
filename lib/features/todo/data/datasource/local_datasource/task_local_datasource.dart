@@ -45,9 +45,9 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         task.id,
         task.title,
         task.desc,
-        task.category,
-        task.isCompleted,
+        task.category.name,
         task.createTime,
+        task.isCompleted,
       );
       await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
@@ -65,9 +65,9 @@ base class TaskLocalDatasourceImpl extends TaskLocalDatasource {
         task.id,
         task.title,
         task.desc,
-        task.category,
-        task.isCompleted,
+        task.category.name,
         task.createTime,
+        task.isCompleted,
       );
       await dbProvider.put(hiveTask.id, hiveTask);
       return getAllTasks();
