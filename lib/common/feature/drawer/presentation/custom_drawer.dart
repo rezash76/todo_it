@@ -142,7 +142,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: Text(
               LanguageManager.shared.translation(context).personal,
               style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 42, 88, 4),
+                color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
             onTap: () {},
@@ -161,7 +161,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: Text(
               LanguageManager.shared.translation(context).work,
               style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 42, 88, 4),
+                color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
             onTap: () {},
@@ -180,7 +180,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: Text(
               LanguageManager.shared.translation(context).learning,
               style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 42, 88, 4),
+                color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
             onTap: () {},
