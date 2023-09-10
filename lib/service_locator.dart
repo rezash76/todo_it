@@ -28,6 +28,7 @@ import 'package:todo_test/features/todo/domain/repository/task_repository.dart';
 import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/get_cat_tasks_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'features/athentication/data/datasource/local_datasource/user_local_datasource.dart';
@@ -69,6 +70,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SignoutTransaction(repository: sl()));
   sl.registerLazySingleton(() => SignupTransaction(repository: sl()));
   sl.registerLazySingleton(() => GetAllTasksTransaction(sl()));
+  sl.registerLazySingleton(() => GetCatTasksTransaction(sl()));
   sl.registerLazySingleton(() => AddNewTaskTransaction(sl()));
   sl.registerLazySingleton(() => UpdateTaskTransaction(sl()));
   sl.registerLazySingleton(() => DeleteTaskTransaction(sl()));
@@ -79,6 +81,6 @@ Future<void> init() async {
   sl.registerFactory(() => SplashBloc(sl()));
   sl.registerFactory(() => SigninBloc(sl(), sl()));
   sl.registerFactory(() => SignupBloc(sl()));
-  sl.registerFactory(() => TaskBloc(sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => TaskBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => DrawerBloc(sl(), sl()));
 }

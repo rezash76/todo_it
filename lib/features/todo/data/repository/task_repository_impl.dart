@@ -64,4 +64,34 @@ base class TaskRepositoryImpl extends TaskRepository {
       return Left(HiveException(message: error.message));
     }
   }
+
+  @override
+  Future<Either<CacheException, List<TaskEntity>>> getCatTasks(
+      TaskCategory category) async {
+    try {
+      var tasks = localDatasource.getAllTasks();
+      switch (category) {
+        case TaskCategory.work:
+          var worTasks = tasks
+              .where((task) => task.category == TaskCategory.work)
+              .toList();
+          return Right(worTasks);
+
+        case TaskCategory.learning:
+          var learningTasks = tasks
+              .where((task) => task.category == TaskCategory.learning)
+              .toList();
+          return Right(learningTasks);
+
+        default:
+          return Right(tasks);
+      }
+    } on NotFound {
+      return Left(NotFound());
+    } on TypeMissmatch {
+      return Left(TypeMissmatch());
+    } on HiveException catch (error) {
+      return Left(HiveException(message: error.message));
+    }
+  }
 }

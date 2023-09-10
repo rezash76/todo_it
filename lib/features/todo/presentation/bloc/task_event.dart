@@ -5,6 +5,11 @@ abstract class TaskEvent {}
 
 class GetAllTasks extends TaskEvent {}
 
+class GetCatTasks extends TaskEvent {
+  final TaskCategory cat;
+  GetCatTasks({required this.cat});
+}
+
 class AddNewTask extends TaskEvent {
   final TaskRequest task;
   AddNewTask(this.task);

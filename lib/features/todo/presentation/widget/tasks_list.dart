@@ -32,6 +32,7 @@ class TaskList extends StatelessWidget {
               titleController: titleController,
               descController: descController,
               isUpdate: true,
+              selectedValue: tasks[index].category,
             );
           },
           child: TaskDismissibleListView(

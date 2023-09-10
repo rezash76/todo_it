@@ -5,6 +5,8 @@ import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.da
 import 'package:todo_test/common/feature/drawer/presentation/widget/custom_theme_mode.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/main.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -145,7 +147,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              BlocProvider.of<TaskBloc>(context).add(
+                GetCatTasks(
+                  cat: TaskCategory.personal,
+                ),
+              );
+              Navigator.pop(context);
+            },
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -164,7 +173,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              BlocProvider.of<TaskBloc>(context).add(
+                GetCatTasks(
+                  cat: TaskCategory.work,
+                ),
+              );
+              Navigator.pop(context);
+            },
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -183,7 +199,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 color: const Color.fromARGB(255, 139, 211, 79),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              BlocProvider.of<TaskBloc>(context).add(
+                GetCatTasks(
+                  cat: TaskCategory.learning,
+                ),
+              );
+              Navigator.pop(context);
+            },
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
