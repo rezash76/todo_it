@@ -88,6 +88,11 @@ class _TaskCardState extends State<TaskCard> {
                 );
               },
             ),
+            Container(
+              width: 10,
+              height: 60,
+              color: Colors.pinkAccent,
+            ),
           ],
         ),
       ),

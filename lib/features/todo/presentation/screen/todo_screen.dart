@@ -5,7 +5,6 @@ import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart'
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
 import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
