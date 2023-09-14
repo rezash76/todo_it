@@ -28,15 +28,24 @@ void main() {
         desc: 'desc',
         isCompleted: false,
         createTime: '3421241',
+        category: TaskCategory.personal,
       ),
     ];
-    request = TaskRequest('id', 'Hi', 'desc', false, '239483');
+    request = TaskRequest(
+      id: 'id',
+      title: 'Hi',
+      desc: 'desc',
+      isCompleted: false,
+      createTime: '239483',
+      category: TaskCategory.personal,
+    );
     task = TaskEntity(
       id: 'id',
       title: 'Hi',
       desc: 'desc',
       isCompleted: false,
       createTime: '239483',
+      category: TaskCategory.personal,
     );
     typeMissmatch = TypeMissmatch();
     hiveException = HiveException();

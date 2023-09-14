@@ -4,16 +4,16 @@ base class TaskRequest {
   final String id;
   final String title;
   final String desc;
-  TaskCategory category;
+  final TaskCategory category;
   final bool isCompleted;
   final String createTime;
 
-  TaskRequest(
-    this.id,
-    this.title,
-    this.desc,
-    this.isCompleted,
-    this.createTime, {
-    this.category = TaskCategory.personal,
+  TaskRequest({
+    required this.id,
+    required this.title,
+    required this.desc,
+    required this.isCompleted,
+    required this.createTime,
+    required this.category,
   });
 }

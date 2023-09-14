@@ -22,11 +22,12 @@ class TaskDismissibleListView extends StatelessWidget {
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.startToEnd) {
           var taskRequest = TaskRequest(
-            task.id,
-            task.title,
-            task.desc,
-            true,
-            task.createTime,
+            id: task.id,
+            title: task.title,
+            desc: task.desc,
+            isCompleted: true,
+            createTime: task.createTime,
+            category: task.category,
           );
           BlocProvider.of<TaskBloc>(context).add(UpdateTask(taskRequest));
           return false;

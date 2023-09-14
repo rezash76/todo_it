@@ -11,7 +11,7 @@ base class TaskEntity extends Entity {
     required String id,
     required this.title,
     required this.desc,
-    this.category = TaskCategory.personal,
+    required this.category,
     required this.isCompleted,
     required this.createTime,
   }) : super(id: id);

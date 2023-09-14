@@ -6,7 +6,7 @@ base class TaskDTO extends TaskEntity {
     required super.id,
     required super.title,
     required super.desc,
-    super.category,
+    required super.category,
     required super.isCompleted,
     required super.createTime,
   });

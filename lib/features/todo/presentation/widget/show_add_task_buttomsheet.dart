@@ -95,12 +95,15 @@ showAddTaskBottomSheet({
                         setState(() {
                           if (value == 'personal') {
                             selectedValue = TaskCategory.personal;
+                            print(selectedValue);
                           }
                           if (value == 'work') {
                             selectedValue = TaskCategory.work;
+                            print(selectedValue);
                           }
                           if (value == 'learning') {
                             selectedValue = TaskCategory.learning;
+                            print(selectedValue);
                           }
                         });
                       },
@@ -131,13 +134,13 @@ showAddTaskBottomSheet({
                 final timeStamp =
                     DateTime.now().millisecondsSinceEpoch.toString();
                 var taskRequest = TaskRequest(
-                  isUpdate
+                  id: isUpdate
                       ? (task != null ? task.id : const Uuid().v4())
                       : const Uuid().v4(),
-                  titleController.text,
-                  descController.text,
-                  false,
-                  isUpdate
+                  title: titleController.text,
+                  desc: descController.text,
+                  isCompleted: false,
+                  createTime: isUpdate
                       ? (task != null ? task.createTime : timeStamp)
                       : timeStamp,
                   category: selectedValue,

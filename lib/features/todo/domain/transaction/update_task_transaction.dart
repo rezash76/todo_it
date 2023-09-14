@@ -20,6 +20,7 @@ base class UpdateTaskTransaction
       desc: request.desc,
       isCompleted: request.isCompleted,
       createTime: request.createTime,
+      category: request.category,
     );
 
     return await repository.updateTask(task);

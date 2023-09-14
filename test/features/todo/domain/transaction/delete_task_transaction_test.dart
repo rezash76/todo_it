@@ -25,6 +25,7 @@ void main() {
         desc: 'desc',
         isCompleted: false,
         createTime: '3421241',
+        category: TaskCategory.personal,
       ),
     ];
     typeMissmatch = TypeMissmatch();

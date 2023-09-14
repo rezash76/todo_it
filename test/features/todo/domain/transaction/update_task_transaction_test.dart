@@ -31,15 +31,24 @@ void main() {
         desc: 'desc',
         isCompleted: false,
         createTime: '3421241',
+        category: TaskCategory.personal,
       ),
     ];
-    taskReq = TaskRequest('id', 'title', 'desc', true, '123443');
+    taskReq = TaskRequest(
+      id: 'id',
+      title: 'Hi',
+      desc: 'desc',
+      isCompleted: false,
+      createTime: '239483',
+      category: TaskCategory.personal,
+    );
     task = TaskEntity(
       id: 'id',
       title: 'title',
       desc: 'desc',
       isCompleted: true,
       createTime: '123443',
+      category: TaskCategory.personal,
     );
     notFound = NotFound();
     typeMissmatch = TypeMissmatch();

@@ -75,11 +75,12 @@ class _TaskCardState extends State<TaskCard> {
                   onChanged: (value) {
                     if (value != null) {
                       var taskRequest = TaskRequest(
-                        widget.task.id,
-                        widget.task.title,
-                        widget.task.desc,
-                        value,
-                        widget.task.createTime,
+                        id: widget.task.id,
+                        title: widget.task.title,
+                        desc: widget.task.desc,
+                        isCompleted: value,
+                        category: widget.task.category,
+                        createTime: widget.task.createTime,
                       );
                       BlocProvider.of<TaskBloc>(context)
                           .add(UpdateTask(taskRequest));
@@ -91,11 +92,25 @@ class _TaskCardState extends State<TaskCard> {
             Container(
               width: 10,
               height: 60,
-              color: Colors.pinkAccent,
+              color: getCategoryColor(),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Color? getCategoryColor() {
+    switch (widget.task.category) {
+      case TaskCategory.personal:
+        return Colors.pinkAccent;
+      case TaskCategory.work:
+        return Colors.greenAccent;
+      case TaskCategory.learning:
+        return Colors.yellowAccent;
+      default:
+        Colors.pinkAccent;
+    }
+    return null;
   }
 }
