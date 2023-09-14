@@ -90,7 +90,7 @@ class _TaskCardState extends State<TaskCard> {
               },
             ),
             Container(
-              width: 10,
+              width: 5,
               height: 60,
               color: getCategoryColor(),
             ),

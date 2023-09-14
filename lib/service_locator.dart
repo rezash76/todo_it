@@ -61,7 +61,8 @@ Future<void> init() async {
   // Repository
   sl.registerLazySingleton<UserRepository>(
       () => UserRepositoryImpl(datasource: sl()));
-  sl.registerLazySingleton<TaskRepository>(() => TaskRepositoryImpl(sl()));
+  sl.registerLazySingleton<TaskRepository>(
+      () => TaskRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<DrawerRepository>(() => DrawerRepositoryImpl(sl()));
 
   // Usecase
