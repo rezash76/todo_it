@@ -49,11 +49,13 @@ class TaskDismissibleListView extends StatelessWidget {
     return Container(
       color: isDelete ? Colors.red : const Color.fromRGBO(76, 175, 80, 1),
       child: Align(
-        alignment: isDelete ? Alignment.centerRight : Alignment.centerLeft,
+        alignment: isDelete
+            ? AlignmentDirectional.centerEnd
+            : AlignmentDirectional.centerStart,
         child: Padding(
           padding: isDelete
-              ? const EdgeInsets.only(right: 32)
-              : const EdgeInsets.only(left: 32),
+              ? const EdgeInsetsDirectional.only(end: 32)
+              : const EdgeInsetsDirectional.only(start: 32),
           child: Icon(
             isDelete ? Icons.delete : Icons.done,
             size: 32,
