@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
-import 'package:todo_test/features/athentication/presentation/screen/login_screen.dart';
+import 'package:todo_test/features/athentication/presentation/screen/signin_screen.dart';
 import 'package:todo_test/features/athentication/presentation/screen/signup_screen.dart';
 import 'package:todo_test/features/todo/presentation/screen/todo_screen.dart';
 
@@ -27,32 +27,41 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
-          Future.delayed(const Duration(milliseconds: 1000), () {
-            if (state is SplashSeccessUserExist) {
-              if (state.user.isLogin) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TodoScreen(),
-                  ),
-                );
-              } else {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ),
-                );
-              }
-            }
-            if (state is SplashErrorUserExist) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SignupScreen(),
-                ),
-              );
-            }
+          Future.delayed(const Duration(milliseconds: 1500), () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TodoScreen(),
+              ),
+            );
+
+            // TODO: implement Sign in/up
+            //
+            // if (state is SplashSeccessUserExist) {
+            //   if (state.user.isLogin) {
+            //     Navigator.pushReplacement(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => const TodoScreen(),
+            //       ),
+            //     );
+            //   } else {
+            //     Navigator.pushReplacement(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => const LoginScreen(),
+            //       ),
+            //     );
+            //   }
+            // }
+            // if (state is SplashErrorUserExist) {
+            //   Navigator.pushReplacement(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => const SignupScreen(),
+            //     ),
+            //   );
+            // }
           });
         },
         child: Column(
