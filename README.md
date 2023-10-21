@@ -1,7 +1,5 @@
-# todo_test
+# todo_it
 
 A Todo flutter app.
 
-## Getting Started
-
-Todo It, is about todo with Hive data base and clean architecture.
+Todo it, is about todo with Hive data base and clean architecture.
