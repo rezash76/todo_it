@@ -43,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale = Locale(LanguageManager.shared.ENGLISH);
+  Locale _locale = Locale(LanguageManager.shared.FARSI);
 
   setLocale(Locale locale) {
     setState(() {
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ToDo',
+          title: 'ToDo it',
           theme: ThemeConfig.light().getTheme(_locale.languageCode),
           darkTheme: ThemeConfig.dark().getTheme(_locale.languageCode),
           themeMode:

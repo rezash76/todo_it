@@ -18,7 +18,7 @@ class LanguageManager {
 
   Future<Locale> getLocale() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String languageCode = prefs.getString(LAGUAGE_CODE) ?? ENGLISH;
+    String languageCode = prefs.getString(LAGUAGE_CODE) ?? FARSI;
     return _locale(languageCode);
   }
 
