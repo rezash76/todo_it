@@ -15,7 +15,7 @@ class ThemeConfig {
       : brightness = Brightness.light,
         primaryColor = const Color.fromARGB(255, 14, 3, 54),
         secondaryColor = Colors.black87,
-        background = Colors.white,
+        background = const Color.fromARGB(255, 236, 240, 250),
         surface = const Color.fromARGB(209, 7, 6, 36),
         onSurface = const Color.fromARGB(255, 14, 3, 54);
 

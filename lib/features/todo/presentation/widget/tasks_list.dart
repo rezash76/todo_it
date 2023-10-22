@@ -17,11 +17,16 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
+      separatorBuilder: ((context, index) => const Divider(
+            height: 0,
+            color: Colors.grey,
+          )),
       padding: const EdgeInsets.symmetric(vertical: 12),
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
       itemCount: tasks.length,
       itemBuilder: (context, index) {
-        // final int keyIndex = (tasks.length - index) - 1;
         return GestureDetector(
           onTap: () {
             titleController.text = tasks[index].title;

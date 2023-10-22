@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
@@ -29,16 +30,25 @@ class _TaskCardState extends State<TaskCard> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.all(16),
+      // margin: const EdgeInsets.all(16),
       width: double.infinity,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(250, 210, 85, 1),
-        borderRadius: BorderRadius.circular(15),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        // borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         child: Row(
           children: [
+            SvgPicture.asset(
+              'assets/images/book.svg',
+              width: 40,
+              height: 40,
+              // colorFilter: const ColorFilter.mode(Colors.red, BlendMode.src),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,16 +57,6 @@ class _TaskCardState extends State<TaskCard> {
                     widget.task.title,
                     style: themeData.textTheme.titleLarge!
                         .copyWith(color: Colors.black87),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: Divider(
-                      color: Colors.black26,
-                      height: 1,
-                    ),
                   ),
                   Text(
                     widget.task.desc.toString().trim(),

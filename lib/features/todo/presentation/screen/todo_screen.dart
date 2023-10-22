@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
@@ -66,46 +67,168 @@ class _TodoScreenState extends State<TodoScreen> {
         ),
         // backgroundColor: const Color.fromARGB(255, 3, 22, 53),
         drawer: const CustomDrawer(),
-        body: Center(
-          child: Column(
-            children: [
-              BlocBuilder<TaskBloc, TaskState>(
-                builder: (context, state) {
-                  if (state is TaskError) {
-                    return EmptyTask(
-                      message: LanguageManager.shared
-                          .translation(context)
-                          .thereIsNoTask,
-                    );
-                  }
-                  if (state is TaskSuccess) {
-                    return NotificationListener<UserScrollNotification>(
-                      onNotification: (notif) {
-                        final ScrollDirection direction = notif.direction;
-                        setState(
-                          () {
-                            if (direction == ScrollDirection.reverse) {
-                              _isVisible = false;
-                            } else if (direction == ScrollDirection.forward) {
-                              _isVisible = true;
-                            }
-                          },
-                        );
-                        return true;
-                      },
-                      child: Expanded(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Categories',
+                  style: themeData.textTheme.titleMedium!.copyWith(
+                    color: const Color.fromARGB(255, 82, 83, 85),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: SvgPicture.asset(
+                              'assets/images/briefcase.svg',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Work',
+                          style: themeData.textTheme.titleMedium!.copyWith(
+                            color: const Color.fromARGB(255, 118, 120, 126),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: SvgPicture.asset(
+                              'assets/images/book.svg',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Personal',
+                          style: themeData.textTheme.titleMedium!.copyWith(
+                            color: const Color.fromARGB(255, 118, 120, 126),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: SvgPicture.asset(
+                              'assets/images/activity.svg',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Shopping',
+                          style: themeData.textTheme.titleMedium!.copyWith(
+                            color: const Color.fromARGB(255, 118, 120, 126),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: SvgPicture.asset(
+                              'assets/images/health.svg',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Health',
+                          style: themeData.textTheme.titleMedium!.copyWith(
+                            color: const Color.fromARGB(255, 118, 120, 126),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                BlocBuilder<TaskBloc, TaskState>(
+                  builder: (context, state) {
+                    if (state is TaskSuccess) {
+                      return NotificationListener<UserScrollNotification>(
+                        onNotification: (notif) {
+                          final ScrollDirection direction = notif.direction;
+                          setState(
+                            () {
+                              if (direction == ScrollDirection.reverse) {
+                                _isVisible = false;
+                              } else if (direction == ScrollDirection.forward) {
+                                _isVisible = true;
+                              }
+                            },
+                          );
+                          return true;
+                        },
                         child: TaskList(
                           tasks: state.tasks,
                           titleController: titleController,
                           descController: descController,
                         ),
-                      ),
+                      );
+                    }
+                    return EmptyTask(
+                      message: LanguageManager.shared
+                          .translation(context)
+                          .thereIsNoTask,
                     );
-                  }
-                  return const Text('Empty');
-                },
-              ),
-            ],
+                  },
+                ),
+              ],
+            ),
           ),
         ),
         floatingActionButton: AnimatedSlide(
