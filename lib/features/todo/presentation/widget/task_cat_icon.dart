@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 class TaskCatIcon extends StatelessWidget {
   final TaskCategory category;
-  final void Function() onTap;
   const TaskCatIcon({
     super.key,
     required this.category,
-    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return GestureDetector(
-      onTap: () => onTap,
+      onTap: () => BlocProvider.of<TaskBloc>(context).add(
+        GetCatTasks(
+          cat: category,
+        ),
+      ),
       child: Column(
         children: [
           Container(

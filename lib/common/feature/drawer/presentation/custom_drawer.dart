@@ -80,7 +80,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
                   const SizedBox(
-                    height: 4,
+                    height: 8,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -130,115 +130,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
               );
             },
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.home,
-              color: Colors.pinkAccent,
-            ),
-            title: Text(
-              LanguageManager.shared.translation(context).personal,
-              style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 139, 211, 79),
-              ),
-            ),
-            onTap: () {
-              BlocProvider.of<TaskBloc>(context).add(
-                GetCatTasks(
-                  cat: TaskCategory.personal,
-                ),
-              );
-              Navigator.pop(context);
-            },
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.work,
-              color: Colors.greenAccent,
-            ),
-            title: Text(
-              LanguageManager.shared.translation(context).work,
-              style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 139, 211, 79),
-              ),
-            ),
-            onTap: () {
-              BlocProvider.of<TaskBloc>(context).add(
-                GetCatTasks(
-                  cat: TaskCategory.work,
-                ),
-              );
-              Navigator.pop(context);
-            },
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.book,
-              color: Colors.yellowAccent,
-            ),
-            title: Text(
-              LanguageManager.shared.translation(context).learning,
-              style: themeData.textTheme.titleMedium!.copyWith(
-                color: const Color.fromARGB(255, 139, 211, 79),
-              ),
-            ),
-            onTap: () {
-              BlocProvider.of<TaskBloc>(context).add(
-                GetCatTasks(
-                  cat: TaskCategory.learning,
-                ),
-              );
-              Navigator.pop(context);
-            },
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.book,
-              color: Colors.red,
-            ),
-            title: Text(
-              LanguageManager.shared.translation(context).shopping,
-              style: themeData.textTheme.titleMedium!.copyWith(
-                color: Colors.red,
-              ),
-            ),
-            onTap: () {
-              BlocProvider.of<TaskBloc>(context).add(
-                GetCatTasks(
-                  cat: TaskCategory.shopping,
-                ),
-              );
-              Navigator.pop(context);
-            },
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
+          const SizedBox(
+            height: 24,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -290,11 +183,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              height: 30,
-            ),
+          const SizedBox(
+            height: 24,
           ),
           ListTile(
             leading: const Icon(

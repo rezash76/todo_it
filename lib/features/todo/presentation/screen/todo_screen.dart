@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
@@ -65,9 +64,7 @@ class _TodoScreenState extends State<TodoScreen> {
             ),
           ),
           centerTitle: true,
-          // backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
         ),
-        // backgroundColor: const Color.fromARGB(255, 3, 22, 53),
         drawer: const CustomDrawer(),
         body: SingleChildScrollView(
           child: Padding(
@@ -85,24 +82,20 @@ class _TodoScreenState extends State<TodoScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TaskCatIcon(
                       category: TaskCategory.personal,
-                      onTap: () {},
                     ),
                     TaskCatIcon(
                       category: TaskCategory.work,
-                      onTap: () {},
                     ),
                     TaskCatIcon(
                       category: TaskCategory.shopping,
-                      onTap: () {},
                     ),
                     TaskCatIcon(
                       category: TaskCategory.learning,
-                      onTap: () {},
                     ),
                   ],
                 ),
