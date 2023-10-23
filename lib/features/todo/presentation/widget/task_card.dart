@@ -40,11 +40,10 @@ class _TaskCardState extends State<TaskCard> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         child: Row(
           children: [
-            SvgPicture.asset(
-              'assets/images/book.svg',
-              width: 40,
-              height: 40,
-              // colorFilter: const ColorFilter.mode(Colors.red, BlendMode.src),
+            Container(
+              width: 3,
+              height: 60,
+              color: getCategoryColor(),
             ),
             const SizedBox(
               width: 12,
@@ -89,11 +88,6 @@ class _TaskCardState extends State<TaskCard> {
                 );
               },
             ),
-            Container(
-              width: 5,
-              height: 60,
-              color: getCategoryColor(),
-            ),
           ],
         ),
       ),
@@ -103,15 +97,15 @@ class _TaskCardState extends State<TaskCard> {
   Color? getCategoryColor() {
     switch (widget.task.category) {
       case TaskCategory.personal:
-        return Colors.pinkAccent;
-      case TaskCategory.work:
-        return Colors.greenAccent;
-      case TaskCategory.learning:
-        return Colors.yellowAccent;
-      case TaskCategory.shopping:
         return Colors.red;
+      case TaskCategory.work:
+        return Colors.blue;
+      case TaskCategory.learning:
+        return Colors.purple;
+      case TaskCategory.shopping:
+        return Colors.green;
       default:
-        Colors.pinkAccent;
+        Colors.red;
     }
     return null;
   }

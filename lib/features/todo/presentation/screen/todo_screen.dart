@@ -123,10 +123,28 @@ class _TodoScreenState extends State<TodoScreen> {
                           );
                           return true;
                         },
-                        child: TaskList(
-                          tasks: state.tasks,
-                          titleController: titleController,
-                          descController: descController,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              LanguageManager.shared.translation(context).tasks,
+                              style: themeData.textTheme.titleMedium!.copyWith(
+                                color: const Color.fromARGB(255, 82, 83, 85),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            TaskList(
+                              tasks: state.tasks,
+                              titleController: titleController,
+                              descController: descController,
+                            ),
+                          ],
                         ),
                       );
                     }
