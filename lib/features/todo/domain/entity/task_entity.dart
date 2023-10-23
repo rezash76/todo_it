@@ -21,4 +21,5 @@ enum TaskCategory {
   personal,
   work,
   learning,
+  shopping,
 }

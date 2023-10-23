@@ -214,6 +214,32 @@ class _CustomDrawerState extends State<CustomDrawer> {
               height: 30,
             ),
           ),
+          ListTile(
+            leading: const Icon(
+              Icons.book,
+              color: Colors.red,
+            ),
+            title: Text(
+              LanguageManager.shared.translation(context).shopping,
+              style: themeData.textTheme.titleMedium!.copyWith(
+                color: Colors.red,
+              ),
+            ),
+            onTap: () {
+              BlocProvider.of<TaskBloc>(context).add(
+                GetCatTasks(
+                  cat: TaskCategory.shopping,
+                ),
+              );
+              Navigator.pop(context);
+            },
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 30,
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

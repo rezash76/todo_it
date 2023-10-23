@@ -6,9 +6,11 @@ import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart'
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
+import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
 import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
+import 'package:todo_test/features/todo/presentation/widget/task_cat_icon.dart';
 import 'package:todo_test/features/todo/presentation/widget/tasks_list.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -74,7 +76,7 @@ class _TodoScreenState extends State<TodoScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Categories',
+                  LanguageManager.shared.translation(context).categories,
                   style: themeData.textTheme.titleMedium!.copyWith(
                     color: const Color.fromARGB(255, 82, 83, 85),
                     fontWeight: FontWeight.w700,
@@ -86,113 +88,21 @@ class _TodoScreenState extends State<TodoScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: SvgPicture.asset(
-                              'assets/images/briefcase.svg',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'Work',
-                          style: themeData.textTheme.titleMedium!.copyWith(
-                            color: const Color.fromARGB(255, 118, 120, 126),
-                          ),
-                        ),
-                      ],
+                    TaskCatIcon(
+                      category: TaskCategory.personal,
+                      onTap: () {},
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: SvgPicture.asset(
-                              'assets/images/book.svg',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'Personal',
-                          style: themeData.textTheme.titleMedium!.copyWith(
-                            color: const Color.fromARGB(255, 118, 120, 126),
-                          ),
-                        ),
-                      ],
+                    TaskCatIcon(
+                      category: TaskCategory.work,
+                      onTap: () {},
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: SvgPicture.asset(
-                              'assets/images/activity.svg',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'Shopping',
-                          style: themeData.textTheme.titleMedium!.copyWith(
-                            color: const Color.fromARGB(255, 118, 120, 126),
-                          ),
-                        ),
-                      ],
+                    TaskCatIcon(
+                      category: TaskCategory.shopping,
+                      onTap: () {},
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: SvgPicture.asset(
-                              'assets/images/health.svg',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'Health',
-                          style: themeData.textTheme.titleMedium!.copyWith(
-                            color: const Color.fromARGB(255, 118, 120, 126),
-                          ),
-                        ),
-                      ],
+                    TaskCatIcon(
+                      category: TaskCategory.learning,
+                      onTap: () {},
                     ),
                   ],
                 ),

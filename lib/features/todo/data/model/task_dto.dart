@@ -20,6 +20,8 @@ base class TaskDTO extends TaskEntity {
         category = TaskCategory.work;
       case 'learning':
         category = TaskCategory.learning;
+      case 'shopping':
+        category = TaskCategory.shopping;
     }
 
     return TaskDTO(

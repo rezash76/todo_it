@@ -108,6 +108,8 @@ class _TaskCardState extends State<TaskCard> {
         return Colors.greenAccent;
       case TaskCategory.learning:
         return Colors.yellowAccent;
+      case TaskCategory.shopping:
+        return Colors.red;
       default:
         Colors.pinkAccent;
     }

@@ -79,16 +79,22 @@ base class TaskRepositoryImpl extends TaskRepository {
       var tasks = localDatasource.getAllTasks();
       switch (category) {
         case TaskCategory.work:
-          var worTasks = tasks
+          var workTasks = tasks
               .where((task) => task.category == TaskCategory.work)
               .toList();
-          return Right(worTasks);
+          return Right(workTasks);
 
         case TaskCategory.learning:
           var learningTasks = tasks
               .where((task) => task.category == TaskCategory.learning)
               .toList();
           return Right(learningTasks);
+
+        case TaskCategory.shopping:
+          var shoppingTasks = tasks
+              .where((task) => task.category == TaskCategory.shopping)
+              .toList();
+          return Right(shoppingTasks);
 
         default:
           return Right(tasks);
