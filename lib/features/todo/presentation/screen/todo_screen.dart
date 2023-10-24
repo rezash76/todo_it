@@ -24,6 +24,7 @@ class _TodoScreenState extends State<TodoScreen> {
   late TextEditingController descController;
 
   bool _isVisible = true;
+  TaskCategory cat = TaskCategory.personal;
 
   @override
   void initState() {
@@ -82,20 +83,56 @@ class _TodoScreenState extends State<TodoScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TaskCatIcon(
                       category: TaskCategory.personal,
+                      isSelected: cat == TaskCategory.personal,
+                      onTap: () {
+                        setState(() {
+                          cat = TaskCategory.personal;
+                        });
+                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                          cat: cat,
+                        ));
+                      },
                     ),
                     TaskCatIcon(
                       category: TaskCategory.work,
+                      isSelected: cat == TaskCategory.work,
+                      onTap: () {
+                        setState(() {
+                          cat = TaskCategory.work;
+                        });
+                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                          cat: cat,
+                        ));
+                      },
                     ),
                     TaskCatIcon(
                       category: TaskCategory.shopping,
+                      isSelected: cat == TaskCategory.shopping,
+                      onTap: () {
+                        setState(() {
+                          cat = TaskCategory.shopping;
+                        });
+                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                          cat: cat,
+                        ));
+                      },
                     ),
                     TaskCatIcon(
                       category: TaskCategory.learning,
+                      isSelected: cat == TaskCategory.learning,
+                      onTap: () {
+                        setState(() {
+                          cat = TaskCategory.learning;
+                        });
+                        BlocProvider.of<TaskBloc>(context).add(
+                          GetCatTasks(cat: cat),
+                        );
+                      },
                     ),
                   ],
                 ),

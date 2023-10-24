@@ -7,20 +7,20 @@ import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 class TaskCatIcon extends StatelessWidget {
   final TaskCategory category;
+  final bool isSelected;
+  final Function() onTap;
   const TaskCatIcon({
     super.key,
     required this.category,
+    required this.isSelected,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return GestureDetector(
-      onTap: () => BlocProvider.of<TaskBloc>(context).add(
-        GetCatTasks(
-          cat: category,
-        ),
-      ),
+      onTap: onTap,
       child: Column(
         children: [
           Container(
@@ -29,6 +29,15 @@ class TaskCatIcon extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
+              boxShadow: isSelected
+                  ? [
+                      BoxShadow(
+                        color: getCategoryColor(),
+                        offset: const Offset(0, 0),
+                        blurRadius: 6,
+                      ),
+                    ]
+                  : null,
             ),
             child: Padding(
               padding: const EdgeInsets.all(14),
@@ -67,6 +76,21 @@ class TaskCatIcon extends StatelessWidget {
 
       default:
         return LanguageManager.shared.translation(context).personal;
+    }
+  }
+
+  Color getCategoryColor() {
+    switch (category) {
+      case TaskCategory.personal:
+        return Colors.red;
+      case TaskCategory.work:
+        return Colors.blue;
+      case TaskCategory.learning:
+        return Colors.purple;
+      case TaskCategory.shopping:
+        return Colors.green;
+      default:
+        return Colors.red;
     }
   }
 }

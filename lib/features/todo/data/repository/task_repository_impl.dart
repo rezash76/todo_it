@@ -82,19 +82,23 @@ base class TaskRepositoryImpl extends TaskRepository {
           var workTasks = tasks
               .where((task) => task.category == TaskCategory.work)
               .toList();
-          return Right(workTasks);
+          return workTasks.isNotEmpty ? Right(workTasks) : Left(NotFound());
 
         case TaskCategory.learning:
           var learningTasks = tasks
               .where((task) => task.category == TaskCategory.learning)
               .toList();
-          return Right(learningTasks);
+          return learningTasks.isNotEmpty
+              ? Right(learningTasks)
+              : Left(NotFound());
 
         case TaskCategory.shopping:
           var shoppingTasks = tasks
               .where((task) => task.category == TaskCategory.shopping)
               .toList();
-          return Right(shoppingTasks);
+          return shoppingTasks.isNotEmpty
+              ? Right(shoppingTasks)
+              : Left(NotFound());
 
         default:
           return Right(tasks);
