@@ -35,9 +35,12 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   _getAllTasksEventHandler(GetAllTasks event, Emitter emit) async {
     final tasks = await getAllTasksTransaction(NoRequest());
+
     tasks.fold(
       (exception) => emit(TaskError(exception.message)),
-      (tasks) => emit(TaskSuccess(tasks)),
+      (tasks) {
+        _emitTasks(tasks, emit);
+      },
     );
   }
 
@@ -45,7 +48,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final tasks = await getCatTasksTransaction(event.cat);
     tasks.fold(
       (exception) => emit(TaskError(exception.message)),
-      (tasks) => emit(TaskSuccess(tasks)),
+      (tasks) {
+        _emitTasks(tasks, emit);
+      },
     );
   }
 
@@ -53,7 +58,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final tasks = await addNewTaskTransaction(event.task);
     tasks.fold(
       (exception) => emit(TaskError(exception.message)),
-      (tasks) => emit(TaskSuccess(tasks)),
+      (tasks) {
+        _emitTasks(tasks, emit);
+      },
     );
   }
 
@@ -61,7 +68,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final isCompleted = await updateTaskTransaction(event.task);
     isCompleted.fold(
       (exception) => emit(TaskError(exception.message)),
-      (tasks) => emit(TaskSuccess(tasks)),
+      (tasks) {
+        _emitTasks(tasks, emit);
+      },
     );
   }
 
@@ -69,7 +78,18 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final isDeleted = await deleteTaskTransaction(event.taskId);
     isDeleted.fold(
       (exception) => emit(TaskError(exception.message)),
-      (tasks) => emit(TaskSuccess(tasks)),
+      (tasks) {
+        _emitTasks(tasks, emit);
+      },
     );
+  }
+
+  void _emitTasks(List<TaskEntity> allTasks, Emitter emit) {
+    var unCompletedTasks =
+        allTasks.where((task) => task.isCompleted == false).toList();
+    var completedTasks =
+        allTasks.where((task) => task.isCompleted == true).toList();
+
+    emit(TaskSuccess(tasks: unCompletedTasks, completedTasks: completedTasks));
   }
 }

@@ -83,58 +83,62 @@ class _TodoScreenState extends State<TodoScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TaskCatIcon(
-                      category: TaskCategory.personal,
-                      isSelected: cat == TaskCategory.personal,
-                      onTap: () {
-                        setState(() {
-                          cat = TaskCategory.personal;
-                        });
-                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                          cat: cat,
-                        ));
-                      },
-                    ),
-                    TaskCatIcon(
-                      category: TaskCategory.work,
-                      isSelected: cat == TaskCategory.work,
-                      onTap: () {
-                        setState(() {
-                          cat = TaskCategory.work;
-                        });
-                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                          cat: cat,
-                        ));
-                      },
-                    ),
-                    TaskCatIcon(
-                      category: TaskCategory.shopping,
-                      isSelected: cat == TaskCategory.shopping,
-                      onTap: () {
-                        setState(() {
-                          cat = TaskCategory.shopping;
-                        });
-                        BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                          cat: cat,
-                        ));
-                      },
-                    ),
-                    TaskCatIcon(
-                      category: TaskCategory.learning,
-                      isSelected: cat == TaskCategory.learning,
-                      onTap: () {
-                        setState(() {
-                          cat = TaskCategory.learning;
-                        });
-                        BlocProvider.of<TaskBloc>(context).add(
-                          GetCatTasks(cat: cat),
-                        );
-                      },
-                    ),
-                  ],
+                BlocBuilder<TaskBloc, TaskState>(
+                  builder: (context, state) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TaskCatIcon(
+                          category: TaskCategory.personal,
+                          isSelected: cat == TaskCategory.personal,
+                          onTap: () {
+                            setState(() {
+                              cat = TaskCategory.personal;
+                            });
+                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                              cat: cat,
+                            ));
+                          },
+                        ),
+                        TaskCatIcon(
+                          category: TaskCategory.work,
+                          isSelected: cat == TaskCategory.work,
+                          onTap: () {
+                            setState(() {
+                              cat = TaskCategory.work;
+                            });
+                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                              cat: cat,
+                            ));
+                          },
+                        ),
+                        TaskCatIcon(
+                          category: TaskCategory.shopping,
+                          isSelected: cat == TaskCategory.shopping,
+                          onTap: () {
+                            setState(() {
+                              cat = TaskCategory.shopping;
+                            });
+                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
+                              cat: cat,
+                            ));
+                          },
+                        ),
+                        TaskCatIcon(
+                          category: TaskCategory.learning,
+                          isSelected: cat == TaskCategory.learning,
+                          onTap: () {
+                            setState(() {
+                              cat = TaskCategory.learning;
+                            });
+                            BlocProvider.of<TaskBloc>(context).add(
+                              GetCatTasks(cat: cat),
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 BlocBuilder<TaskBloc, TaskState>(
                   builder: (context, state) {
@@ -171,6 +175,27 @@ class _TodoScreenState extends State<TodoScreen> {
                             ),
                             TaskList(
                               tasks: state.tasks,
+                              titleController: titleController,
+                              descController: descController,
+                            ),
+                            if (state.completedTasks != null)
+                              const SizedBox(
+                                height: 16,
+                              ),
+                            Text(
+                              LanguageManager.shared
+                                  .translation(context)
+                                  .completed,
+                              style: themeData.textTheme.titleMedium!.copyWith(
+                                color: const Color.fromARGB(255, 82, 83, 85),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            TaskList(
+                              tasks: state.completedTasks!,
                               titleController: titleController,
                               descController: descController,
                             ),
