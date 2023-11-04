@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 
 class TaskCatIcon extends StatelessWidget {
   final TaskCategory category;
@@ -61,36 +59,23 @@ class TaskCatIcon extends StatelessWidget {
   }
 
   String getCatTitle(BuildContext context) {
-    switch (category) {
-      case TaskCategory.personal:
-        return LanguageManager.shared.translation(context).personal;
-
-      case TaskCategory.shopping:
-        return LanguageManager.shared.translation(context).shopping;
-
-      case TaskCategory.work:
-        return LanguageManager.shared.translation(context).work;
-
-      case TaskCategory.learning:
-        return LanguageManager.shared.translation(context).learning;
-
-      default:
-        return LanguageManager.shared.translation(context).personal;
-    }
+    return switch (category) {
+      TaskCategory.personal =>
+        LanguageManager.shared.translation(context).personal,
+      TaskCategory.shopping =>
+        LanguageManager.shared.translation(context).shopping,
+      TaskCategory.work => LanguageManager.shared.translation(context).work,
+      TaskCategory.learning =>
+        LanguageManager.shared.translation(context).learning,
+    };
   }
 
   Color getCategoryColor() {
-    switch (category) {
-      case TaskCategory.personal:
-        return Colors.red;
-      case TaskCategory.work:
-        return Colors.blue;
-      case TaskCategory.learning:
-        return Colors.purple;
-      case TaskCategory.shopping:
-        return Colors.green;
-      default:
-        return Colors.red;
-    }
+    return switch (category) {
+      TaskCategory.personal => Colors.red,
+      TaskCategory.work => Colors.blue,
+      TaskCategory.learning => Colors.purple,
+      TaskCategory.shopping => Colors.green,
+    };
   }
 }

@@ -6,7 +6,8 @@ import 'package:todo_test/common/theme/theme_config.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
 import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'package:todo_test/service_locator.dart' as locator;
 import 'package:todo_test/service_locator.dart';
 import 'features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
@@ -23,6 +24,7 @@ Future<void> main() async {
         BlocProvider(create: (context) => sl<SignupBloc>()),
         BlocProvider(create: (context) => sl<SigninBloc>()),
         BlocProvider(create: (context) => sl<TaskBloc>()),
+        BlocProvider(create: (context) => sl<CatBloc>()),
         BlocProvider(create: (context) => sl<DrawerBloc>()),
       ],
       child: const MyApp(),

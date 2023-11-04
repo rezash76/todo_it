@@ -26,11 +26,14 @@ import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
 import 'package:todo_test/features/todo/data/repository/task_repository_impl.dart';
 import 'package:todo_test/features/todo/domain/repository/task_repository.dart';
 import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/category/set_cat_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/delete_task_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/get_all_tasks_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/get_cat_tasks_transaction.dart';
+import 'package:todo_test/features/todo/domain/transaction/category/get_cat_transaction.dart';
 import 'package:todo_test/features/todo/domain/transaction/update_task_transaction.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'features/athentication/data/datasource/local_datasource/user_local_datasource.dart';
 
 final sl = GetIt.instance;
@@ -77,6 +80,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DeleteTaskTransaction(sl()));
   sl.registerLazySingleton(() => GetThemeTransaction(sl()));
   sl.registerLazySingleton(() => SetThemeTransaction(sl()));
+  sl.registerLazySingleton(() => GetCatTransaction(sl()));
+  sl.registerLazySingleton(() => SetCatTransaction(sl()));
 
   // Bloc
   sl.registerFactory(() => SplashBloc(sl()));
@@ -84,4 +89,5 @@ Future<void> init() async {
   sl.registerFactory(() => SignupBloc(sl()));
   sl.registerFactory(() => TaskBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => DrawerBloc(sl(), sl()));
+  sl.registerFactory(() => CatBloc(sl(), sl()));
 }

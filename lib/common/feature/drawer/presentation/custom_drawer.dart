@@ -5,8 +5,6 @@ import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.da
 import 'package:todo_test/common/feature/drawer/presentation/widget/custom_theme_mode.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
 import 'package:todo_test/main.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -93,9 +91,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         child: CustomThemeMode(
                           themeMode: ThemeMode.light,
                           isSelected: ((state is GetThemeSuccess) &&
-                                  state.themeMode == ThemeMode.light)
-                              ? true
-                              : false,
+                              state.themeMode == ThemeMode.light),
                         ),
                       ),
                       GestureDetector(
@@ -106,9 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         child: CustomThemeMode(
                           themeMode: ThemeMode.dark,
                           isSelected: ((state is GetThemeSuccess) &&
-                                  state.themeMode == ThemeMode.dark)
-                              ? true
-                              : false,
+                              state.themeMode == ThemeMode.dark),
                         ),
                       ),
                       GestureDetector(
@@ -119,9 +113,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         child: CustomThemeMode(
                           themeMode: ThemeMode.system,
                           isSelected: ((state is GetThemeSuccess) &&
-                                  state.themeMode == ThemeMode.system)
-                              ? true
-                              : false,
+                              state.themeMode == ThemeMode.system),
                         ),
                       ),
                     ],

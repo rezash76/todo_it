@@ -4,12 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
-import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
+import 'package:todo_test/features/todo/presentation/widget/category_row.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
 import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
-import 'package:todo_test/features/todo/presentation/widget/task_cat_icon.dart';
 import 'package:todo_test/features/todo/presentation/widget/tasks_list.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -22,9 +21,6 @@ class TodoScreen extends StatefulWidget {
 class _TodoScreenState extends State<TodoScreen> {
   late TextEditingController titleController;
   late TextEditingController descController;
-
-  bool _isVisible = true;
-  TaskCategory cat = TaskCategory.personal;
 
   @override
   void initState() {
@@ -46,15 +42,15 @@ class _TodoScreenState extends State<TodoScreen> {
     ThemeData themeData = Theme.of(context);
     return BlocListener<SigninBloc, SigninState>(
       listener: (context, state) {
-        if (state is SignoutSuccess) {
-          Navigator.pop(context);
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            SplashScreen.routName,
-            (route) => false,
-          );
-        }
-        if (state is SignoutError) {}
+        // if (state is SignoutSuccess) {
+        //   Navigator.pop(context);
+        //   Navigator.pushNamedAndRemoveUntil(
+        //     context,
+        //     SplashScreen.routName,
+        //     (route) => false,
+        //   );
+        // }
+        // if (state is SignoutError) {}
       },
       child: Scaffold(
         appBar: AppBar(
@@ -83,86 +79,25 @@ class _TodoScreenState extends State<TodoScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                BlocBuilder<TaskBloc, TaskState>(
+                BlocBuilder<CatBloc, CatState>(
                   builder: (context, state) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TaskCatIcon(
-                          category: TaskCategory.personal,
-                          isSelected: cat == TaskCategory.personal,
-                          onTap: () {
-                            setState(() {
-                              cat = TaskCategory.personal;
-                            });
-                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                              cat: cat,
-                            ));
-                          },
-                        ),
-                        TaskCatIcon(
-                          category: TaskCategory.work,
-                          isSelected: cat == TaskCategory.work,
-                          onTap: () {
-                            setState(() {
-                              cat = TaskCategory.work;
-                            });
-                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                              cat: cat,
-                            ));
-                          },
-                        ),
-                        TaskCatIcon(
-                          category: TaskCategory.shopping,
-                          isSelected: cat == TaskCategory.shopping,
-                          onTap: () {
-                            setState(() {
-                              cat = TaskCategory.shopping;
-                            });
-                            BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
-                              cat: cat,
-                            ));
-                          },
-                        ),
-                        TaskCatIcon(
-                          category: TaskCategory.learning,
-                          isSelected: cat == TaskCategory.learning,
-                          onTap: () {
-                            setState(() {
-                              cat = TaskCategory.learning;
-                            });
-                            BlocProvider.of<TaskBloc>(context).add(
-                              GetCatTasks(cat: cat),
-                            );
-                          },
-                        ),
-                      ],
-                    );
+                    print(state.runtimeType);
+                    return const CategoryRow();
                   },
+                ),
+                const SizedBox(
+                  height: 16,
                 ),
                 BlocBuilder<TaskBloc, TaskState>(
                   builder: (context, state) {
                     if (state is TaskSuccess) {
-                      return NotificationListener<UserScrollNotification>(
-                        onNotification: (notif) {
-                          final ScrollDirection direction = notif.direction;
-                          setState(
-                            () {
-                              if (direction == ScrollDirection.reverse) {
-                                _isVisible = false;
-                              } else if (direction == ScrollDirection.forward) {
-                                _isVisible = true;
-                              }
-                            },
-                          );
-                          return true;
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          if (state.tasks.isNotEmpty)
                             Text(
                               LanguageManager.shared.translation(context).tasks,
                               style: themeData.textTheme.titleMedium!.copyWith(
@@ -170,37 +105,37 @@ class _TodoScreenState extends State<TodoScreen> {
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
+                          if (state.tasks.isNotEmpty)
                             const SizedBox(
                               height: 4,
                             ),
-                            TaskList(
-                              tasks: state.tasks,
-                              titleController: titleController,
-                              descController: descController,
-                            ),
-                            if (state.completedTasks != null)
-                              const SizedBox(
-                                height: 16,
-                              ),
-                            Text(
-                              LanguageManager.shared
-                                  .translation(context)
-                                  .completed,
-                              style: themeData.textTheme.titleMedium!.copyWith(
-                                color: const Color.fromARGB(255, 82, 83, 85),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
+                          TaskList(
+                            tasks: state.tasks,
+                            titleController: titleController,
+                            descController: descController,
+                          ),
+                          if (state.completedTasks != null)
                             const SizedBox(
-                              height: 4,
+                              height: 16,
                             ),
-                            TaskList(
-                              tasks: state.completedTasks!,
-                              titleController: titleController,
-                              descController: descController,
+                          Text(
+                            LanguageManager.shared
+                                .translation(context)
+                                .completed,
+                            style: themeData.textTheme.titleMedium!.copyWith(
+                              color: const Color.fromARGB(255, 82, 83, 85),
+                              fontWeight: FontWeight.w700,
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          TaskList(
+                            tasks: state.completedTasks!,
+                            titleController: titleController,
+                            descController: descController,
+                          ),
+                        ],
                       );
                     }
                     return EmptyTask(
@@ -210,31 +145,26 @@ class _TodoScreenState extends State<TodoScreen> {
                     );
                   },
                 ),
+                const SizedBox(
+                  height: 32,
+                ),
               ],
             ),
           ),
         ),
-        floatingActionButton: AnimatedSlide(
-          duration: const Duration(milliseconds: 400),
-          offset: _isVisible ? Offset.zero : const Offset(0, 2),
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 400),
-            opacity: _isVisible ? 1 : 0,
-            child: FloatingActionButton(
-              onPressed: () {
-                titleController.text = '';
-                descController.text = '';
-                showAddTaskBottomSheet(
-                  context: context,
-                  titleController: titleController,
-                  descController: descController,
-                  isUpdate: false,
-                );
-              },
-              backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
-              child: const Icon(Icons.add),
-            ),
-          ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            titleController.text = '';
+            descController.text = '';
+            showAddTaskBottomSheet(
+              context: context,
+              titleController: titleController,
+              descController: descController,
+              isUpdate: false,
+            );
+          },
+          backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
+          child: const Icon(Icons.add),
         ),
       ),
     );

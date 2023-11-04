@@ -5,8 +5,11 @@ class CustomThemeMode extends StatelessWidget {
   final ThemeMode themeMode;
   final bool isSelected;
 
-  const CustomThemeMode(
-      {super.key, required this.themeMode, required this.isSelected});
+  const CustomThemeMode({
+    super.key,
+    required this.themeMode,
+    required this.isSelected,
+  });
 
   @override
   Widget build(BuildContext context) {

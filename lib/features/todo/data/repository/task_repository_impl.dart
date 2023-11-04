@@ -46,7 +46,6 @@ base class TaskRepositoryImpl extends TaskRepository {
       TaskEntity taskEntity) async {
     try {
       var tasks = await localDatasource.updateTask(taskEntity);
-      await shared.setString(Constants.category, taskEntity.category.name);
       return Right(returnTasksDependOnCat(tasks));
     } on NotFound {
       return Left(NotFound());
@@ -75,7 +74,6 @@ base class TaskRepositoryImpl extends TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> getCatTasks(
       TaskCategory category) async {
     try {
-      await shared.setString(Constants.category, category.name);
       var tasks = localDatasource.getAllTasks();
       switch (category) {
         case TaskCategory.work:
@@ -100,7 +98,15 @@ base class TaskRepositoryImpl extends TaskRepository {
               ? Right(shoppingTasks)
               : Left(NotFound());
 
+        case TaskCategory.personal:
+          var personalTasks = tasks
+              .where((task) => task.category == TaskCategory.personal)
+              .toList();
+          return personalTasks.isNotEmpty
+              ? Right(personalTasks)
+              : Left(NotFound());
         default:
+          // personal
           return Right(tasks);
       }
     } on NotFound {
@@ -112,25 +118,54 @@ base class TaskRepositoryImpl extends TaskRepository {
     }
   }
 
+  @override
+  Future<Either<CacheException, TaskCategory>> getCat() async {
+    try {
+      var cat = shared.getString(Constants.category);
+      if (cat != null) {
+        return switch (cat) {
+          'work' => const Right(TaskCategory.work),
+          'learning' => const Right(TaskCategory.learning),
+          'shopping' => const Right(TaskCategory.shopping),
+          'personal' => const Right(TaskCategory.personal),
+          _ => const Right(TaskCategory.personal),
+        };
+      } else {
+        return Left(CacheException());
+      }
+    } on Exception {
+      return Left(CacheException());
+    }
+  }
+
+  @override
+  Future<Either<CacheException, TaskCategory>> setCat(
+      TaskCategory category) async {
+    try {
+      await shared.setString(Constants.category, category.name);
+      return getCat();
+    } on Exception {
+      return Left(CacheException());
+    }
+  }
+
   List<TaskDTO> returnTasksDependOnCat(List<TaskDTO> tasks) {
     var cat = shared.getString(Constants.category);
     if (cat != null) {
-      switch (cat) {
-        case 'work':
-          var worTasks = tasks
-              .where((task) => task.category == TaskCategory.work)
-              .toList();
-          return worTasks;
-
-        case 'learning':
-          var learningTasks = tasks
-              .where((task) => task.category == TaskCategory.learning)
-              .toList();
-          return learningTasks;
-
-        default:
-          return tasks;
-      }
+      return switch (cat) {
+        'work' =>
+          tasks.where((task) => task.category == TaskCategory.work).toList(),
+        'learning' => tasks
+            .where((task) => task.category == TaskCategory.learning)
+            .toList(),
+        'shopping' => tasks
+            .where((task) => task.category == TaskCategory.shopping)
+            .toList(),
+        'personal' => tasks
+            .where((task) => task.category == TaskCategory.personal)
+            .toList(),
+        _ => tasks,
+      };
     } else {
       return tasks;
     }

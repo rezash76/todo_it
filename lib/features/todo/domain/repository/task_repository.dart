@@ -11,4 +11,6 @@ abstract class TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> updateTask(
       TaskEntity taskEntity);
   Future<Either<CacheException, List<TaskEntity>>> deleteTask(String id);
+  Future<Either<CacheException, TaskCategory>> getCat();
+  Future<Either<CacheException, TaskCategory>> setCat(TaskCategory category);
 }

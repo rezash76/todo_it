@@ -90,6 +90,13 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     var completedTasks =
         allTasks.where((task) => task.isCompleted == true).toList();
 
-    emit(TaskSuccess(tasks: unCompletedTasks, completedTasks: completedTasks));
+    emit(
+      TaskSuccess(
+        tasks: unCompletedTasks,
+        completedTasks: completedTasks,
+        category:
+            allTasks.isNotEmpty ? allTasks[0].category : TaskCategory.personal,
+      ),
+    );
   }
 }

@@ -5,8 +5,7 @@ import 'package:todo_test/common/component/custom_text_form_field.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task_bloc.dart';
-import 'package:todo_test/features/todo/presentation/widget/task_cat_icon.dart';
+import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 showAddTaskBottomSheet({
