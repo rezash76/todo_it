@@ -35,7 +35,6 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   _getAllTasksEventHandler(GetAllTasks event, Emitter emit) async {
     final tasks = await getAllTasksTransaction(NoRequest());
-
     tasks.fold(
       (exception) => emit(TaskError(exception.message)),
       (tasks) {

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
-import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/category_row.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
@@ -79,12 +78,7 @@ class _TodoScreenState extends State<TodoScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                BlocBuilder<CatBloc, CatState>(
-                  builder: (context, state) {
-                    print(state.runtimeType);
-                    return const CategoryRow();
-                  },
-                ),
+                const CategoryRow(),
                 const SizedBox(
                   height: 16,
                 ),
@@ -109,24 +103,28 @@ class _TodoScreenState extends State<TodoScreen> {
                             const SizedBox(
                               height: 4,
                             ),
-                          TaskList(
-                            tasks: state.tasks,
-                            titleController: titleController,
-                            descController: descController,
-                          ),
-                          if (state.completedTasks != null)
+                          if (state.tasks.isNotEmpty)
+                            TaskList(
+                              tasks: state.tasks,
+                              titleController: titleController,
+                              descController: descController,
+                            ),
+                          if (state.completedTasks != null &&
+                              state.completedTasks!.isNotEmpty)
                             const SizedBox(
                               height: 16,
                             ),
-                          Text(
-                            LanguageManager.shared
-                                .translation(context)
-                                .completed,
-                            style: themeData.textTheme.titleMedium!.copyWith(
-                              color: const Color.fromARGB(255, 82, 83, 85),
-                              fontWeight: FontWeight.w700,
+                          if (state.completedTasks != null &&
+                              state.completedTasks!.isNotEmpty)
+                            Text(
+                              LanguageManager.shared
+                                  .translation(context)
+                                  .completed,
+                              style: themeData.textTheme.titleMedium!.copyWith(
+                                color: const Color.fromARGB(255, 82, 83, 85),
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
                           const SizedBox(
                             height: 4,
                           ),

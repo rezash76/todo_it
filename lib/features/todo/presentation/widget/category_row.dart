@@ -24,10 +24,6 @@ class _CategoryRowState extends State<CategoryRow> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CatBloc, CatState>(
-      buildWhen: (previous, current) {
-        print(previous.hashCode == current.hashCode);
-        return true;
-      },
       builder: (context, state) {
         return Builder(builder: (context) {
           return Row(

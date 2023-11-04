@@ -17,7 +17,8 @@ base class TaskRepositoryImpl extends TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> getAllTasks() async {
     try {
       var tasks = localDatasource.getAllTasks();
-      return Right(returnTasksDependOnCat(tasks));
+      var catTasks = returnTasksDependOnCat(tasks);
+      return catTasks.isNotEmpty ? Right(catTasks) : Left(NotFound());
     } on NotFound {
       return Left(NotFound());
     } on TypeMissmatch {
@@ -33,7 +34,8 @@ base class TaskRepositoryImpl extends TaskRepository {
     try {
       var tasks = await localDatasource.addNewTask(taskEntity);
       await shared.setString(Constants.category, taskEntity.category.name);
-      return Right(returnTasksDependOnCat(tasks));
+      var catTasks = returnTasksDependOnCat(tasks);
+      return catTasks.isNotEmpty ? Right(catTasks) : Left(NotFound());
     } on TypeMissmatch {
       return Left(TypeMissmatch());
     } on HiveException catch (error) {
@@ -46,7 +48,8 @@ base class TaskRepositoryImpl extends TaskRepository {
       TaskEntity taskEntity) async {
     try {
       var tasks = await localDatasource.updateTask(taskEntity);
-      return Right(returnTasksDependOnCat(tasks));
+      var catTasks = returnTasksDependOnCat(tasks);
+      return catTasks.isNotEmpty ? Right(catTasks) : Left(NotFound());
     } on NotFound {
       return Left(NotFound());
     } on TypeMissmatch {
@@ -60,7 +63,8 @@ base class TaskRepositoryImpl extends TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> deleteTask(String id) async {
     try {
       var tasks = await localDatasource.deleteTask(id);
-      return Right(returnTasksDependOnCat(tasks));
+      var catTasks = returnTasksDependOnCat(tasks);
+      return catTasks.isNotEmpty ? Right(catTasks) : Left(NotFound());
     } on NotFound {
       return Left(NotFound());
     } on TypeMissmatch {
