@@ -25,7 +25,7 @@ class TaskCatIcon extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: const Color.fromARGB(255, 39, 39, 44),
               borderRadius: BorderRadius.circular(10),
               boxShadow: isSelected
                   ? [

@@ -6,8 +6,10 @@ import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/task_cat_icon.dart';
 
 class CategoryRow extends StatefulWidget {
+  final Function(TaskCategory cat) callback;
   const CategoryRow({
     super.key,
+    required this.callback,
   });
 
   @override
@@ -25,6 +27,9 @@ class _CategoryRowState extends State<CategoryRow> {
   Widget build(BuildContext context) {
     return BlocBuilder<CatBloc, CatState>(
       builder: (context, state) {
+        if (state is GetCatSuccess) {
+          widget.callback(state.cat);
+        }
         return Builder(builder: (context) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,6 +69,7 @@ class _CategoryRowState extends State<CategoryRow> {
     BlocProvider.of<CatBloc>(context).add(SetCat(
       cat,
     ));
+    widget.callback(cat);
     BlocProvider.of<TaskBloc>(context).add(GetCatTasks(
       cat: cat,
     ));

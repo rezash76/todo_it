@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_test/features/todo/presentation/screen/task_screen.dart';
 import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
 import 'package:todo_test/features/todo/presentation/widget/task_dismissible_list_view.dart';
 
@@ -19,7 +20,7 @@ class TaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       separatorBuilder: ((context, index) => const Divider(
-            height: 0,
+            height: 1,
             color: Colors.grey,
           )),
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -31,13 +32,16 @@ class TaskList extends StatelessWidget {
           onTap: () {
             titleController.text = tasks[index].title;
             descController.text = tasks[index].desc;
-            showAddTaskBottomSheet(
-              context: context,
-              task: tasks[index],
-              titleController: titleController,
-              descController: descController,
-              isUpdate: true,
-              selectedValue: tasks[index].category,
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TaskScreen(
+                  titleController: titleController,
+                  descController: descController,
+                  task: tasks[index],
+                  isUpdate: true,
+                ),
+              ),
             );
           },
           child: TaskDismissibleListView(

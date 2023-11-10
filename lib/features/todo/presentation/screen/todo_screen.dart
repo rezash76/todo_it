@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_test/common/feature/drawer/presentation/custom_drawer.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
+import 'package:todo_test/features/todo/presentation/screen/task_screen.dart';
 import 'package:todo_test/features/todo/presentation/widget/category_row.dart';
 import 'package:todo_test/features/todo/presentation/widget/empty_task.dart';
-import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
 import 'package:todo_test/features/todo/presentation/widget/tasks_list.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -71,14 +70,18 @@ class _TodoScreenState extends State<TodoScreen> {
                 Text(
                   LanguageManager.shared.translation(context).categories,
                   style: themeData.textTheme.titleMedium!.copyWith(
-                    color: const Color.fromARGB(255, 82, 83, 85),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const CategoryRow(),
+                Hero(
+                  tag: 'cat',
+                  child: CategoryRow(
+                    callback: (cat) {},
+                  ),
+                ),
                 const SizedBox(
                   height: 16,
                 ),
@@ -95,7 +98,6 @@ class _TodoScreenState extends State<TodoScreen> {
                             Text(
                               LanguageManager.shared.translation(context).tasks,
                               style: themeData.textTheme.titleMedium!.copyWith(
-                                color: const Color.fromARGB(255, 82, 83, 85),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -121,7 +123,6 @@ class _TodoScreenState extends State<TodoScreen> {
                                   .translation(context)
                                   .completed,
                               style: themeData.textTheme.titleMedium!.copyWith(
-                                color: const Color.fromARGB(255, 82, 83, 85),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -154,14 +155,18 @@ class _TodoScreenState extends State<TodoScreen> {
           onPressed: () {
             titleController.text = '';
             descController.text = '';
-            showAddTaskBottomSheet(
-              context: context,
-              titleController: titleController,
-              descController: descController,
-              isUpdate: false,
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TaskScreen(
+                  titleController: titleController,
+                  descController: descController,
+                  isUpdate: false,
+                ),
+              ),
             );
           },
-          backgroundColor: const Color.fromRGBO(251, 233, 0, 1),
+          backgroundColor: const Color.fromARGB(255, 5, 189, 122),
           child: const Icon(Icons.add),
         ),
       ),

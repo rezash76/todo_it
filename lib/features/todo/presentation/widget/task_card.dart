@@ -32,7 +32,7 @@ class _TaskCardState extends State<TaskCard> {
       // margin: const EdgeInsets.all(16),
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(255, 39, 39, 44),
         // borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
@@ -67,7 +67,7 @@ class _TaskCardState extends State<TaskCard> {
             BlocBuilder<TaskBloc, TaskState>(
               builder: (context, state) {
                 return Checkbox(
-                  checkColor: Colors.amberAccent,
+                  checkColor: Colors.white,
                   activeColor: Colors.black,
                   value: widget.task.isCompleted,
                   onChanged: (value) {

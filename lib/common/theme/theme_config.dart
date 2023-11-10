@@ -21,9 +21,9 @@ class ThemeConfig {
 
   ThemeConfig.dark()
       : brightness = Brightness.dark,
-        primaryColor = const Color.fromARGB(234, 244, 240, 240),
+        primaryColor = Colors.white,
         secondaryColor = Colors.black12,
-        background = const Color.fromARGB(255, 1, 13, 44),
+        background = const Color.fromARGB(255, 29, 29, 32),
         surface = const Color.fromARGB(255, 18, 7, 35),
         onSurface = const Color.fromARGB(234, 244, 240, 240);
 
@@ -34,7 +34,7 @@ class ThemeConfig {
           brightness: brightness,
           primary: primaryColor,
           onPrimary: primaryColor,
-          secondary: primaryColor,
+          secondary: secondaryColor,
           onSecondary: primaryColor,
           error: Colors.red,
           onError: Colors.red,

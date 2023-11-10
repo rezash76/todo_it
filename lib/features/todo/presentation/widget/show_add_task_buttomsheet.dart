@@ -88,32 +88,6 @@ showAddTaskBottomSheet({
                     const SizedBox(
                       height: 22,
                     ),
-                    // CupertinoSegmentedControl(
-                    //   groupValue: selectedValue.name,
-                    //   children: segmentChildren,
-                    //   onValueChanged: (value) async {
-                    //     setState(() {
-                    //       if (value == 'personal') {
-                    //         selectedValue = TaskCategory.personal;
-                    //         print(selectedValue);
-                    //       }
-                    //       if (value == 'work') {
-                    //         selectedValue = TaskCategory.work;
-                    //         print(selectedValue);
-                    //       }
-                    //       if (value == 'learning') {
-                    //         selectedValue = TaskCategory.learning;
-                    //         print(selectedValue);
-                    //       }
-                    //     });
-                    //   },
-                    //   selectedColor: const Color.fromARGB(255, 147, 10, 65),
-                    //   unselectedColor: const Color.fromARGB(255, 36, 37, 56),
-                    //   borderColor: CupertinoColors.inactiveGray,
-                    //   padding: const EdgeInsets.symmetric(
-                    //     vertical: 12,
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
