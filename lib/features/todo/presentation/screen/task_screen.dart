@@ -134,6 +134,9 @@ class _TaskScreenState extends State<TaskScreen> {
                       }
                       Navigator.of(context).pop();
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(200, 5, 189, 121),
+                    ),
                     child: Text(
                       widget.titleController.text == ''
                           ? LanguageManager.shared.translation(context).add

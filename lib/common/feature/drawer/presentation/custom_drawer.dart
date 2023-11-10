@@ -73,7 +73,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       LanguageManager.shared.translation(context).appearance,
                       style: themeData.textTheme.titleMedium!.copyWith(
                         fontSize: 20,
-                        color: const Color.fromARGB(229, 255, 255, 255),
                       ),
                     ),
                   ),
@@ -138,7 +137,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   LanguageManager.shared.translation(context).language,
                   style: themeData.textTheme.titleMedium!.copyWith(
                     fontSize: 20,
-                    color: const Color.fromARGB(229, 255, 255, 255),
                   ),
                 ),
               ),
@@ -178,21 +176,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
           const SizedBox(
             height: 24,
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.logout_outlined,
-              color: Colors.redAccent,
-            ),
-            title: Text(
-              LanguageManager.shared.translation(context).logout,
-              style: themeData.textTheme.titleMedium!.copyWith(
-                color: Colors.red,
-              ),
-            ),
-            onTap: () {
-              BlocProvider.of<SigninBloc>(context).add(SignoutEvent());
-            },
-          ),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.logout_outlined,
+          //     color: Colors.redAccent,
+          //   ),
+          //   title: Text(
+          //     LanguageManager.shared.translation(context).logout,
+          //     style: themeData.textTheme.titleMedium!.copyWith(
+          //       color: Colors.red,
+          //     ),
+          //   ),
+          //   onTap: () {
+          //     BlocProvider.of<SigninBloc>(context).add(SignoutEvent());
+          //   },
+          // ),
         ],
       ),
     );

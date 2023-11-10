@@ -35,7 +35,6 @@ class CustomThemeMode extends StatelessWidget {
             Text(
               LanguageManager.shared.translation(context).light,
               style: themeData.textTheme.titleSmall!.copyWith(
-                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),
@@ -57,7 +56,6 @@ class CustomThemeMode extends StatelessWidget {
             Text(
               LanguageManager.shared.translation(context).dark,
               style: themeData.textTheme.titleSmall!.copyWith(
-                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),
@@ -85,7 +83,6 @@ class CustomThemeMode extends StatelessWidget {
             Text(
               LanguageManager.shared.translation(context).system,
               style: themeData.textTheme.titleSmall!.copyWith(
-                color: const Color.fromARGB(229, 255, 255, 255),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
               ),
             ),

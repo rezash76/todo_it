@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_test/common/language_manager.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 
@@ -25,7 +24,7 @@ class TaskCatIcon extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 39, 39, 44),
+              color: themeData.colorScheme.secondary,
               borderRadius: BorderRadius.circular(10),
               boxShadow: isSelected
                   ? [
@@ -39,20 +38,18 @@ class TaskCatIcon extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.all(14),
-              child: SvgPicture.asset(
-                'assets/images/${category.name}.svg',
+              child: Image.asset(
+                'assets/images/${category.name}.png',
               ),
+              // child: SvgPicture.asset(
+              //   'assets/images/${category.name}.svg',
+              // ),
             ),
           ),
           const SizedBox(
             height: 8,
           ),
-          Text(
-            getCatTitle(context),
-            style: themeData.textTheme.titleMedium!.copyWith(
-              color: const Color.fromARGB(255, 118, 120, 126),
-            ),
-          ),
+          Text(getCatTitle(context), style: themeData.textTheme.titleMedium!),
         ],
       ),
     );

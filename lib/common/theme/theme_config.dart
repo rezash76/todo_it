@@ -14,15 +14,15 @@ class ThemeConfig {
   ThemeConfig.light()
       : brightness = Brightness.light,
         primaryColor = const Color.fromARGB(255, 14, 3, 54),
-        secondaryColor = Colors.black87,
+        secondaryColor = Colors.white,
         background = const Color.fromARGB(255, 236, 240, 250),
-        surface = const Color.fromARGB(209, 7, 6, 36),
+        surface = const Color.fromARGB(255, 230, 226, 232),
         onSurface = const Color.fromARGB(255, 14, 3, 54);
 
   ThemeConfig.dark()
       : brightness = Brightness.dark,
-        primaryColor = Colors.white,
-        secondaryColor = Colors.black12,
+        primaryColor = Colors.white70,
+        secondaryColor = const Color.fromARGB(255, 39, 39, 44),
         background = const Color.fromARGB(255, 29, 29, 32),
         surface = const Color.fromARGB(255, 18, 7, 35),
         onSurface = const Color.fromARGB(234, 244, 240, 240);
@@ -44,7 +44,7 @@ class ThemeConfig {
           onSurface: onSurface,
         ),
         appBarTheme: const AppBarTheme(
-          color: Colors.amberAccent,
+          color: Color.fromARGB(255, 5, 189, 122),
           iconTheme: IconThemeData(
             color: Color.fromARGB(255, 14, 3, 54),
           ),

@@ -31,9 +31,8 @@ class _TaskCardState extends State<TaskCard> {
     return Container(
       // margin: const EdgeInsets.all(16),
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 39, 39, 44),
-        // borderRadius: BorderRadius.circular(15),
+      decoration: BoxDecoration(
+        color: themeData.colorScheme.secondary,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -51,16 +50,10 @@ class _TaskCardState extends State<TaskCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.task.title,
-                    style: themeData.textTheme.titleLarge!
-                        .copyWith(color: Colors.black87),
-                  ),
-                  Text(
-                    widget.task.desc.toString().trim(),
-                    style: themeData.textTheme.titleMedium!
-                        .copyWith(color: Colors.black87),
-                  ),
+                  Text(widget.task.title,
+                      style: themeData.textTheme.titleLarge!),
+                  Text(widget.task.desc.toString().trim(),
+                      style: themeData.textTheme.titleMedium!),
                 ],
               ),
             ),
