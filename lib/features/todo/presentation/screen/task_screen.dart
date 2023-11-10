@@ -141,7 +141,9 @@ class _TaskScreenState extends State<TaskScreen> {
                       widget.titleController.text == ''
                           ? LanguageManager.shared.translation(context).add
                           : LanguageManager.shared.translation(context).update,
-                      style: themeData.textTheme.titleMedium,
+                      style: themeData.textTheme.titleMedium!.copyWith(
+                        color: const Color.fromARGB(255, 14, 3, 54),
+                      ),
                     ),
                   ),
                 ),

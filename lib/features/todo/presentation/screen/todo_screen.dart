@@ -167,6 +167,7 @@ class _TodoScreenState extends State<TodoScreen> {
             );
           },
           backgroundColor: const Color.fromARGB(255, 5, 189, 122),
+          foregroundColor: const Color.fromARGB(255, 14, 3, 54),
           child: const Icon(Icons.add),
         ),
       ),
