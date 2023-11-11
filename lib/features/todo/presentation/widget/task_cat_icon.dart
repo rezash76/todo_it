@@ -41,15 +41,15 @@ class TaskCatIcon extends StatelessWidget {
               child: Image.asset(
                 'assets/images/${category.name}.png',
               ),
-              // child: SvgPicture.asset(
-              //   'assets/images/${category.name}.svg',
-              // ),
             ),
           ),
           const SizedBox(
             height: 8,
           ),
-          Text(getCatTitle(context), style: themeData.textTheme.titleMedium!),
+          Text(
+            getCatTitle(context),
+            style: themeData.textTheme.titleMedium,
+          ),
         ],
       ),
     );
