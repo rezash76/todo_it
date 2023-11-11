@@ -50,10 +50,14 @@ class _TaskCardState extends State<TaskCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.task.title,
-                      style: themeData.textTheme.titleLarge!),
-                  Text(widget.task.desc.toString().trim(),
-                      style: themeData.textTheme.titleMedium!),
+                  Text(
+                    widget.task.title,
+                    style: themeData.textTheme.titleLarge,
+                  ),
+                  Text(
+                    widget.task.desc.toString().trim(),
+                    style: themeData.textTheme.titleMedium,
+                  ),
                 ],
               ),
             ),

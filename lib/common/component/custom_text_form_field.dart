@@ -34,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return SizedBox(
       width: width,
       height: height,
@@ -44,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
         minLines: minLines,
         maxLines: maxLines,
         obscureText: obscureText ?? false,
+        style: themeData.textTheme.titleMedium,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(
             left: 24,
