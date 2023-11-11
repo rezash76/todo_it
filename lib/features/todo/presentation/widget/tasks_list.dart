@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
 import 'package:todo_test/features/todo/presentation/screen/task_screen.dart';
-import 'package:todo_test/features/todo/presentation/widget/show_add_task_buttomsheet.dart';
-import 'package:todo_test/features/todo/presentation/widget/task_dismissible_list_view.dart';
+import 'package:todo_test/features/todo/presentation/widget/task_dismissible.dart';
 
 class TaskList extends StatelessWidget {
   final List<TaskEntity> tasks;
@@ -44,7 +43,7 @@ class TaskList extends StatelessWidget {
               ),
             );
           },
-          child: TaskDismissibleListView(
+          child: TaskDismissible(
             task: tasks[index],
           ),
         );

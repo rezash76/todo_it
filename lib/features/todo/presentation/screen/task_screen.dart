@@ -12,8 +12,8 @@ class TaskScreen extends StatefulWidget {
   final TextEditingController titleController;
   final TextEditingController descController;
   final bool isUpdate;
-  TaskEntity? task;
-  TaskScreen({
+  final TaskEntity? task;
+  const TaskScreen({
     super.key,
     required this.titleController,
     required this.descController,

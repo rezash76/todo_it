@@ -5,8 +5,8 @@ import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
 import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
 import 'package:todo_test/features/todo/presentation/widget/task_card.dart';
 
-class TaskDismissibleListView extends StatelessWidget {
-  const TaskDismissibleListView({
+class TaskDismissible extends StatelessWidget {
+  const TaskDismissible({
     super.key,
     required this.task,
   });
