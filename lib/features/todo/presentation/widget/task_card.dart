@@ -29,7 +29,6 @@ class _TaskCardState extends State<TaskCard> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Container(
-      // margin: const EdgeInsets.all(16),
       width: double.infinity,
       decoration: BoxDecoration(
         color: themeData.colorScheme.secondary,

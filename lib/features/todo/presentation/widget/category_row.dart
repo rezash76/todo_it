@@ -32,7 +32,7 @@ class _CategoryRowState extends State<CategoryRow> {
         }
         return Builder(builder: (context) {
           return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TaskCatIcon(
                 onTap: () => _onTap(TaskCategory.personal),
