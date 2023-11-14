@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:todo_it/common/language_manager.dart';
 
 class CustomThemeMode extends StatelessWidget {
@@ -21,16 +22,29 @@ class CustomThemeMode extends StatelessWidget {
     return switch (themeMode) {
       ThemeMode.light => Column(
           children: [
-            Container(
-              margin: const EdgeInsets.all(8),
-              width: 70,
-              height: 130,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 246, 191, 51),
-                borderRadius: BorderRadius.circular(12),
-                border:
-                    isSelected ? Border.all(width: 2, color: Colors.red) : null,
-              ),
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SvgPicture.asset(
+                    'assets/images/light.svg',
+                    width: 70,
+                    height: 130,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  width: 80,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: isSelected
+                        ? Border.all(width: 2, color: Colors.red)
+                        : null,
+                  ),
+                ),
+              ],
             ),
             Text(
               LanguageManager.shared.translation(context).light,
@@ -42,16 +56,29 @@ class CustomThemeMode extends StatelessWidget {
         ),
       ThemeMode.dark => Column(
           children: [
-            Container(
-              margin: const EdgeInsets.all(8),
-              width: 70,
-              height: 130,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 13, 19, 58),
-                borderRadius: BorderRadius.circular(12),
-                border:
-                    isSelected ? Border.all(width: 2, color: Colors.red) : null,
-              ),
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SvgPicture.asset(
+                    'assets/images/dark.svg',
+                    width: 70,
+                    height: 130,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  width: 80,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: isSelected
+                        ? Border.all(width: 2, color: Colors.red)
+                        : null,
+                  ),
+                ),
+              ],
             ),
             Text(
               LanguageManager.shared.translation(context).dark,
@@ -65,13 +92,13 @@ class CustomThemeMode extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.all(8),
-              width: 70,
+              width: 80,
               height: 130,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 246, 191, 51),
-                    Color.fromARGB(255, 13, 19, 58),
+                    Color.fromARGB(255, 5, 189, 122),
+                    Color.fromARGB(255, 29, 29, 32),
                   ],
                   begin: Alignment.topCenter,
                 ),
