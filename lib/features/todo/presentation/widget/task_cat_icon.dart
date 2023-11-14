@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_it/common/language_manager.dart';
+import 'package:todo_it/features/todo/domain/entity/task_entity.dart';
 
 class TaskCatIcon extends StatelessWidget {
   final TaskCategory category;

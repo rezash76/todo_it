@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_test/common/language_manager.dart';
+import 'package:todo_it/common/language_manager.dart';
 
 class CustomThemeMode extends StatelessWidget {
   final ThemeMode themeMode;

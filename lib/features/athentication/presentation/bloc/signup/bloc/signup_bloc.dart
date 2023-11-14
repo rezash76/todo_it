@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:todo_test/features/athentication/domain/value_object/signup_request.dart';
+import 'package:todo_it/features/athentication/domain/value_object/signup_request.dart';
 
 import '../../../../domain/transaction/signup_transaction.dart';
 

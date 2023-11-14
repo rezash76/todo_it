@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_test/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
-import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/common/theme/theme_config.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
-import 'package:todo_test/features/athentication/presentation/screen/splash_screen.dart';
-import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
-import 'package:todo_test/service_locator.dart' as locator;
-import 'package:todo_test/service_locator.dart';
+import 'package:todo_it/common/feature/drawer/presentation/bloc/drawer_bloc.dart';
+import 'package:todo_it/common/language_manager.dart';
+import 'package:todo_it/common/theme/theme_config.dart';
+import 'package:todo_it/features/athentication/presentation/bloc/signin/bloc/signin_bloc.dart';
+import 'package:todo_it/features/athentication/presentation/bloc/signup/bloc/signup_bloc.dart';
+import 'package:todo_it/features/athentication/presentation/screen/splash_screen.dart';
+import 'package:todo_it/features/todo/presentation/bloc/category/cat_bloc.dart';
+import 'package:todo_it/features/todo/presentation/bloc/task/task_bloc.dart';
+import 'package:todo_it/service_locator.dart' as locator;
+import 'package:todo_it/service_locator.dart';
 import 'features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

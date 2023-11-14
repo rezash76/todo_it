@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:todo_test/common/error/cache.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_it/common/error/cache.dart';
+import 'package:todo_it/features/todo/domain/entity/task_entity.dart';
 
 abstract class TaskRepository {
   Future<Either<CacheException, List<TaskEntity>>> getAllTasks();

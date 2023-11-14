@@ -1,4 +1,4 @@
-import 'package:todo_test/common/entity/entity.dart';
+import 'package:todo_it/common/entity/entity.dart';
 
 base class TaskEntity extends Entity {
   final String title;

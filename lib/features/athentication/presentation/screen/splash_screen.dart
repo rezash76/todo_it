@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_test/common/language_manager.dart';
-import 'package:todo_test/features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
-import 'package:todo_test/features/athentication/presentation/screen/signin_screen.dart';
-import 'package:todo_test/features/athentication/presentation/screen/signup_screen.dart';
-import 'package:todo_test/features/todo/presentation/screen/todo_screen.dart';
+import 'package:todo_it/common/language_manager.dart';
+import 'package:todo_it/features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
+import 'package:todo_it/features/todo/presentation/screen/todo_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static String routName = '/splash_screen';

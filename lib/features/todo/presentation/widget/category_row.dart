@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/presentation/bloc/category/cat_bloc.dart';
-import 'package:todo_test/features/todo/presentation/bloc/task/task_bloc.dart';
-import 'package:todo_test/features/todo/presentation/widget/task_cat_icon.dart';
+import 'package:todo_it/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_it/features/todo/presentation/bloc/category/cat_bloc.dart';
+import 'package:todo_it/features/todo/presentation/bloc/task/task_bloc.dart';
+import 'package:todo_it/features/todo/presentation/widget/task_cat_icon.dart';
 
 class CategoryRow extends StatefulWidget {
   final Function(TaskCategory cat) callback;

@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockito/mockito.dart';
-import 'package:todo_test/common/error/cache.dart';
-import 'package:todo_test/common/value_object/no_request.dart';
-import 'package:todo_test/features/athentication/domain/entity/user_entity.dart';
-import 'package:todo_test/features/athentication/domain/transaction/check_registration_transaction.dart';
+import 'package:todo_it/common/error/cache.dart';
+import 'package:todo_it/common/value_object/no_request.dart';
+import 'package:todo_it/features/athentication/domain/entity/user_entity.dart';
+import 'package:todo_it/features/athentication/domain/transaction/check_registration_transaction.dart';
 
 import 'mock_user_repository.mocks.dart';
 

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todo_test/common/error/cache.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
-import 'package:todo_test/features/todo/domain/transaction/add_new_task_transaction.dart';
-import 'package:todo_test/features/todo/domain/value_object/task_request.dart';
+import 'package:todo_it/common/error/cache.dart';
+import 'package:todo_it/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_it/features/todo/domain/transaction/add_new_task_transaction.dart';
+import 'package:todo_it/features/todo/domain/value_object/task_request.dart';
 
 import 'mock_task_repository.mocks.dart';
 

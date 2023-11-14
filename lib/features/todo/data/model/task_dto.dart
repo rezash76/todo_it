@@ -1,5 +1,5 @@
-import 'package:todo_test/features/todo/data/model/hive/hive_task.dart';
-import 'package:todo_test/features/todo/domain/entity/task_entity.dart';
+import 'package:todo_it/features/todo/data/model/hive/hive_task.dart';
+import 'package:todo_it/features/todo/domain/entity/task_entity.dart';
 
 base class TaskDTO extends TaskEntity {
   TaskDTO({
