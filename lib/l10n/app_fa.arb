@@ -32,6 +32,7 @@
     "add": "ایجاد",
     "update": "بروز رسانی",
     "title": "عنوان",
+    "titleValidationText": "عنوان نباید خالی باشه",
     "description": "توضیحات",
     "thereIsNoTask": "هنوز کاری ایجاد نکرده اید",
     "tapPlusToAddNewOne": "برای ایجاد کار جدید + را بزنید"

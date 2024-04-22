@@ -25,6 +25,22 @@ class CustomThemeMode extends StatelessWidget {
             Stack(
               alignment: AlignmentDirectional.center,
               children: [
+                // ClipRRect(
+                //   borderRadius: BorderRadius.circular(12),
+                //   child: SizedBox(
+                //     width: 80,
+                //     height: 108,
+                //     child: Image.asset(
+                //       'assets/images/light.jpg',
+                //     ),
+                //   ),
+
+                //   // SvgPicture.asset(
+                //   //   'assets/images/light.svg',
+                //   //   width: 70,
+                //   //   height: 130,
+                //   // ),
+                // ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: SvgPicture.asset(
@@ -44,6 +60,23 @@ class CustomThemeMode extends StatelessWidget {
                         : null,
                   ),
                 ),
+                // Container(
+                //   margin: const EdgeInsets.all(8),
+                //   width: 80,
+                //   height: 130,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(12),
+                //     border: isSelected
+                //         ? Border.all(width: 2, color: Colors.red)
+                //         : null,
+                //   ),
+                //   child: ClipRRect(
+                //     borderRadius: BorderRadius.circular(10),
+                //     child: Image.asset(
+                //       'assets/images/light.jpg',
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             Text(

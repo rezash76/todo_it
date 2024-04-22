@@ -53,10 +53,11 @@ class _TaskCardState extends State<TaskCard> {
                     widget.task.title,
                     style: themeData.textTheme.titleLarge,
                   ),
-                  Text(
-                    widget.task.desc.toString().trim(),
-                    style: themeData.textTheme.titleMedium,
-                  ),
+                  if (widget.task.desc.isNotEmpty)
+                    Text(
+                      widget.task.desc.toString().trim(),
+                      style: themeData.textTheme.titleMedium,
+                    ),
                 ],
               ),
             ),

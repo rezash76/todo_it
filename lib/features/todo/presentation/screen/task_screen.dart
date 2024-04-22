@@ -27,6 +27,7 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
   TaskCategory category = TaskCategory.personal;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +60,16 @@ class _TaskScreenState extends State<TaskScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                CustomTextFormField(
-                  controller: widget.titleController,
-                  hintText: LanguageManager.shared.translation(context).title,
+                Form(
+                  key: _formKey,
+                  child: CustomTextFormField(
+                    controller: widget.titleController,
+                    hintText: LanguageManager.shared.translation(context).title,
+                    maxLines: 1,
+                    validationText: LanguageManager.shared
+                        .translation(context)
+                        .titleValidationText,
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
@@ -106,8 +114,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 60,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (widget.titleController.text.isNotEmpty &&
-                          widget.descController.text.isNotEmpty) {
+                      if (_formKey.currentState!.validate()) {
                         final timeStamp =
                             DateTime.now().millisecondsSinceEpoch.toString();
                         var taskRequest = TaskRequest(
@@ -131,8 +138,8 @@ class _TaskScreenState extends State<TaskScreen> {
                               ? UpdateTask(taskRequest)
                               : AddNewTask(taskRequest),
                         );
+                        Navigator.of(context).pop();
                       }
-                      Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(200, 5, 189, 121),

@@ -32,6 +32,7 @@
     "add": "Add",
     "update": "Update",
     "title": "title",
+    "titleValidationText": "The title can't be empty",
     "description": "description",
     "thereIsNoTask": "There is no task",
     "tapPlusToAddNewOne": "Tap + to add new one"
