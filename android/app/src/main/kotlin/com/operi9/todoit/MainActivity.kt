@@ -1,4 +1,4 @@
-package com.operi9.todoit
+package com.operi9.todaydo
 
 import io.flutter.embedding.android.FlutterActivity
 

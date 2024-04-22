@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, state) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ToDo it',
+          title: 'Today Do',
           theme: ThemeConfig.light().getTheme(_locale.languageCode),
           darkTheme: ThemeConfig.dark().getTheme(_locale.languageCode),
           themeMode:
