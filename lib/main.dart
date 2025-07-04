@@ -8,10 +8,10 @@ import 'package:todo_it/features/athentication/presentation/bloc/signup/bloc/sig
 import 'package:todo_it/features/athentication/presentation/screen/splash_screen.dart';
 import 'package:todo_it/features/todo/presentation/bloc/category/cat_bloc.dart';
 import 'package:todo_it/features/todo/presentation/bloc/task/task_bloc.dart';
+import 'package:todo_it/l10n/app_localizations.dart';
 import 'package:todo_it/service_locator.dart' as locator;
 import 'package:todo_it/service_locator.dart';
 import 'features/athentication/presentation/bloc/splash/bloc/splash_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
